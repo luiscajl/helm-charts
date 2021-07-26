@@ -1,0 +1,29 @@
+global:
+  aws:
+    accessKeyId:
+    secretAccessKey:
+  okta:
+    issuer:
+    clientId:
+    clientSecret:
+    frontendClientId:
+  url:
+    backend:
+  transmission:
+    host:
+    port:
+    user:
+    password:
+    urlRpc:
+automated-download-shows:
+  image:
+    tag: "0.0.4"
+automated-download-films:
+  image:
+    tag: "0.0.20"
+tmdb:
+  image:
+    tag: "0.0.2"
+frontend-ng:
+  image:
+    tag: "master"
