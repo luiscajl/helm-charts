@@ -1,4 +1,4 @@
-name: Elastictranscoder Chart deploy
+name: Elastictranscoder Chart
 on:
   push:
     paths:

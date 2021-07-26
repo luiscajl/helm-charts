@@ -1,4 +1,4 @@
-name: Lavanda Chart deploy
+name: Lavanda Chart
 on:
   push:
     paths:
