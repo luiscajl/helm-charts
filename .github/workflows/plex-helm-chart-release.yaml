@@ -5,7 +5,7 @@ on:
       - "charts/plex/Chart.yaml"
       - ".github/workflows/plex-helm-chart-release.yaml"
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest

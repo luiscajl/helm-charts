@@ -5,7 +5,7 @@ on:
       - "charts/lavanda/Chart.yaml"
       - ".github/workflows/lavanda-helm-chart-release.yaml"
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
