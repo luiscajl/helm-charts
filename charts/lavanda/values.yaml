@@ -24,6 +24,9 @@ automated-download-films:
 tmdb:
   image:
     tag: "0.0.2"
-frontend-ng:
+frontend:
   image:
     tag: "master"
+lavanda-filebot:
+  image:
+    tag: "0.0.8"
