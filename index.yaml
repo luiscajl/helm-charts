@@ -1,5 +1,24 @@
 apiVersion: v1
 entries:
+  automated-download-films:
+  - apiVersion: v2
+    created: "2021-08-22T12:11:18.24050842Z"
+    digest: 2adfec1b6cbeb2134e3815caf177bd3d23ee54d5c42bfc1232c2fe442e8cc1f4
+    name: automated-download-films
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.0.1/automated-download-films-0.0.1.tgz
+    version: 0.0.1
+  automated-download-shows:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-22T12:11:18.335342411Z"
+    description: A Helm chart for Kubernetes
+    digest: 4b34b529c15a83877d999794a7899ca121bb6b45e9a487da81a5471695d58a57
+    name: automated-download-shows
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-shows-0.1.0/automated-download-shows-0.1.0.tgz
+    version: 0.1.0
   elastictranscoder:
   - apiVersion: v2
     created: "2021-07-26T10:51:50.653268914Z"
@@ -10,6 +29,26 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/elastictranscoder-0.46.0/elastictranscoder-0.46.0.tgz
     version: 0.46.0
+  filebot:
+  - apiVersion: v2
+    created: "2021-08-22T12:11:18.43413793Z"
+    description: A Helm chart for Kubernetes
+    digest: b62ea9411610feda2c6342d803cedd0e5997f57d2064ab461315ace9473e3c63
+    name: filebot
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-0.1.0/filebot-0.1.0.tgz
+    version: 0.1.0
+  frontend:
+  - apiVersion: v2
+    created: "2021-08-22T12:11:18.541091509Z"
+    description: A Helm chart for Kubernetes
+    digest: 9646ae009f1f42e51de25f6b4383415518c1ab01ea3dca6d4407bd4be9ed825f
+    name: frontend
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.1.0/frontend-0.1.0.tgz
+    version: 0.1.0
   lavanda:
   - apiVersion: v2
     created: "2021-08-22T10:49:19.146515873Z"
@@ -53,6 +92,17 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
+  tmdb:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-22T12:11:18.641406939Z"
+    description: A Helm chart for Kubernetes
+    digest: ce213e767824013f995a722787fb12dc732671983a6e2b0561b264dec543ec20
+    name: tmdb
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.1.0/tmdb-0.1.0.tgz
+    version: 0.1.0
   transmission:
   - apiVersion: v2
     created: "2021-08-22T10:49:19.260046881Z"
@@ -61,4 +111,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-22T10:49:19.260064081Z"
+generated: "2021-08-22T12:11:18.64157854Z"
