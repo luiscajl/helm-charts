@@ -2,7 +2,7 @@ name: Lavanda Chart
 on:
   push:
     paths:
-      - "charts/filebot"
+      - "charts/filebot/"
       - ".github/workflows/filebot-helm-chart-release.yaml"
     branches:
       - main
