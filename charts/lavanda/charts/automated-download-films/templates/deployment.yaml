@@ -47,15 +47,30 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: pro
             - name: AWS_ACCESS_KEY_ID
-              value: {{ required "A valid .Values.global.aws.accessKeyId entry required!" .Values.global.aws.accessKeyId }} 
+              valueFrom:
+                secretKeyRef:
+                 name: aws-credentials
+                 key: aws-access-key-id 
             - name: AWS_SECRET_ACCESS_KEY
-              value: {{ required "A valid .Values.global.aws.secretAccessKey entry required!" .Values.global.aws.secretAccessKey }} 
+              valueFrom:
+                secretKeyRef:
+                 name: aws-credentials
+                 key: aws-access-secret-key  
             - name: OKTA_OAUTH2_ISSUER
-              value: {{ required "A valid .Values.global.okta.issuer entry required!" .Values.global.okta.issuer }}
+              valueFrom:
+                secretKeyRef:
+                 name: okta-credentials
+                 key: client-issuer
             - name: OKTA_OAUTH2_CLIENT_ID
-              value: {{ required "A valid .Values.global.okta.clientId entry required!" .Values.global.okta.clientId }}
+              valueFrom:
+                secretKeyRef:
+                 name: okta-credentials
+                 key: client-id
             - name: OKTA_OAUTH2_CLIENT_SECRET
-              value: {{ required "A valid .Values.global.okta.clientSecret entry required!" .Values.global.okta.clientSecret }} 
+              valueFrom:
+                secretKeyRef:
+                 name: okta-credentials
+                 key: client-secret
             - name: SPRING_DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
