@@ -12,6 +12,15 @@ entries:
     version: 0.46.0
   lavanda:
   - apiVersion: v2
+    created: "2021-08-22T10:49:19.146515873Z"
+    description: Helm chart for lavanda kubernetes cluster
+    digest: e7f959884538446d90056965b53bf5f9b5af31a88f39b3ecca095f3104579f71
+    name: lavanda
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/lavanda-0.0.134/lavanda-0.0.134.tgz
+    version: 0.0.134
+  - apiVersion: v2
     created: "2021-07-30T12:16:52.201209194Z"
     description: Helm chart for lavanda kubernetes cluster
     digest: 90d25d4d956a6fcc7882a3682b1f3ce65b255367b9c9c52cadef2e65f2b42be8
@@ -44,4 +53,12 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
-generated: "2021-07-30T12:16:52.317385765Z"
+  transmission:
+  - apiVersion: v2
+    created: "2021-08-22T10:49:19.260046881Z"
+    digest: 622cee9eee1ab477b428c94b830c270f6fbae10581404cdea4cc87162825e27a
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
+    version: 0.0.1
+generated: "2021-08-22T10:49:19.260064081Z"
