@@ -2,7 +2,7 @@ name: Lavanda Chart
 on:
   push:
     paths:
-      - "charts/automated-download-films"
+      - "charts/automated-download-films/"
       - ".github/workflows/automated-download-films-helm-chart-release.yaml"
     branches:
       - main

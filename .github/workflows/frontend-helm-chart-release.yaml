@@ -2,7 +2,7 @@ name: Lavanda Chart
 on:
   push:
     paths:
-      - "charts/frontend"
+      - "charts/frontend/"
       - ".github/workflows/frontend-helm-chart-release.yaml"
     branches:
       - main

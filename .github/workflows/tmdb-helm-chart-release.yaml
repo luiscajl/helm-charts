@@ -2,7 +2,7 @@ name: Lavanda Chart
 on:
   push:
     paths:
-      - "charts/tmdb"
+      - "charts/tmdb/"
       - ".github/workflows/tmdb-helm-chart-release.yaml"
     branches:
       - main
