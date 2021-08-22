@@ -1,13 +1,14 @@
-# Default values for automated-download-shows.
+# Default values for lavanda-filebot.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: lavandadelpatio/automated-download-shows
+  repository: lavandadelpatio/filebot
   pullPolicy: IfNotPresent
-  tag: "0.0.2"
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.0.6"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,18 +42,19 @@ service:
 
 ingress:
   enabled: true
-  annotations:   
+  annotations: 
     nginx.ingress.kubernetes.io/auth-url: "http://oauth2-proxy.oauth2-proxy.svc.cluster.local:4180/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-response-headers: Authorization
     nginx.ingress.kubernetes.io/auth-snippet: |
       proxy_method $request_method;
   hosts:
-    - host: {{ .Values.global.api.url.backend }} 
-      paths: [ /feed-shows ]
+    - host: example.com 
+      paths: [ /filebot ]
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -73,7 +75,8 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
+nodeSelector: 
+  cputype: arm64
 
 tolerations: []
 

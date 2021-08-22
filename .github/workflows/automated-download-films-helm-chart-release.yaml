@@ -2,8 +2,8 @@ name: Lavanda Chart
 on:
   push:
     paths:
-      - "charts/lavanda/Chart.yaml"
-      - ".github/workflows/lavanda-helm-chart-release.yaml"
+      - "charts/automated-download-films"
+      - ".github/workflows/automated-download-films-helm-chart-release.yaml"
     branches:
       - main
 jobs:
@@ -13,12 +13,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:

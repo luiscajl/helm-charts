@@ -1,7 +1,8 @@
 replicaCount: 1
+
 image:
-  repository: lavandadelpatio/frontend
-  pullPolicy: Always
+  repository: lavandadelpatio/automated-download-films
+  pullPolicy: IfNotPresent
   tag: "master"
 
 imagePullSecrets: []
@@ -16,29 +17,40 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
+  # fsGroup: 2000
 
 securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: true
   annotations: 
-    nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.lavandadelpatio.es/oauth2/start?rd=https://$host$request_uri$is_args$args"
     nginx.ingress.kubernetes.io/auth-url: "http://oauth2-proxy.oauth2-proxy.svc.cluster.local:4180/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+    nginx.ingress.kubernetes.io/auth-snippet: |
+      proxy_method $request_method;
   hosts:
-    - host: {{ .Values.global.api.url.frontend }} 
-      paths: [ / ]  
+    - host: example.com 
+      paths: [ /feed-films ]
+  tls: []
 
-resources: 
-  # requests:
-  #   cpu: 250m
-  #   memory: 128Mi
+resources: {}
   # limits:
-  #   cpu: 500m
-  #   memory: 256Mi
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
 autoscaling:
   enabled: false
   minReplicas: 1
@@ -47,7 +59,7 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: 
-  cputype: amd64
+  cputype: arm64
 
 tolerations: []
 
