@@ -2,6 +2,13 @@ apiVersion: v1
 entries:
   automated-download-films:
   - apiVersion: v2
+    created: "2021-08-23T11:14:47.934607199Z"
+    digest: 78aa986f34183bc73ea305fd99f3b31bba8025a3aaa251d837e8ffc0d4e72094
+    name: automated-download-films
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.1.3/automated-download-films-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2021-08-23T07:11:30.285199539Z"
     digest: 3d3653350e70401abef38df48726db63970ebeab45d2b657ca7e78d6c8b665ca
     name: automated-download-films
@@ -30,6 +37,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.0.1/automated-download-films-0.0.1.tgz
     version: 0.0.1
   automated-download-shows:
+  - apiVersion: v2
+    created: "2021-08-23T11:14:48.040473324Z"
+    digest: fdaf9fe33eeb8bee8dbdeac0237f20317d19ddddd5ec7480d15be514e16d8656
+    name: automated-download-shows
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-shows-0.1.3/automated-download-shows-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     created: "2021-08-23T07:11:30.459352786Z"
     digest: 6887360cfdba8e984909fdeae62d0564b2b9c3e0d24e7931ab4db20c0d8e0993
@@ -185,6 +199,13 @@ entries:
     version: 0.0.76
   tmdb:
   - apiVersion: v2
+    created: "2021-08-23T11:14:48.150686378Z"
+    digest: 869489bb169ca48d5e9bc1491cb3a504b69be8cba6723ab960f32834beb1d442
+    name: tmdb
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.1.2/tmdb-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-08-22T13:07:06.519580164Z"
     digest: 9b7166c15b2bf876ba98c97c23452902598dd61bea7f94d5b90fb7ccc7cd6331
     name: tmdb
@@ -223,4 +244,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-23T07:11:30.45945079Z"
+generated: "2021-08-23T11:14:48.150801079Z"
