@@ -2,6 +2,13 @@ apiVersion: v1
 entries:
   automated-download-films:
   - apiVersion: v2
+    created: "2021-08-23T11:23:27.186886114Z"
+    digest: 58a90c040c6df4b944a0a1311afee18bc77ff9e6d8b3aa03e736f43fe0c164a7
+    name: automated-download-films
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.2.1/automated-download-films-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2021-08-23T11:20:43.598162616Z"
     digest: 000c697c362a988eae93fa3d6965441162c3db607c69837e35690efee114810a
     name: automated-download-films
@@ -265,4 +272,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-23T11:20:43.806387658Z"
+generated: "2021-08-23T11:23:27.186952214Z"
