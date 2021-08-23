@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: lavandadelpatio/automated-download-shows
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "0.0.6-SNAPSHOT"
 
 imagePullSecrets: []
