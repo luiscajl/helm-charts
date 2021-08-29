@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: lavandadelpatio/automated-download-films
   pullPolicy: Always
-  tag: "0.0.62-SNAPSHOT"
+  tag: "0.0.74-SNAPSHOT"
 
 imagePullSecrets: []
 nameOverride: ""
