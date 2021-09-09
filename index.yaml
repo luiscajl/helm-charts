@@ -227,6 +227,17 @@ entries:
     version: 0.0.76
   ratedpower:
   - apiVersion: v2
+    created: "2021-09-09T14:06:09.485058792Z"
+    dependencies:
+    - name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.5.1
+    digest: d2743a15461b926b10f7c9ef3f08c3b01597df9745a23b3153112064a38e79a6
+    name: ratedpower
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.1/ratedpower-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2021-09-09T13:38:47.282009752Z"
     dependencies:
     - name: mariadb
@@ -291,4 +302,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-09T13:38:47.282114857Z"
+generated: "2021-09-09T14:06:09.485135593Z"
