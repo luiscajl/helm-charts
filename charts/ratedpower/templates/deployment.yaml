@@ -54,7 +54,7 @@ spec:
               value: {{ .Values.database.url }}
             - name: DATASOURCE_USERNAME
               value: adminlavanda
-            - name: SPRING_DATASOURCE_PASSWORD
+            - name: DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: ratedpower-mariadb
