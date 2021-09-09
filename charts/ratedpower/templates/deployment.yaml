@@ -51,7 +51,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
             - name: DATASOURCE_URL
-              value: {{ .Values.database.url }}
+              value: {{ .Values.datasource.url }}
             - name: DATASOURCE_USERNAME
               value: adminlavanda
             - name: DATASOURCE_PASSWORD
