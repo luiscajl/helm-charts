@@ -50,15 +50,15 @@ spec:
           env:   
             - name: SPRING_PROFILES_ACTIVE
               value: prod
-            - name: SPRING_DATASOURCE_URL
+            - name: DATASOURCE_URL
               value: {{ .Values.mariadb.url }}
-            - name: SPRING_DATASOURCE_USERNAME
-              value: {{ .Values.mariadb.auth.user }}
+            - name: DATASOURCE_USERNAME
+              value: adminlavanda
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: ratedpower-dev-mariadb
-                  key: mariadb-password    
+                  name: ratedpower-mariadb
+                  key: password    
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

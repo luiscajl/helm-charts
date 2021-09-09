@@ -63,10 +63,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-mariadb:
-  auth:
-    rootPassword: ""
-    database: ratedpower
-    username: ratedpower
-    password: ""
-  url: ""  
