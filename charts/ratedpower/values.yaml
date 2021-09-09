@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: luiscajl/ratedpower-test
+  repository: luiscajl/ratedpower
   pullPolicy: IfNotPresent
   tag: "latest"
 serviceAccount:
