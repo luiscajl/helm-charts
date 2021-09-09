@@ -225,6 +225,18 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
+  ratedpower:
+  - apiVersion: v2
+    created: "2021-09-09T13:38:47.282009752Z"
+    dependencies:
+    - name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.5.1
+    digest: d6a664eb9281f8c3edc35c63680a9df9edfc8a418351dc46b0c159eb98c5c629
+    name: ratedpower
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
+    version: 0.1.0
   tmdb:
   - apiVersion: v2
     created: "2021-08-23T11:20:43.806208451Z"
@@ -279,4 +291,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-29T16:53:19.912734745Z"
+generated: "2021-09-09T13:38:47.282114857Z"
