@@ -227,6 +227,13 @@ entries:
     version: 0.0.76
   ratedpower:
   - apiVersion: v2
+    created: "2021-09-09T15:42:50.183886523Z"
+    digest: 7685ab7d4feefa7fba9423e22801686479122d5d04f77979e3f0037122322f2e
+    name: ratedpower
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.8/ratedpower-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
     created: "2021-09-09T15:35:10.49905122Z"
     digest: 75eba66ca9d8e45a5c28bc8c4b6357375d8cc0b8b9285259d2485d36d3f58c07
     name: ratedpower
@@ -349,4 +356,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-09T15:35:10.499172522Z"
+generated: "2021-09-09T15:42:50.183982423Z"
