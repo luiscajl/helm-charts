@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: pro
+              value: {{ .Values.spring.profile}}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

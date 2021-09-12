@@ -1,3 +1,5 @@
+spring:
+  profile: ""
 replicaCount: 1
 
 image:
