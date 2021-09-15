@@ -1,14 +1,10 @@
-# Default values for lavanda-filebot.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+spring:
+  profile: ""
 replicaCount: 1
-
 image:
   repository: lavandadelpatio/filebot
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.8"
+  pullPolicy: Always
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""

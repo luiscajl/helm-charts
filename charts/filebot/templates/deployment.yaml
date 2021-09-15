@@ -34,8 +34,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: pro 
+           - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.spring.profile}}
             - name: OKTA_OAUTH2_ISSUER
               valueFrom:
                 secretKeyRef:
