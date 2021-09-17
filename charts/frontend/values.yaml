@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: lavandadelpatio/frontend
   pullPolicy: Always
-  tag: "master"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""

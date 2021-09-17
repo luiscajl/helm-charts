@@ -1,12 +1,12 @@
 dns: 
   name: example.com
-  cron: "*/2 * * * *"
+  cron: "*/1 * * * *"
   proxied: true  
 replicaCount: 1
 image:
   repository: oznu/cloudflare-ddns
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: "latest"
 nameOverride: ""
 fullnameOverride: ""
 
