@@ -124,6 +124,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/automated-download-shows-0.0.1/automated-download-shows-0.0.1.tgz
     version: 0.0.1
+  cloudflare:
+  - apiVersion: v2
+    created: "2021-09-17T11:24:19.307562116Z"
+    digest: 383b515a799dd61305985d17a33ac5a719098fc6bd53598bab095ee308e4ce7c
+    name: cloudflare
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/cloudflare-0.0.2/cloudflare-0.0.2.tgz
+    version: 0.0.2
   elastictranscoder:
   - apiVersion: v2
     created: "2021-07-26T10:51:50.653268914Z"
@@ -180,6 +188,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-0.0.1/filebot-0.0.1.tgz
     version: 0.0.1
   frontend:
+  - apiVersion: v2
+    created: "2021-09-17T11:24:19.46388502Z"
+    digest: 90bea8a9b0bdc2105aa5f4f74bd436f8517683d544caa22523de5a298484b551
+    name: frontend
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.1.2/frontend-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2021-08-22T13:07:06.404869045Z"
     digest: 84167873cce46fadda765e76db617504b7ec7c934e6cfcda1e73644e39bede1d
@@ -344,7 +359,22 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
     version: 0.1.0
+  tautulli:
+  - apiVersion: v2
+    created: "2021-09-17T11:24:19.620840662Z"
+    digest: a5f290a535c7029be8992315325fe74c65bd69cde200380f6f35f721f8fc1b75
+    name: tautulli
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tautulli-0.0.2/tautulli-0.0.2.tgz
+    version: 0.0.2
   tmdb:
+  - apiVersion: v2
+    created: "2021-09-17T11:24:19.76782288Z"
+    digest: b3e8ac5acda29e8748a2f5cd5ef864eebdefe3fb56ba8a4f8568b676eab3b953
+    name: tmdb
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.2.1/tmdb-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     created: "2021-08-23T11:20:43.806208451Z"
     digest: f07380109c55d9f46c4017e478f88551e24f58f1d17f67cbd95c47e383984526
@@ -392,10 +422,17 @@ entries:
     version: 0.0.1
   transmission:
   - apiVersion: v2
+    created: "2021-09-17T11:24:19.890737888Z"
+    digest: 572a20eae4d36a38cc0ab6ff7cc0360a254333c6dc6317e311f935d667bc8fad
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.1.0/transmission-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     created: "2021-08-22T10:49:19.260046881Z"
     digest: 622cee9eee1ab477b428c94b830c270f6fbae10581404cdea4cc87162825e27a
     name: transmission
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-15T05:20:04.838242432Z"
+generated: "2021-09-17T11:24:19.890871597Z"
