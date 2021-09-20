@@ -370,6 +370,16 @@ entries:
   test:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-20T12:01:00.509721839Z"
+    description: A Helm chart for Kubernetes
+    digest: e259f5865d7a6612e466de0fe8e553de475cb1dde7b9038ce4302045df02a5c0
+    name: test
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/test-0.1.1/test-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-20T11:57:43.454093344Z"
     description: A Helm chart for Kubernetes
     digest: f910241703d66ea121da4f2f27fcbdc42a399013072e55bab2e9d68b287420fc
@@ -446,4 +456,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-20T11:57:43.454279011Z"
+generated: "2021-09-20T12:01:00.509861438Z"
