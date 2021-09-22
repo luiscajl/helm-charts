@@ -72,6 +72,15 @@ spec:
                 secretKeyRef:
                   name: mongodb-uri
                   key: secret     
+            - name: SPRING_RABBITMQ_USERNAME
+              value: user
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq
+                  key: rabbitmq-password    
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq         
           ports:
             - name: http
               containerPort: 8080
