@@ -66,6 +66,13 @@ entries:
     version: 0.0.1
   automated-download-shows:
   - apiVersion: v2
+    created: "2021-09-22T11:39:32.201728938Z"
+    digest: fc27baa585edd3df1e1f83f0786eed7eb4bde9bf8f2e60f244cf210462b2683d
+    name: automated-download-shows
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-shows-0.2.2/automated-download-shows-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2021-09-12T20:02:29.667229003Z"
     digest: 541d0ca5b03209ab9cf6b9b1292008afb44ccab57530836b4c725b2cb19d298f
     name: automated-download-shows
@@ -476,4 +483,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-21T12:47:53.841708544Z"
+generated: "2021-09-22T11:39:32.201931453Z"
