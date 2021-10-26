@@ -151,6 +151,13 @@ entries:
     version: 0.46.0
   filebot:
   - apiVersion: v2
+    created: "2021-10-26T12:20:18.22291277Z"
+    digest: 2d0a0120f8ed50f2ccee170fe0ff50c7108c6909bd0cc49318b6534622540ce5
+    name: filebot
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-0.1.4/filebot-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-09-15T05:20:04.838120632Z"
     digest: 95ed69e4de6e0340827708ac0a42313bb668a7b8b5c5f7a589354028433b7540
     name: filebot
@@ -483,4 +490,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-09-22T11:39:32.201931453Z"
+generated: "2021-10-26T12:20:18.223033471Z"
