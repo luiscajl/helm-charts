@@ -31,10 +31,10 @@ service:
   port: 8181
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
   hosts:
-    - host: tautulli.lavandadelpatio.es
+    - host: example.com
       paths:
       - path: /
   tls: []
