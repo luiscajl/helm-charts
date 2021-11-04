@@ -46,7 +46,7 @@ spec:
             httpGet:
               path: /transmission/web/
               port: 9091
-              httpHeaders: 
+              httpHeaders:
                 - name: Authorization
                   value: Basic {{ (printf "%s:%s" .Values.global.transmission.user .Values.global.transmission.password | b64enc) }}
               scheme: HTTP
@@ -59,7 +59,7 @@ spec:
             httpGet:
               path: /transmission/web/
               port: 9091
-              httpHeaders: 
+              httpHeaders:
                 - name: Authorization
                   value: Basic {{ (printf "%s:%s" .Values.global.transmission.user .Values.global.transmission.password | b64enc) }}
               scheme: HTTP
@@ -67,7 +67,7 @@ spec:
             timeoutSeconds: 10
             periodSeconds: 5
             successThreshold: 1
-            failureThreshold: 5    
+            failureThreshold: 5
           env:
             - name: PUID
               value: "1000"
@@ -76,9 +76,9 @@ spec:
             - name: TZ
               value: "Europe/Madrid"
             - name: USER
-              value: {{  required "A valid .Values.global.transmission.user entry required!"  .Values.global.transmission.user }} 
+              value: {{  required "A valid .Values.global.transmission.user entry required!"  .Values.global.transmission.user }}
             - name: PASS
-              value: {{  required "A valid .Values.global.transmission.password entry required!"  .Values.global.transmission.password }}    
+              value: {{  required "A valid .Values.global.transmission.password entry required!"  .Values.global.transmission.password }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
@@ -86,12 +86,11 @@ spec:
         #   persistentVolumeClaim:
         #     claimName: transmission-downloads
         - name: transmission-downloads-volume
-          nfs:
-           server: 10.10.120.50
-           path: /media/Externo8TB_2/Descargas
-        - name: transmission-config-volume
+          hostPath:
+            path: /mnt/gdrive/Descargas
+        - name: transmission-config-volume    
           persistentVolumeClaim:
-            claimName: transmission-config      
+            claimName: transmission-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
