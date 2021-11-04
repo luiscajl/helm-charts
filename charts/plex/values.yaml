@@ -66,8 +66,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: 
-  cputype: amd64
+nodeSelector: {}
 
 tolerations: []
 

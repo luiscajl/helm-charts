@@ -67,8 +67,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: 
-  cputype: arm64
+nodeSelector: {}
 
 tolerations: []
 
