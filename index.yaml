@@ -231,6 +231,13 @@ entries:
     version: 0.0.1
   frontend:
   - apiVersion: v2
+    created: "2021-11-04T09:54:16.551221495Z"
+    digest: 607aac272b5eb3fc3835537837bb49d5e206e94be1eb316d59803dda7d047091
+    name: frontend
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.1.4/frontend-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-09-17T11:24:19.46388502Z"
     digest: 90bea8a9b0bdc2105aa5f4f74bd436f8517683d544caa22523de5a298484b551
     name: frontend
@@ -525,4 +532,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-04T09:39:39.709549359Z"
+generated: "2021-11-04T09:54:16.551423187Z"
