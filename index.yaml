@@ -283,6 +283,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2021-11-04T09:33:05.722361028Z"
+    digest: 054e49392a986fb012b58819187e763c0bcc5d93f5e21be301d713860675e48d
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.78/plex-0.0.78.tgz
+    version: 0.0.78
+  - apiVersion: v2
     created: "2021-07-26T10:51:50.870500861Z"
     digest: a27e808f8b4c76a93bdebf98b2b463fd707d56ab6f4baeb637e17372f87e48b3
     name: plex
@@ -504,4 +511,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-10-27T10:49:48.330228113Z"
+generated: "2021-11-04T09:33:05.722512231Z"
