@@ -76,9 +76,9 @@ spec:
             - name: TZ
               value: "Europe/Madrid"
             - name: USER
-              value: {{  required "A valid .Values.global.transmission.user entry required!"  .Values.global.transmission.user }}
+              value: {{  required "A valid .Values.transmission.user entry required!"  .Values.transmission.user }}
             - name: PASS
-              value: {{  required "A valid .Values.global.transmission.password entry required!"  .Values.global.transmission.password }}
+              value: {{  required "A valid .Values.transmission.password entry required!"  .Values.transmission.password }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
