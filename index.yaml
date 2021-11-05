@@ -304,6 +304,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2021-11-05T10:40:59.319904528Z"
+    digest: 35b2d93678b46654166d15aa94952f212bfb0b93f2eb14ccf587e740bbc2adde
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.81/plex-0.0.81.tgz
+    version: 0.0.81
+  - apiVersion: v2
     created: "2021-11-05T09:19:01.198316359Z"
     digest: 7e6e5dd81afde794f3debc64a8b146c58f9ce806e9e773ac91b7a48de836cd0e
     name: plex
@@ -540,6 +547,13 @@ entries:
     version: 0.0.1
   transmission:
   - apiVersion: v2
+    created: "2021-11-05T10:40:59.445132611Z"
+    digest: 2917ff0b5420500d71d869c951fc862fe2da46a6a03ac66e13c004cee18e1328
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.1.7/transmission-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     created: "2021-11-05T09:19:01.469422626Z"
     digest: 7ba1c374876bded5c614ef2888fbe0349bc0d96c23394246709a32a8db8215d9
     name: transmission
@@ -588,4 +602,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-05T09:19:01.469604827Z"
+generated: "2021-11-05T10:40:59.445314513Z"
