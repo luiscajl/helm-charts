@@ -87,7 +87,7 @@ spec:
         #     claimName: transmission-downloads
         - name: transmission-downloads-volume
           hostPath:
-            path: /mnt/gdrive/Descargas
+            path: /mnt/plexgdrive/Descargas
         - name: transmission-config-volume    
           persistentVolumeClaim:
             claimName: transmission-config
