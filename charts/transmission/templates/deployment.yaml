@@ -87,7 +87,7 @@ spec:
         #     claimName: transmission-downloads
         - name: transmission-downloads-volume
           hostPath:
-            path: /mnt/plexgdrive/Descargas
+            path: {{  required "A valid .Values.transmission.downloadspath entry required!"  .Values.transmission.downloadspath }}
         - name: transmission-config-volume    
           persistentVolumeClaim:
             claimName: transmission-config
