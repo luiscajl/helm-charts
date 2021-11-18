@@ -547,6 +547,13 @@ entries:
     version: 0.0.1
   transmission:
   - apiVersion: v2
+    created: "2021-11-18T08:20:08.582013974Z"
+    digest: 054bccf018c7e21d79e9ef5abc641ecba50395b5f92070a96c494641f975a524
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.1.13/transmission-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     created: "2021-11-16T12:50:10.029074747Z"
     digest: b30fe879072749801825cfce555a92c002d95a887642698f65b90f4dd6fe755c
     name: transmission
@@ -637,4 +644,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-16T12:50:10.029288246Z"
+generated: "2021-11-18T08:20:08.582269974Z"
