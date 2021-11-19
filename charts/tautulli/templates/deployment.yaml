@@ -36,11 +36,11 @@ spec:
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
-              value: {{ .value }}
+              value: "{{ .value }}"
             {{- end }} 
           ports:
             - name: http
-              containerPort: 8181
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           volumeMounts:
             - mountPath: /config
@@ -48,11 +48,11 @@ spec:
           livenessProbe:
            httpGet:
              path: /status
-             port: 8181
+             port: {{ .Values.service.port}}
           readinessProbe:
            httpGet:
              path: /status
-             port: 8181
+             port: {{ .Values.service.port}}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
