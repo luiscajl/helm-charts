@@ -1,8 +1,18 @@
+
 replicaCount: 1
 image:
   repository: linuxserver/tautulli
   pullPolicy: Always
   tag: "latest"
+
+
+environmentVariables:
+  - name: PUID
+    value: "1000"
+  - name: PGID
+    value: "1000"
+  - name: TZ
+    value: "Europe/Madrid"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -40,7 +50,7 @@ ingress:
   tls: []
 resources: 
   limits:
-    cpu: 500m
+    cpu: 1000m
     memory: 512Mi
   requests:
     cpu: 100m
@@ -57,13 +67,4 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: 
-  podAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - labelSelector:
-        matchExpressions:
-        - key: app.kubernetes.io/name
-          operator: In
-          values:
-          - "tautulli"
-      topologyKey: kubernetes.io/hostname
+affinity: {}
