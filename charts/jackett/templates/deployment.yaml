@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "plex.fullname" . }}
+  name: {{ include "jackett.fullname" . }}
   labels:
-    {{- include "plex.labels" . | nindent 4 }}
+    {{- include "jackett.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "plex.selectorLabels" . | nindent 6 }}
+      {{- include "jackett.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "plex.selectorLabels" . | nindent 8 }}
+        {{- include "jackett.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "plex.serviceAccountName" . }}
+      serviceAccountName: {{ include "jackett.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,49 +33,32 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 32400
-              protocol: TCP
           volumeMounts:
             - mountPath: /config
-              name: plex-config-volume
-            # - mountPath: /tmp/transcode
-            #   name: plex-transcode-volume
-            - mountPath: /media
-              name: plex-media-volume                 
+              name: {{ include "jackett.fullname" . }}-config-volume  
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
               value: "{{ .value }}"
             {{- end }}     
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
           livenessProbe:
             httpGet:
-              path: /identity
-              port: 32400
-            initialDelaySeconds: 15  
-            periodSeconds: 5
-            timeoutSeconds: 5
-            failureThreshold: 6
-            successThreshold: 1  
+              path: /
+              port: http
           readinessProbe:
             httpGet:
-              path: /identity
-              port: 32400
-            initialDelaySeconds: 15  
-            periodSeconds: 5
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1   
+              path: /
+              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: plex-config-volume
+        - name: {{ include "jackett.fullname" . }}-config-volume
           persistentVolumeClaim:
-            claimName: plex-config  
-        - name: plex-media-volume
-          hostPath:
-            path: {{  required "A valid .Values.mediapath entry required!"  .Values.mediapath }}
+            claimName: {{ include "jackett.fullname" . }}-config-volume        
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
