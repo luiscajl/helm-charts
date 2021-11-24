@@ -276,6 +276,13 @@ entries:
     version: 0.0.1
   jackett:
   - apiVersion: v2
+    created: "2021-11-24T19:47:24.72347326Z"
+    digest: 80a68944a06f8d3bd38a1fa8adbec35fd725aaa27cff5f325e88609b307d04b0
+    name: jackett
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/jackett-0.1.2/jackett-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-11-24T19:43:34.426230539Z"
     digest: 8b4aea47ae9c62cf7c463ba9dd277ca2d29300b9ecaf699d30949c4f7a5d29aa
     name: jackett
@@ -368,6 +375,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
   radarr:
+  - apiVersion: v2
+    created: "2021-11-24T19:47:24.830159041Z"
+    digest: aa1ec5d5652f016277ddc1264ad98317b21ef1847ec46b9b3e096911e9994ea3
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.2/radarr-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2021-11-24T19:43:34.541876156Z"
     digest: 2b4b4295931e90e8132f6adb7547eca5737c0df0e75dc614d26574907c00bca4
@@ -474,6 +488,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
     version: 0.1.0
   sonarr:
+  - apiVersion: v2
+    created: "2021-11-24T19:47:24.944072533Z"
+    digest: 542586d3db6cadc2e75ffc2dc3613b90e9560f9250aa76b3694dbcec741167d1
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.2/sonarr-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2021-11-24T19:43:34.664451028Z"
     digest: c3dea108d53c0675c1d7609f782546d1426b0211f22b704cceef20ece0781bac
@@ -724,4 +745,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-24T19:43:34.664830148Z"
+generated: "2021-11-24T19:47:24.944769343Z"
