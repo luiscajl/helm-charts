@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: linuxserver/jackett
+  repository: linuxserver/sonarr
   pullPolicy: Always
   tag: "latest"
 
