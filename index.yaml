@@ -274,6 +274,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.0.1/frontend-0.0.1.tgz
     version: 0.0.1
+  jackett:
+  - apiVersion: v2
+    created: "2021-11-24T19:24:33.378712082Z"
+    digest: 5f2c4e66dbb5302ce2cf54b2069f74536ece9a0bf8e6d3745d4fd2c788addac2
+    name: jackett
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/jackett-0.1.0/jackett-0.1.0.tgz
+    version: 0.1.0
   lavanda:
   - apiVersion: v2
     created: "2021-08-22T10:49:19.146515873Z"
@@ -303,6 +311,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/lavanda-0.0.103/lavanda-0.0.103.tgz
     version: 0.0.103
   plex:
+  - apiVersion: v2
+    created: "2021-11-24T19:24:33.488622641Z"
+    digest: cf725f551ea0e2f138f03aaa56aa020c4afc7f24617f37337fbbe090f975acac
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.82/plex-0.0.82.tgz
+    version: 0.0.82
   - apiVersion: v2
     created: "2021-11-05T10:40:59.319904528Z"
     digest: 35b2d93678b46654166d15aa94952f212bfb0b93f2eb14ccf587e740bbc2adde
@@ -345,6 +360,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
+  radarr:
+  - apiVersion: v2
+    created: "2021-11-24T19:24:33.603524357Z"
+    digest: 4d220a5f7d633bb33b4b60a7f39b8d5810f1d3f2c82dda181ef2032a4e8e1829
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.0/radarr-0.1.0.tgz
+    version: 0.1.0
   ratedpower:
   - apiVersion: v2
     created: "2021-09-09T15:54:31.571864855Z"
@@ -435,6 +458,14 @@ entries:
     name: ratedpower
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
+    version: 0.1.0
+  sonarr:
+  - apiVersion: v2
+    created: "2021-11-24T19:24:33.7121198Z"
+    digest: 76c4b7f2be6c81cdbd35cb3d57acd749e36e8eec19ab9ab7ec36ca01e26459d4
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.0/sonarr-0.1.0.tgz
     version: 0.1.0
   tautulli:
   - apiVersion: v2
@@ -672,4 +703,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-19T11:26:25.24311862Z"
+generated: "2021-11-24T19:24:33.712437904Z"
