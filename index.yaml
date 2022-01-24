@@ -229,6 +229,16 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-0.0.1/filebot-0.0.1.tgz
     version: 0.0.1
+  flaresolverr:
+  - apiVersion: v2
+    created: "2022-01-24T12:30:45.491799252Z"
+    description: A Helm chart for Kubernetes
+    digest: f590367724b62ed673dfafac8a9e43a2c85bb01dc62d71dd019615578a67bb4d
+    name: flaresolverr
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/flaresolverr-0.0.1/flaresolverr-0.0.1.tgz
+    version: 0.0.1
   frontend:
   - apiVersion: v2
     created: "2021-11-04T09:54:16.551221495Z"
@@ -759,4 +769,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2021-12-06T20:11:27.96742362Z"
+generated: "2022-01-24T12:30:45.492111768Z"
