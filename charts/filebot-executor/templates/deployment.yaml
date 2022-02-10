@@ -109,7 +109,6 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: filebot-config  
-          volumeMounts:
             - mountPath: /media
               name: filebot-media    
       {{- with .Values.nodeSelector }}
