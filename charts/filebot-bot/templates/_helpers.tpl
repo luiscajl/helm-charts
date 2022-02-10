@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "automated-download-films.name" -}}
+{{- define "filebot-bot.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "automated-download-films.fullname" -}}
+{{- define "filebot-bot.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "automated-download-films.chart" -}}
+{{- define "filebot-bot.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "automated-download-films.labels" -}}
-helm.sh/chart: {{ include "automated-download-films.chart" . }}
-{{ include "automated-download-films.selectorLabels" . }}
+{{- define "filebot-bot.labels" -}}
+helm.sh/chart: {{ include "filebot-bot.chart" . }}
+{{ include "filebot-bot.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "automated-download-films.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "automated-download-films.name" . }}
+{{- define "filebot-bot.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "filebot-bot.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "automated-download-films.serviceAccountName" -}}
+{{- define "filebot-bot.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "automated-download-films.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "filebot-bot.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
