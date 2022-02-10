@@ -78,13 +78,13 @@ spec:
             - name: SPRING_RABBITMQ_HOST
               value: rabbitmq    
             - name: FILEBOT_PATH_INPUT
-              value: {{ .Values.filebot.pathInput }}
+              value: {{ .Values.filebot.pathInput | quote }}
             - name: FILEBOT_PATH_OUTPUT
-              value: {{ .Values.filebot.pathOutput }}
+              value: {{ .Values.filebot.pathOutput | quote}}
             - name: FILEBOT_PATH_DATA
-              value: {{ .Values.filebot.pathData }} 
+              value: {{ .Values.filebot.pathData | quote }} 
             - name: FILEBOT_TEST_ENABLED
-              value: {{ .Values.filebot.testEnabled }}          
+              value: {{ .Values.filebot.testEnabled | quote }}          
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
