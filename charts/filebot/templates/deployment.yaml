@@ -36,21 +36,6 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.spring.profile }}
-            - name: OKTA_OAUTH2_ISSUER
-              valueFrom:
-                secretKeyRef:
-                 name: okta-credentials
-                 key: client-issuer
-            - name: OKTA_OAUTH2_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                 name: okta-credentials
-                 key: client-id
-            - name: OKTA_OAUTH2_CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                 name: okta-credentials
-                 key: client-secret
             - name: SPRING_DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
