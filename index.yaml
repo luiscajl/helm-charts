@@ -442,6 +442,17 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
+  qbittorrentvpn:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-02-17T18:25:02.840239095Z"
+    description: A Helm chart for Kubernetes
+    digest: baa625533639cdd0fd21e9bbebfd4a29c45cb2d0b288f8b9d387b561cef432ba
+    name: qbittorrentvpn
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.0/qbittorrentvpn-0.1.0.tgz
+    version: 0.1.0
   radarr:
   - apiVersion: v2
     created: "2021-11-24T19:47:24.830159041Z"
@@ -827,4 +838,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-02-10T16:15:40.030935432Z"
+generated: "2022-02-17T18:25:02.840485493Z"
