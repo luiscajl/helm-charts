@@ -68,14 +68,14 @@ spec:
             - name: vpn-udp
               containerPort: 6881
               protocol: TCP       
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8181
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8181
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8181
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8181
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
