@@ -7,9 +7,21 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: 8118
+      targetPort: 8118
       protocol: TCP
-      name: http
+      name: privoxy
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: bitrorrent-ui
+    - port: 6881
+      targetPort: 6881
+      protocol: TCP
+      name: vpn
+     - port: 6881
+      targetPort: 6881
+      protocol: UDP
+      name: vpn-udp  
   selector:
     {{- include "qbittorrentvpn.selectorLabels" . | nindent 4 }}

@@ -56,17 +56,26 @@ spec:
             - mountPath: /etc/localtime
               name: etc-localtime   
           ports:
-            - name: http
+            - name: privoxy
               containerPort: 8181
               protocol: TCP
+            - name: bittorrent-ui
+              containerPort: 8080
+              protocol: TCP
+            - name: vpn
+              containerPort: 6881
+              protocol: TCP
+            - name: vpn-udp
+              containerPort: 6881
+              protocol: TCP       
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8181
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8181
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
