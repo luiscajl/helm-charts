@@ -19,7 +19,7 @@ spec:
       targetPort: 6881
       protocol: TCP
       name: vpn
-     - port: 6881
+    - port: 6881
       targetPort: 6881
       protocol: UDP
       name: vpn-udp  
