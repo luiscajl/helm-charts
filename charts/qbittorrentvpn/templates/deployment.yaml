@@ -68,24 +68,6 @@ spec:
             - name: vpn-udp
               containerPort: 6881
               protocol: TCP       
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: 8080
-          #   initialDelaySeconds: 30
-          #   timeoutSeconds: 5
-          #   periodSeconds: 5
-          #   successThreshold: 1
-          #   failureThreshold: 5  
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: 8080
-          #   initialDelaySeconds: 40
-          #   timeoutSeconds: 5
-          #   periodSeconds: 5
-          #   successThreshold: 1
-          #   failureThreshold: 5  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
