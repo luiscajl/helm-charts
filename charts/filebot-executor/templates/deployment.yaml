@@ -34,9 +34,12 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        - name: filebot-media
+        - name: filebot-output
           hostPath:
             path: /mnt/gdrive
+        - name: filebot-input
+          hostPath:
+            path: /mnt/downloads-pro-1           
         - name: filebot-config
           persistentVolumeClaim:
             claimName: filebot-config-rwo  
@@ -109,8 +112,10 @@ spec:
           volumeMounts:
             - mountPath: /home/filebot
               name: filebot-config  
-            - mountPath: /media
-              name: filebot-media    
+            - mountPath: /media-output
+              name: filebot-output  
+            - mountPath: /media-input
+              name: filebot-input      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
