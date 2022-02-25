@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "lavanda-filebot.fullname" . }}
+  name: {{ include "filebot.fullname" . }}
   labels:
-    {{- include "lavanda-filebot.labels" . | nindent 4 }}
+    {{- include "filebot.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "lavanda-filebot.fullname" . }}
+    name: {{ include "filebot.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
