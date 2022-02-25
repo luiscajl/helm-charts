@@ -2,6 +2,13 @@ apiVersion: v1
 entries:
   automated-download-films:
   - apiVersion: v2
+    created: "2022-02-25T09:16:30.109249393Z"
+    digest: 12350574ba872f02d0346a7b03399ae6b36bbfc5832564c909720e71e4c9afd2
+    name: automated-download-films
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.2.6/automated-download-films-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
     created: "2021-11-04T09:39:39.599404621Z"
     digest: d30c49c9fd17319c922b9b3f26da419f6374eb5c1b266b498ff20cf5faead5ca
     name: automated-download-films
@@ -72,6 +79,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/automated-download-films-0.0.1/automated-download-films-0.0.1.tgz
     version: 0.0.1
   automated-download-shows:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:30.238131277Z"
+    digest: d2622ffe766269b6fa78740adbc7cdc0bf59c339f5daf51e424d5d403f4dce65
+    name: automated-download-shows
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/automated-download-shows-0.2.3/automated-download-shows-0.2.3.tgz
+    version: 0.2.3
   - apiVersion: v2
     created: "2021-09-22T11:39:32.201728938Z"
     digest: fc27baa585edd3df1e1f83f0786eed7eb4bde9bf8f2e60f244cf210462b2683d
@@ -165,6 +179,13 @@ entries:
     version: 0.46.0
   filebot:
   - apiVersion: v2
+    created: "2022-02-25T09:16:30.40185992Z"
+    digest: ad46cce297ca54d85a26e67d439fb14133833a13588c0234779100f7be918a85
+    name: filebot
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-0.2.1/filebot-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2022-02-17T21:28:14.431022485Z"
     digest: b34dd83c422a2ae780d5be630b1dfabd2c5a196f47612d840ba17175a0b1183f
     name: filebot
@@ -245,6 +266,13 @@ entries:
     version: 0.0.1
   filebot-bot:
   - apiVersion: v2
+    created: "2022-02-25T09:16:30.51339173Z"
+    digest: 04f0987be3aca7847dd1dd35e076abfa6d89b3733e8244017281d5dd400ff33f
+    name: filebot-bot
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-bot-0.0.3/filebot-bot-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2022-02-10T08:16:43.027001884Z"
     digest: e847288265a595a3206641aaae742673b512ab472bc8527886c69f60f1464246
     name: filebot-bot
@@ -259,6 +287,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-bot-0.0.1/filebot-bot-0.0.1.tgz
     version: 0.0.1
   filebot-executor:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:30.68515737Z"
+    digest: 933f9de1e4c5ee5864d7b18d581a9fe798f37782f7d914a245812ebfc5992c82
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.7/filebot-executor-0.0.7.tgz
+    version: 0.0.7
   - apiVersion: v2
     created: "2022-02-24T08:08:29.458956907Z"
     digest: 68feaa08b77dc0be4b29aca7df0c2c0d4683984339059769b82af807d4f588e1
@@ -303,6 +338,15 @@ entries:
     version: 0.0.1
   flaresolverr:
   - apiVersion: v2
+    created: "2022-02-25T09:16:30.809872897Z"
+    description: A Helm chart for Kubernetes
+    digest: f17b69237bcd0e4cdbeb77ce259ba96c7579e4f8406afc4ee7590d58d9fe45da
+    name: flaresolverr
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/flaresolverr-0.0.2/flaresolverr-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2022-01-24T12:30:45.491799252Z"
     description: A Helm chart for Kubernetes
     digest: f590367724b62ed673dfafac8a9e43a2c85bb01dc62d71dd019615578a67bb4d
@@ -312,6 +356,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/flaresolverr-0.0.1/flaresolverr-0.0.1.tgz
     version: 0.0.1
   frontend:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:30.923049908Z"
+    digest: 5e57c19db3080137e0cef830b2fac4df13530b5c08d9b45548f70782c8d13fe0
+    name: frontend
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.1.5/frontend-0.1.5.tgz
+    version: 0.1.5
   - apiVersion: v2
     created: "2021-11-04T09:54:16.551221495Z"
     digest: 607aac272b5eb3fc3835537837bb49d5e206e94be1eb316d59803dda7d047091
@@ -357,6 +408,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.0.1/frontend-0.0.1.tgz
     version: 0.0.1
   jackett:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:31.030852686Z"
+    digest: 7e69b40fd140880201549de0aac4a633ff6e1d8bb0c9de40c32999cbb21e3064
+    name: jackett
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/jackett-0.1.3/jackett-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     created: "2021-11-24T19:47:24.72347326Z"
     digest: 80a68944a06f8d3bd38a1fa8adbec35fd725aaa27cff5f325e88609b307d04b0
@@ -408,6 +466,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2022-02-25T09:16:31.170270923Z"
+    digest: 941b0961d7e89bb1b9bba3c6eb67611dcdf34c04781e4df09799bb2da4df9a11
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.83/plex-0.0.83.tgz
+    version: 0.0.83
+  - apiVersion: v2
     created: "2021-11-24T19:24:33.488622641Z"
     digest: cf725f551ea0e2f138f03aaa56aa020c4afc7f24617f37337fbbe090f975acac
     name: plex
@@ -457,6 +522,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
   qbittorrentvpn:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:31.289693421Z"
+    digest: 659eca6e92b720a3a4a9448f2e038a60a5fce603bb871c8cd8f274259b45527b
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.8/qbittorrentvpn-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     created: "2022-02-18T18:21:26.306830673Z"
     digest: 225bfca612aa9eaba35b8081e81fc2c760e956431b61c21ee02ae17b3275ac73
@@ -535,6 +607,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.0/qbittorrentvpn-0.1.0.tgz
     version: 0.1.0
   radarr:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:31.419348453Z"
+    digest: e02c441d9430766574c4f2d983404104af29f6c7bc59552ebb8563e3e75b8c95
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.3/radarr-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     created: "2021-11-24T19:47:24.830159041Z"
     digest: aa1ec5d5652f016277ddc1264ad98317b21ef1847ec46b9b3e096911e9994ea3
@@ -649,6 +728,13 @@ entries:
     version: 0.1.0
   sonarr:
   - apiVersion: v2
+    created: "2022-02-25T09:16:31.565883331Z"
+    digest: 3cb728f75dc0de96c0655a7ccda157144571434fe7a0043d6370ee91d7021b68
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.4/sonarr-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-11-24T19:57:24.499034879Z"
     digest: f2911963f2f51c7db2ac1a560df34b8c38791e7da1257fe766e1428dfda9fffb
     name: sonarr
@@ -677,6 +763,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.0/sonarr-0.1.0.tgz
     version: 0.1.0
   tautulli:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:31.695999292Z"
+    digest: 944ae93b684b607acfea6080277d4ee3b52e56e6525998cc9931127ce536acd0
+    name: tautulli
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tautulli-0.0.9/tautulli-0.0.9.tgz
+    version: 0.0.9
   - apiVersion: v2
     created: "2021-11-19T11:26:25.242905216Z"
     digest: 6d5095bb3b29f56e4494f6014c37e52b0c88b55b28ed422212178cb195f374d0
@@ -762,6 +855,13 @@ entries:
     version: 0.1.0
   tmdb:
   - apiVersion: v2
+    created: "2022-02-25T09:16:31.816833278Z"
+    digest: 2ecaedbf5645d1cbc69ec00982b5dab7d5dda0dd4e4d3e511d139cd347828334
+    name: tmdb
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.2.2/tmdb-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2021-09-17T11:24:19.76782288Z"
     digest: b3e8ac5acda29e8748a2f5cd5ef864eebdefe3fb56ba8a4f8568b676eab3b953
     name: tmdb
@@ -814,6 +914,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.0.1/tmdb-0.0.1.tgz
     version: 0.0.1
   transmission:
+  - apiVersion: v2
+    created: "2022-02-25T09:16:31.93422595Z"
+    digest: c2cc722e63bc5aa4d01dcb4d55f5d31ddbc27d639f2a8cfa1b1f9d1f6d0e8635
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.1.15/transmission-0.1.15.tgz
+    version: 0.1.15
   - apiVersion: v2
     created: "2021-12-06T20:11:27.967068207Z"
     digest: dcc381e46ce9ee2750e36c87e0eb32e8ea2b3d533c840b77767a44f068c057af
@@ -919,4 +1026,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-02-24T08:08:29.459265708Z"
+generated: "2022-02-25T09:16:31.934743482Z"
