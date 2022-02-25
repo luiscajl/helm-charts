@@ -415,6 +415,13 @@ entries:
     version: 0.0.1
   frontend:
   - apiVersion: v2
+    created: "2022-02-25T18:20:43.471000246Z"
+    digest: 969331ef8cf25210a72e92ad58b645a70a53cf414ef7f87f7e34de433b4bd36d
+    name: frontend
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/frontend-0.1.7/frontend-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     created: "2022-02-25T09:24:47.320525621Z"
     digest: 1363d2e83f84652c2e1d2f0624fdebe52888ab759480cd26c2f64fc2f78c3ce3
     name: frontend
@@ -864,6 +871,13 @@ entries:
     version: 0.1.0
   tautulli:
   - apiVersion: v2
+    created: "2022-02-25T18:20:43.609773339Z"
+    digest: 7dd6646555f1960488288893fc93343cca10aa98d8d920502859628291de3b3e
+    name: tautulli
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tautulli-0.0.12/tautulli-0.0.12.tgz
+    version: 0.0.12
+  - apiVersion: v2
     created: "2022-02-25T09:24:48.045100803Z"
     digest: 119dc1f413f93fbece676ff14671bcf092ebec3a83867bc1e012a81adc6fca1c
     name: tautulli
@@ -1147,4 +1161,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-02-25T17:48:39.5426862Z"
+generated: "2022-02-25T18:20:43.610617463Z"
