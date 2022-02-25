@@ -4,8 +4,6 @@ image:
   repository: linuxserver/tautulli
   pullPolicy: Always
   tag: "latest"
-
-
 environmentVariables:
   - name: PUID
     value: "1000"
