@@ -330,6 +330,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2022-06-27T16:19:30.979361576Z"
+    digest: b6f5da8ff2dcf54c4a4d64098fb345cc105c4edd689c6e40208c204fa4a4fc12
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.9/filebot-executor-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
     created: "2022-02-25T09:24:47.040247631Z"
     digest: c18111ebd226a0d40f2347fec7f505d464fa1de9abf479971e28959b06590f16
     name: filebot-executor
@@ -1161,4 +1168,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-02-25T18:20:43.610617463Z"
+generated: "2022-06-27T16:19:30.979852983Z"
