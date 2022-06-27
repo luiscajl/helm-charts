@@ -36,10 +36,10 @@ spec:
       volumes:
         - name: filebot-output
           hostPath:
-            path: /mnt/gdrive
+            path: {{ .Values.paths.output }} 
         - name: filebot-input
           hostPath:
-            path: /mnt/downloads-pro-1           
+            path: {{ .Values.paths.input }}         
         - name: filebot-config
           persistentVolumeClaim:
             claimName: filebot-config-rwo  
