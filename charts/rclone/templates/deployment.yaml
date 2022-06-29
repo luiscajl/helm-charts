@@ -27,16 +27,20 @@ spec:
       serviceAccountName: {{ include "rclone.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: rclone-data
+          hostPath:
+            path: {{ .Values.data.path }}   
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["rclone","--version"]
+          command: ["rclone","rcd","--rc-web-gui"]
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 5572
               protocol: TCP
           # livenessProbe:
           #   httpGet:
@@ -48,7 +52,10 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+          volumeMounts:
+            - mountPath: /data
+              name: rclone-data    
+      {{- with .Values.nodeSelector }
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
