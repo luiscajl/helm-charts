@@ -6,7 +6,7 @@ replicaCount: 1
 data:
   path: /mnt/downloads-pro-1/rclone
 image:
-  repository: bitnami/rclone
+  repository: rclone/rclone
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
