@@ -30,7 +30,10 @@ spec:
       volumes:
         - name: rclone-data
           hostPath:
-            path: {{ .Values.data.path }}   
+            path: {{ .Values.paths.data }}   
+        - name: {{ include "rclone.fullname" . }}-config
+          persistentVolumeClaim:
+            claimName: {{ include "rclone.fullname" . }}-config    
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -54,7 +57,10 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /data
-              name: rclone-data    
+              name: rclone-data 
+          volumeMounts:
+            - mountPath: /config
+              name: {{ include "rclone.fullname" . }}-config       
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
