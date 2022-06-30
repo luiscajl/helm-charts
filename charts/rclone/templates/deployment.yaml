@@ -37,7 +37,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["rclone","rcd","--rc-web-gui","--rc-no-auth"]
+          command: ["rclone","rcd","--rc-web-gui","--rc-no-auth","--rc-addr=rclone.lavandadelpatio.es"]
           ports:
             - name: http
               containerPort: 5572
