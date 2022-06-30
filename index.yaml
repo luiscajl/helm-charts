@@ -836,6 +836,16 @@ entries:
   rclone:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-06-30T07:25:36.030457959Z"
+    description: A Helm chart for Kubernetes
+    digest: f88fa19d1a4a195e2ae7cae00043494b47f9797b81f18904a92cc11bba3d4c05
+    name: rclone
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.13/rclone-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-30T07:13:30.954655194Z"
     description: A Helm chart for Kubernetes
     digest: 7f951381401e59f3eb2b1782f44d17b799f82a51ac5fa6b13fb4aecad927cc55
@@ -1306,4 +1316,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-30T07:13:30.955046695Z"
+generated: "2022-06-30T07:25:36.030972563Z"
