@@ -4,7 +4,7 @@
 
 replicaCount: 1
 paths:
-  data: /mnt/downloads-pro-1/rclone
+  data: /mnt/gdrive
 image:
   repository: rclone/rclone
   pullPolicy: IfNotPresent

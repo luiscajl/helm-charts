@@ -14,7 +14,7 @@ environmentVariables:
   - name: TZ
     value: "Europe/Madrid" 
 media:
-  path: "/mnt/gdrive/"  
+  path: "/mnt/gdrive"  
 
 imagePullSecrets: []
 nameOverride: ""
