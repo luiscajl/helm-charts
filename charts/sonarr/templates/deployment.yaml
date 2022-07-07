@@ -36,7 +36,7 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "sonarr.fullname" . }}-config-volume  
-            - mountPath: /media
+            - mountPath: /data
               name: sonarr-media  
           env:
             {{- range .Values.environmentVariables }}
