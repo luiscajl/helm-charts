@@ -35,11 +35,13 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: filebot-output
-          hostPath:
-            path: {{ .Values.paths.output }} 
+          nfs: 
+           server: {{ .Values.nfs.server}} 
+           path: {{ .Values.nfs.paths.output }} 
         - name: filebot-input
-          hostPath:
-            path: {{ .Values.paths.input }}         
+          nfs: 
+           server: {{ .Values.nfs.server}} 
+           path: {{ .Values.nfs.paths.input }}         
         - name: filebot-config
           persistentVolumeClaim:
             claimName: filebot-config-rwo  

@@ -86,8 +86,9 @@ spec:
         #   persistentVolumeClaim:
         #     claimName: transmission-downloads
         - name: transmission-downloads-volume
-          hostPath:
-            path: {{  required "A valid .Values.transmission.downloadspath entry required!"  .Values.transmission.downloadspath }}
+          nfs: 
+            server: {{ .Values.nfs.server}} 
+            path: {{ .Values.nfs.paths.media }} 
         - name: transmission-config-volume    
           persistentVolumeClaim:
             claimName: transmission-config

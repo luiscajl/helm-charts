@@ -29,8 +29,9 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: rclone-data
-          hostPath:
-            path: {{ .Values.paths.data }}   
+          nfs: 
+            server: {{ .Values.nfs.server}} 
+            path: {{ .Values.nfs.paths.media }} 
         - name: rclone-config
           persistentVolumeClaim:
             claimName: rclone-config    

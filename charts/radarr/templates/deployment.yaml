@@ -71,8 +71,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "radarr.fullname" . }}-config-volume   
         - name: radarr-media
-          hostPath:
-            path: {{  required "A valid .Values.media.path entry required!"  .Values.media.path }}      
+          nfs: 
+            server: {{ .Values.nfs.server}} 
+            path: {{ .Values.nfs.paths.media }} 
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

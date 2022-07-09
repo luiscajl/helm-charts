@@ -32,8 +32,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "qbittorrentvpn.fullname" . }}-config-volume   
         - name: data
-          hostPath:
-            path: {{  required "A valid .Values.media.path entry required!"  .Values.media.path }} 
+          nfs: 
+            server: {{ .Values.nfs.server}} 
+            path: {{ .Values.nfs.paths.media }} 
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
