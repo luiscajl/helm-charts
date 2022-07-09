@@ -330,6 +330,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2022-07-09T13:52:39.871119059Z"
+    digest: bd8f9ef628e180980de5037f678802d79b67f471b3761495a1b0aa3917ba2059
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.10/filebot-executor-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
     created: "2022-06-27T16:19:30.979361576Z"
     digest: b6f5da8ff2dcf54c4a4d64098fb345cc105c4edd689c6e40208c204fa4a4fc12
     name: filebot-executor
@@ -552,6 +559,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2022-07-09T13:52:40.028378828Z"
+    digest: 57fa1c3db19c55981a2f704eab1a7ad385a98c92b1a76bbfd6645af8a1f41410
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.85/plex-0.0.85.tgz
+    version: 0.0.85
+  - apiVersion: v2
     created: "2022-02-25T09:24:47.572738552Z"
     digest: 02253c241f36246bb272a416a6334ef8046ead1f1c432fd74e2b0cfe6bb56393
     name: plex
@@ -615,6 +629,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
   qbittorrentvpn:
+  - apiVersion: v2
+    created: "2022-07-09T13:52:40.194156201Z"
+    digest: 96e252788d02e96ac4585740fc070e7b906ba102a7f64610ab3106ac652a904a
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.11/qbittorrentvpn-0.1.11.tgz
+    version: 0.1.11
   - apiVersion: v2
     created: "2022-02-25T09:24:47.700676791Z"
     digest: 83b860079eafe86c481052a73a7900f21ed7bab2f46177ccdb784eaf3120cb02
@@ -707,6 +728,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.0/qbittorrentvpn-0.1.0.tgz
     version: 0.1.0
   radarr:
+  - apiVersion: v2
+    created: "2022-07-09T13:52:40.357836673Z"
+    digest: d58eeb218105eb22940d0301451204e4a1550dcb35a139d6729a55a140b883d6
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.6/radarr-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     created: "2022-02-25T09:24:47.812029118Z"
     digest: c342e338344c65854152d2f12fc0c59a90c7f490367ef5b865198333c33ef9b5
@@ -834,6 +862,16 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
     version: 0.1.0
   rclone:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-09T13:52:40.540645954Z"
+    description: A Helm chart for Kubernetes
+    digest: da89ba18060156ef984018709307838247d1b85e3553d1c1892e8559356fd133
+    name: rclone
+    type: application
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.19/rclone-0.1.19.tgz
+    version: 0.1.19
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-07-06T17:56:33.075773228Z"
@@ -1005,6 +1043,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.0/rclone-0.1.0.tgz
     version: 0.1.0
   sonarr:
+  - apiVersion: v2
+    created: "2022-07-09T13:52:40.717866432Z"
+    digest: 35f0d626699401fd7564234333de5881a6d53192984d916bf453e2d434c18023
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.8/sonarr-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     created: "2022-07-07T05:01:21.756638776Z"
     digest: 5e92e32bd43149803e1f437d9b7aa96adc6031ed153f528e5ca56b0b6a88bb08
@@ -1235,6 +1280,13 @@ entries:
     version: 0.0.1
   transmission:
   - apiVersion: v2
+    created: "2022-07-09T13:52:40.867924398Z"
+    digest: 8908ff2b5fd13955e0aa980f46db0a8011d2013d637711c56196d0841d696a41
+    name: transmission
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.1.17/transmission-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
     created: "2022-02-25T09:24:48.295788415Z"
     digest: ba166ff0eb6bee373a5dc68dc1eabc7449e7b7b16e143b0ee5d3e0ea9e522a8f
     name: transmission
@@ -1353,4 +1405,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-07T05:01:21.757318915Z"
+generated: "2022-07-09T13:52:40.868552398Z"
