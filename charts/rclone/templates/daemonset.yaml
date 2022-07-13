@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: {{ include "rclone.fullname" . }}
   labels:
@@ -32,19 +32,25 @@ spec:
           hostPath:
             path: {{ .Values.paths.data }}   
         - name: rclone-config
-          persistentVolumeClaim:
-            claimName: rclone-config    
+          configMap:
+            name: rclone-config
+            items:
+              - key: rclone.conf
+                path: rclone.conf
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: {{ .Values.command }}
+          args: 
+          {{- with .Values.args }}
+              {{- toYaml . | nindent 12 }}
+          {{- end }}
           lifecycle:
             preStop:
               exec:
-                command: ["/bin/fusermount", "-u" ,"/data"]
+                command: ["/bin/fusermount", "-u" ,{{ .Values.paths.data }} ]
           # livenessProbe:
           #   httpGet:
           #     path: /
@@ -59,7 +65,7 @@ spec:
             - mountPath: /data
               mountPropagation: Bidirectional
               name: rclone-data 
-            - mountPath: /config
+            - mountPath: /config/rclone
               name: rclone-config       
       {{- with .Values.nodeSelector }}
       nodeSelector:
