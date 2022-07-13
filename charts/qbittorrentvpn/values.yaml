@@ -27,7 +27,7 @@ environmentVariables:
       value: 0 
 
 paths:
-  torrent: /mnt/storagebox
+  torrents: /mnt/storagebox
 replicaCount: 1
 
 image:
