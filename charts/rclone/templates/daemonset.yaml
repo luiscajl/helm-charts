@@ -40,10 +40,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: 
-          {{- with .Values.args }}
-              {{- toYaml . | nindent 12 }}
-          {{- end }}
+          args: {{ .Values.args }}
           lifecycle:
             preStop:
               exec:
