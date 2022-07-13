@@ -40,11 +40,11 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: {{ .Values.command }} 
+          command: {{ .Values.command }}
           lifecycle:
             preStop:
               exec:
-                command: ["/bin/fusermount", "-u" "/data"]
+                command: ["/bin/fusermount", "-u" ,"/data"]
           # livenessProbe:
           #   httpGet:
           #     path: /
