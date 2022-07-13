@@ -25,8 +25,9 @@ environmentVariables:
       value: 0
     - name: PGID 
       value: 0 
-media:
-  path: 
+
+paths:
+  torrent: /mnt/storagebox
 replicaCount: 1
 
 image:
@@ -54,14 +55,9 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 securityContext: 
+  privileged: true
   capabilities:
-    add: ["NET_ADMIN", "SYS_TIME"]
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+    add: ["NET_ADMIN", "SYS_TIME","SYS_ADMIN"]
 
 service:
   type: ClusterIP

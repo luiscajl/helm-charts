@@ -32,9 +32,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "qbittorrentvpn.fullname" . }}-config-volume   
         - name: data
-          nfs: 
-            server: {{ .Values.nfs.server}} 
-            path: {{ .Values.nfs.paths.media }} 
+          hostPath:
+            path: {{ .Values.paths.torrents }}
+            type: Directory  
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
@@ -52,8 +52,9 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "qbittorrentvpn.fullname" . }}-config-volume  
-            - mountPath: /data
-              name: data  
+            - mountPath: /data/torrenting
+              mountPropagation: Bidirectional
+              name: data
             - mountPath: /etc/localtime
               name: etc-localtime   
           ports:
