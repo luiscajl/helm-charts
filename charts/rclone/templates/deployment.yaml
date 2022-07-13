@@ -29,9 +29,8 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: rclone-data
-          nfs: 
-            server: {{ .Values.nfs.server}} 
-            path: {{ .Values.nfs.paths.media }} 
+          hostPath:
+            path: {{ .Values.paths.data }}   
         - name: rclone-config
           persistentVolumeClaim:
             claimName: rclone-config    
@@ -41,11 +40,11 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["rclone","rcd","--rc-web-gui","--rc-no-auth","--rc-addr=:5572"]
-          ports:
-            - name: http
-              containerPort: 5572
-              protocol: TCP
+          command: {{ .Values.command }} 
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/fusermount", "-u" "/data"]
           # livenessProbe:
           #   httpGet:
           #     path: /
