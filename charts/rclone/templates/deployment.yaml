@@ -57,6 +57,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /data
+              mountPropagation: Bidirectional
               name: rclone-data 
             - mountPath: /config
               name: rclone-config       

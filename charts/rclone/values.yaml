@@ -10,7 +10,9 @@ command:
   [
     "rclone",
     "mount gdrive-lavanda /data",
+    "--config=/config/rclone/rclone.conf",
     "--allow-other",
+    "--allow-non-empty",
     "--dir-cache-time 4h",
     "--drive-chunk-size 64M ",
     "--umask 002",
@@ -22,23 +24,6 @@ command:
     "--cache-dir=/tmp/rclone",
     "--tpslimit=7 ",
   ]
-
-# =rclone mount \
-#       gdrive-lavanda: /mnt/gdrive  \
-#       --allow-other  \
-#       --dir-cache-time 24h \
-#       --drive-chunk-size 64M \
-#       --umask 002  \
-#       --vfs-cache-max-age 24h  \
-#       --vfs-read-chunk-size 128M \
-#       --vfs-read-chunk-size-limit off \
-#       --vfs-cache-mode writes \
-#       --vfs-cache-max-size 100G \
-#       --cache-dir=/mnt/rclone \
-#       --log-file /opt/rclone/logs/rclone-mount.log \
-#       --log-level=INFO \
-#       --tpslimit=7 -c \
-
 image:
   repository: rclone/rclone
   pullPolicy: IfNotPresent
