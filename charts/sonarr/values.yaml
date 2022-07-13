@@ -13,8 +13,9 @@ environmentVariables:
     value: "1000"
   - name: TZ
     value: "Europe/Madrid" 
-media:
-  path: "/mnt/gdrive/"    
+paths:
+  media: /mnt/gdrive
+  torrents: /mnt/storagebox   
 
 imagePullSecrets: []
 nameOverride: ""

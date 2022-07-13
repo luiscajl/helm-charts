@@ -38,6 +38,8 @@ spec:
               name: {{ include "sonarr.fullname" . }}-config-volume  
             - mountPath: /data
               name: sonarr-media  
+            - mountPath: /bittorrent
+              name: sonarr-media-torrents-downloaded 
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
@@ -71,9 +73,13 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "sonarr.fullname" . }}-config-volume   
         - name: sonarr-media
-          nfs: 
-            server: {{ .Values.nfs.server}} 
-            path: {{ .Values.nfs.paths.media }} 
+          hostPath:
+            path: {{ .Values.paths.media }}
+            type: Directory
+        - name: sonarr-media-torrents-downloaded 
+          hostPath:
+            path: {{ .Values.paths.torrents }}
+            type: Directory  
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
