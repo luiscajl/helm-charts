@@ -36,9 +36,10 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "sonarr.fullname" . }}-config-volume  
-            - mountPath: /data
+            - mountPath: /data/media
               name: sonarr-media  
-            - mountPath: /bittorrent
+            - mountPath: /data/torrenting
+              mountPropagation: Bidirectional
               name: sonarr-media-torrents-downloaded 
           env:
             {{- range .Values.environmentVariables }}
