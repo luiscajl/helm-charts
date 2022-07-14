@@ -80,7 +80,11 @@ spec:
              "--vfs-cache-mode","writes",
              "--vfs-cache-max-size","30G",
              "--cache-dir=/tmp/rclone",
-             "--tpslimit=7"]
+             "--tpslimit=7",
+             "--bwlimit","8.5M:off",
+             "--max-transfer","740G",
+             "--drive-stop-on-upload-limit"
+             ]
           lifecycle:
             preStop:
               exec:
