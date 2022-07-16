@@ -72,7 +72,7 @@ spec:
              "mount",
              "gdrive-lavanda:","/data",
              "--config=/config/rclone/rclone.conf",
-             "--log-level=INFO",
+             "--log-level=DEBUG",
              "--allow-other",
              "--allow-non-empty",
              "--dir-cache-time", "4h",
@@ -110,7 +110,7 @@ spec:
               mountPropagation: Bidirectional
               name: rclone-data 
             - mountPath: /cache
-              # mountPropagation: Bidirectional
+              mountPropagation: Bidirectional
               name: rclone-cache 
             - mountPath: /config/rclone
               name: config
