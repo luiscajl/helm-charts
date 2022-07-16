@@ -28,6 +28,9 @@ spec:
         - name: rclone-data
           hostPath:
             path: {{ .Values.paths.data }}   
+        - name: rclone-cache
+          hostPath:
+            path: {{ .Values.paths.cache }}       
         - name: config-data
           configMap:
             name: rclone-config
@@ -69,6 +72,7 @@ spec:
              "mount",
              "gdrive-lavanda:","/data",
              "--config=/config/rclone/rclone.conf",
+             "--log-level=INFO",
              "--allow-other",
              "--allow-non-empty",
              "--dir-cache-time", "4h",
@@ -78,13 +82,15 @@ spec:
              "--vfs-read-chunk-size","128M",
              "--vfs-read-chunk-size-limit", "off",
              "--vfs-cache-mode","writes",
-             "--vfs-cache-max-size","30G",
-             "--cache-dir=/tmp/rclone",
+             "--vfs-cache-max-size","2500G",
+             "--cache-dir=/cache/.rclone"
              "--tpslimit=7",
              "--bwlimit","8.5M:off",
              "--max-transfer","740G",
              "--drive-stop-on-upload-limit"
              ]
+          #  "--cache-dir=/tmp/rclone",
+          #  "--cache-dir=/mnt/rclone"
           lifecycle:
             preStop:
               exec:
@@ -103,9 +109,11 @@ spec:
             - mountPath: /data
               mountPropagation: Bidirectional
               name: rclone-data 
+            - mountPath: /cache
+              # mountPropagation: Bidirectional
+              name: rclone-cache 
             - mountPath: /config/rclone
               name: config
-                
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

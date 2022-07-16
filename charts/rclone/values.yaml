@@ -6,6 +6,7 @@ replicaCount: 1
 
 paths:
   data: /mnt/gdrive
+  cachec: /mnt/storagebox
 
 image:
   repository: rclone/rclone
