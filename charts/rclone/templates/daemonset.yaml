@@ -83,7 +83,7 @@ spec:
              "--vfs-read-chunk-size-limit", "off",
              "--vfs-cache-mode","writes",
              "--vfs-cache-max-size","2500G",
-             "--cache-dir=/cache/.rclone"
+             "--cache-dir=/cache/.rclone",
              "--tpslimit=7",
              "--bwlimit","8.5M:off",
              "--max-transfer","740G",
