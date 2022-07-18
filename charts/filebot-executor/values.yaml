@@ -8,8 +8,8 @@ image:
   tag: "0.0.1-SNAPSHOT"
 
 paths:
-  output:
-  input:  
+  media: /mnt/gdrive
+  torrents: /mnt/storagebox   
 
 imagePullSecrets: []
 nameOverride: ""

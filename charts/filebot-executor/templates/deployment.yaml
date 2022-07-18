@@ -35,16 +35,16 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: filebot-output
-          nfs: 
-           server: {{ .Values.nfs.server}} 
-           path: {{ .Values.nfs.paths.output }} 
+          hostPath:
+            path: {{ .Values.paths.media }}
+            type: Directory   
         - name: filebot-input
-          nfs: 
-           server: {{ .Values.nfs.server}} 
-           path: {{ .Values.nfs.paths.input }}         
+          hostPath:
+            path: {{ .Values.paths.torrents }}
+            type: Directory                     
         - name: filebot-config
           persistentVolumeClaim:
-            claimName: filebot-config-rwo  
+            claimName: filebot-config-rwo              
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -117,7 +117,7 @@ spec:
             - mountPath: /media-output
               name: filebot-output  
             - mountPath: /media-input
-              name: filebot-input      
+              name: filebot-input             
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
