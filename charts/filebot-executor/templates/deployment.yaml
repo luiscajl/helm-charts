@@ -115,8 +115,10 @@ spec:
             - mountPath: /home/filebot
               name: filebot-config  
             - mountPath: /media-output
+              mountPropagation: Bidirectional
               name: filebot-output  
             - mountPath: /media-input
+              mountPropagation: Bidirectional
               name: filebot-input             
       {{- with .Values.nodeSelector }}
       nodeSelector:
