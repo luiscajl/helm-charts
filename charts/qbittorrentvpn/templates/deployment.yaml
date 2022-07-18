@@ -38,6 +38,9 @@ spec:
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
+        - name: scripts
+          configMap:
+            name: qbittorrent-scripts   
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -52,6 +55,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "qbittorrentvpn.fullname" . }}-config-volume  
+            - mountPath: /scripts
+              name: scripts                 
             - mountPath: /data/torrenting
               mountPropagation: Bidirectional
               name: data
