@@ -15,7 +15,6 @@ environmentVariables:
     value: "Europe/Madrid" 
 paths:
   media: /mnt/gdrive
-  torrents: /mnt/storagebox   
 
 imagePullSecrets: []
 nameOverride: ""

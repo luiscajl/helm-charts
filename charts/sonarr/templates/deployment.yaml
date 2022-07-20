@@ -36,11 +36,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "sonarr.fullname" . }}-config-volume  
-            - mountPath: /data/media
+            - mountPath: /data
               name: sonarr-media  
-            - mountPath: /data/torrenting
-              mountPropagation: Bidirectional
-              name: sonarr-media-torrents-downloaded 
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
@@ -77,10 +74,6 @@ spec:
           hostPath:
             path: {{ .Values.paths.media }}
             type: Directory
-        - name: sonarr-media-torrents-downloaded 
-          hostPath:
-            path: {{ .Values.paths.torrents }}
-            type: Directory  
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
