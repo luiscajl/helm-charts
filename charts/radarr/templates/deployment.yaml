@@ -36,7 +36,7 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "radarr.fullname" . }}-config-volume  
-            - mountPath: /media
+            - mountPath: /data
               name: radarr-media 
           env:
             {{- range .Values.environmentVariables }}
@@ -71,9 +71,9 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "radarr.fullname" . }}-config-volume   
         - name: radarr-media
-          nfs: 
-            server: {{ .Values.nfs.server}} 
-            path: {{ .Values.nfs.paths.media }} 
+          hostPath:
+            path: {{ .Values.paths.media }}
+            type: Directory
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

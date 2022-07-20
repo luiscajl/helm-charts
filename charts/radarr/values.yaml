@@ -13,8 +13,9 @@ environmentVariables:
     value: "1000"
   - name: TZ
     value: "Europe/Madrid" 
-media:
-  path: "/mnt/gdrive"  
+    
+paths:
+  media: /mnt/gdrive
 
 imagePullSecrets: []
 nameOverride: ""
@@ -34,7 +35,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext: 
+  privileged: true
   # capabilities:
   #   drop:
   #   - ALL
