@@ -74,9 +74,9 @@ spec:
           persistentVolumeClaim:
             claimName: plex-config  
         - name: plex-media-volume
-          nfs: 
-            server: {{ .Values.nfs.server}} 
-            path: {{ .Values.nfs.paths.media }} 
+          hostPath:
+            path: {{ .Values.paths.media }}
+            type: Directory
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

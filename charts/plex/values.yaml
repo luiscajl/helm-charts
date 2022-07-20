@@ -13,6 +13,9 @@ environmentVariables:
     value: "1000"
   - name: VERSION
     value: "docker"
+paths:
+  media: /mnt/gdrive
+
 
 imagePullSecrets: []
 nameOverride: ""
