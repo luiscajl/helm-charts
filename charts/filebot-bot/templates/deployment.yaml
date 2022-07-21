@@ -62,21 +62,19 @@ spec:
               value: rabbitmq    
             - name: SERVER_MAX_HTTP_HEADER_SIZE
               value: "16KB"
-            - name: TELEGRAM_FILEBOT_TOKEN
+            - name: TELEGRAM_FILEBOTBOT_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: token  
-            - name: TELEGRAM_FILEBOT_ADMIN
+                  key: token
+            - name: TELEGRAM_FILEBOTBOT_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: chat-id
-            - name: TELEGRAM_FILEBOT_USER
-              valueFrom:
-                secretKeyRef:
-                  name: telegram-credentials
-                  key: username            
+                  key: username 
+          envFrom: 
+           - configMapRef: 
+              name: configmap-filebotbot                            
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
