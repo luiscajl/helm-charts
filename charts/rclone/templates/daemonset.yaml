@@ -77,7 +77,12 @@ spec:
              "--allow-non-empty",
              "--drive-chunk-size","64M",
              "--umask","002",
-             "--vfs-cache-mode","off", 
+             "--vfs-cache-mode","full", 
+             "--vfs-read-chunk-size","1G",
+             "--vfs-cache-max-size","500G",
+             "--vfs-cache-max-age","168h",
+             "--dir-cache-time","96h",
+             "--cache-dir","/cache",
              "--tpslimit=7",
              "--bwlimit","8.5M:off",
              ]
