@@ -42,7 +42,7 @@ spec:
       initContainers:
         - name: umount-previous-mount
           image: rclone/rclone
-          command: ["/bin/fusermount", "-u" ,"/data"]   
+          command: ["/bin/fusermount", "-uz" ,"/data"]   
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           volumeMounts:
