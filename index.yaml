@@ -337,6 +337,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2022-08-29T19:47:34.723108057Z"
+    digest: 76d99e6b4ef89ebf1018ec0600f91f2d913ff8f0962ca56a92912c4959917d6a
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.13/filebot-executor-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     created: "2022-07-18T19:44:00.61474441Z"
     digest: ba5fd829d76b722eb057a6c5c167a60066bec4f4ec888555b6a12ae0a4abc365
     name: filebot-executor
@@ -580,6 +587,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2022-08-29T19:47:34.878483101Z"
+    digest: 9ee25f742f7b340428451b5b3c5e7223b07b3ad0bc37b8264c2b53857ead3bc4
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.87/plex-0.0.87.tgz
+    version: 0.0.87
+  - apiVersion: v2
     created: "2022-07-20T16:19:22.756269813Z"
     digest: 0734ca2f5fc8895df2d2c1ce9f778d1c5ddbbc24cfe201f62fe9f481c618e803
     name: plex
@@ -657,6 +671,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
   qbittorrentvpn:
+  - apiVersion: v2
+    created: "2022-08-29T19:47:35.023633644Z"
+    digest: f900ace983c5784aa708b57a63f270a584ab9a7765a4050fc3bac7978ec46c5b
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.16/qbittorrentvpn-0.1.16.tgz
+    version: 0.1.16
   - apiVersion: v2
     created: "2022-07-18T15:23:53.948000382Z"
     digest: ce677a3515f102d17fc00c130357e4b3a2322ee37698658e293c4b23fde40d86
@@ -925,6 +946,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
     version: 0.1.0
   rclone:
+  - apiVersion: v2
+    created: "2022-08-29T19:47:35.170935207Z"
+    digest: 1ac5bd2230ed3b8ce1e4e4035d189605add251472bff0c2c6c06760e005c82f8
+    name: rclone
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.42/rclone-0.1.42.tgz
+    version: 0.1.42
   - apiVersion: v2
     created: "2022-08-29T19:39:24.099057412Z"
     digest: eb4310625c5567e00d9bf4a59e889c5bd1ec4f46dbbc78f35d76f7412301ed43
@@ -1694,4 +1722,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-29T19:39:24.100126721Z"
+generated: "2022-08-29T19:47:35.172601024Z"
