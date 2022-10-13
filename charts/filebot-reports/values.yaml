@@ -2,7 +2,7 @@ spring:
   profile: ""
 replicaCount: 1
 image:
-  repository: lavandadelpatio/filebot
+  repository: lavandadelpatio/filebot-reports
   pullPolicy: Always
   tag: "latest"
 
@@ -45,7 +45,7 @@ ingress:
   hosts:
     - host: chart-example.local
       paths:
-        - path: /filebot
+        - path: /filebot-reports
           pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls

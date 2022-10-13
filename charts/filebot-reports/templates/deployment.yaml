@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "filebot.fullname" . }}
+  name: {{ include "filebot-reports.fullname" . }}
   labels:
-    {{- include "filebot.labels" . | nindent 4 }}
+    {{- include "filebot-reports.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "filebot.selectorLabels" . | nindent 6 }}
+      {{- include "filebot-reports.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "filebot.selectorLabels" . | nindent 8 }}
+        {{- include "filebot-reports.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "filebot.serviceAccountName" . }}
+      serviceAccountName: {{ include "filebot-reports.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
