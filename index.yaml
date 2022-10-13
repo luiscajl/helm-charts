@@ -427,6 +427,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.1/filebot-executor-0.0.1.tgz
     version: 0.0.1
+  filebot-reports:
+  - apiVersion: v2
+    created: "2022-10-13T11:30:44.184542718Z"
+    digest: be12fa26fbdd2290b707b668ec16c34965c80d4480a671f097a44de511e6f21f
+    name: filebot-reports
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-reports-0.2.5/filebot-reports-0.2.5.tgz
+    version: 0.2.5
   flaresolverr:
   - apiVersion: v2
     created: "2022-02-25T09:24:47.177640691Z"
@@ -1722,4 +1730,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-29T19:47:35.172601024Z"
+generated: "2022-10-13T11:30:44.185296215Z"
