@@ -4,7 +4,7 @@ environmentVariables:
     - name: VPN_PROV
       value: airvpn
     - name: VPN_CLIENT
-      value: openvpn
+      value: wireguard
     - name: ENABLE_PRIVOXY
       value: "yes"
     - name: LAN_NETWORK 
