@@ -25,9 +25,12 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        - name: rclone-data
+        - name: rclone-data-googledrive
           hostPath:
             path: {{ .Values.paths.data }}   
+        - name: rclone-data-storagebox
+          hostPath:
+            path: {{ .Values.paths.storagebox }}       
         # - name: rclone-cache
         #   hostPath:
         #     path: {{ .Values.paths.cache }}       
@@ -40,7 +43,7 @@ spec:
         - name: config
           emptyDir: {}        
       initContainers:
-        - name: umount-previous-mount
+        - name: umount-previous-mount-googledrive
           image: rclone/rclone
           command: ["/bin/fusermount", "-u" ,"/data"]   
           securityContext:
@@ -48,7 +51,16 @@ spec:
           volumeMounts:
             - mountPath: /data
               mountPropagation: Bidirectional
-              name: rclone-data    
+              name: rclone-data-googledrive    
+        - name: umount-previous-mount-storagebox
+          image: rclone/rclone
+          command: ["/bin/fusermount", "-u" ,"/data"]   
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          volumeMounts:
+            - mountPath: /data
+              mountPropagation: Bidirectional
+              name: rclone-data-storagebox                  
         - name: {{ .Chart.Name }}-config
           image: "busybox"
           command:
@@ -63,7 +75,7 @@ spec:
           - name: config
             mountPath: /out    
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}-googledrive
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -118,12 +130,44 @@ spec:
           volumeMounts:
             - mountPath: /data
               mountPropagation: Bidirectional
-              name: rclone-data 
+              name: rclone-data-googledrive
             # - mountPath: /cache
             #   mountPropagation: Bidirectional
             #   name: rclone-cache 
             - mountPath: /config/rclone
               name: config
+        - name: {{ .Chart.Name }}-storagebox
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:  [
+             "mount",
+             "storagebox-lavanda:","/data",
+             "--config=/config/rclone/rclone.conf",
+             "--log-level=INFO",
+             "--allow-other",
+             "--allow-non-empty",
+             "--umask","002",
+             "--vfs-cache-mode","off", 
+             "--bwlimit","off:off",
+             ]
+              # "--tpslimit=7",
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/fusermount", "-u" ,"/data" ]
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /data
+              mountPropagation: Bidirectional
+              name: rclone-data-storagebox
+            # - mountPath: /cache
+            #   mountPropagation: Bidirectional
+            #   name: rclone-cache 
+            - mountPath: /config/rclone
+              name: config        
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
