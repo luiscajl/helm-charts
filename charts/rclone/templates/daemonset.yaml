@@ -117,14 +117,18 @@ spec:
             preStop:
               exec:
                 command: ["/bin/fusermount", "-u" ,"/data" ]
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
+          livenessProbe:
+            exec:
+              command:
+                - "rclone" 
+                - "lsd" 
+                - "gdrive-lavanda:"
+          readinessProbe:
+            exec:
+              command:
+                - "rclone" 
+                - "lsd" 
+                - "gdrive-lavanda:"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -149,7 +153,7 @@ spec:
              "--allow-other",
              "--allow-non-empty",
              "--umask","002",
-             "--vfs-cache-mode","off", 
+             "--vfs-cache-mode","full", 
              "--bwlimit","off:off",
              ]
               # "--tpslimit=7",
@@ -167,7 +171,19 @@ spec:
             #   mountPropagation: Bidirectional
             #   name: rclone-cache 
             - mountPath: /config/rclone
-              name: config        
+              name: config     
+          livenessProbe:
+            exec:
+              command:
+                - "rclone" 
+                - "lsd" 
+                - "storagebox-lavanda:"
+          readinessProbe:
+            exec:
+              command:
+                - "rclone" 
+                - "lsd" 
+                - "storagebox-lavanda:"                 
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
