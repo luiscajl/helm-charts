@@ -1,9 +1,9 @@
 replicaCount: 1
 
 paths:
-  data: /mnt/gdrive
-  cache: /mnt/storagebox
-  storagebox: /mnt/newstoragebox
+  data: /mnt/gdrive_writer
+  cache: /mnt/storagebox_cache
+  # storagebox: /mnt/newstoragebox
 
 image:
   repository: rclone/rclone

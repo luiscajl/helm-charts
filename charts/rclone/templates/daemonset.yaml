@@ -28,12 +28,12 @@ spec:
         - name: rclone-data-googledrive
           hostPath:
             path: {{ .Values.paths.data }}   
-        - name: rclone-data-storagebox
-          hostPath:
-            path: {{ .Values.paths.storagebox }}       
-        # - name: rclone-cache
+        # - name: rclone-data-storagebox
         #   hostPath:
-        #     path: {{ .Values.paths.cache }}       
+        #     path: {{ .Values.paths.storagebox }}       
+        - name: rclone-cache
+          hostPath:
+            path: {{ .Values.paths.cache }}       
         - name: config-data
           configMap:
             name: rclone-config
@@ -51,16 +51,7 @@ spec:
           volumeMounts:
             - mountPath: /data
               mountPropagation: Bidirectional
-              name: rclone-data-googledrive    
-        - name: umount-previous-mount-storagebox
-          image: rclone/rclone
-          command: ["/bin/fusermount", "-u" ,"/data"]   
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          volumeMounts:
-            - mountPath: /data
-              mountPropagation: Bidirectional
-              name: rclone-data-storagebox                  
+              name: rclone-data-googledrive                   
         - name: {{ .Chart.Name }}-config
           image: "busybox"
           command:
@@ -88,11 +79,17 @@ spec:
              "--allow-other",
              "--allow-non-empty",
              "--umask","002",
-             "--vfs-cache-mode","off", 
-             "--tpslimit=7",
-             "--bwlimit","8.5M:off",
+             "--dir-cache-time 100h", 
+             "--poll-interval","15s", 
+             "--cache-dir=/cache", 
+             "--vfs-cache-mode","full", 
+             "--vfs-cache-max-size","120G", 
+             "--vfs-cache-max-age","24h", 
+             "--vfs-read-chunk-size","128M", 
+             "--vfs-read-chunk-size-limit","off", 
+             "--vfs-read-ahead","128M" 
              ]
-             # "--drive-chunk-size","64M",
+            # "--drive-chunk-size","64M",
             #  "--cache-dir=/tmp/rclone",
             #  "--cache-dir=/mnt/rclone"
             #  "--max-transfer","740G",
@@ -135,55 +132,11 @@ spec:
             - mountPath: /data
               mountPropagation: Bidirectional
               name: rclone-data-googledrive
-            # - mountPath: /cache
-            #   mountPropagation: Bidirectional
-            #   name: rclone-cache 
-            - mountPath: /config/rclone
-              name: config
-        - name: {{ .Chart.Name }}-storagebox
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:  [
-             "mount",
-             "storagebox-lavanda:","/data",
-             "--config=/config/rclone/rclone.conf",
-             "--log-level=INFO",
-             "--allow-other",
-             "--allow-non-empty",
-             "--umask","002",
-             "--vfs-cache-mode","full", 
-             "--bwlimit","off:off",
-             ]
-              # "--tpslimit=7",
-          lifecycle:
-            preStop:
-              exec:
-                command: ["/bin/fusermount", "-u" ,"/data" ]
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - mountPath: /data
+            - mountPath: /cache
               mountPropagation: Bidirectional
-              name: rclone-data-storagebox
-            # - mountPath: /cache
-            #   mountPropagation: Bidirectional
-            #   name: rclone-cache 
+              name: rclone-cache 
             - mountPath: /config/rclone
-              name: config     
-          livenessProbe:
-            exec:
-              command:
-                - "rclone" 
-                - "lsd" 
-                - "storagebox-lavanda:"
-          readinessProbe:
-            exec:
-              command:
-                - "rclone" 
-                - "lsd" 
-                - "storagebox-lavanda:"                 
+              name: config              
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
