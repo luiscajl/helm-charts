@@ -976,6 +976,13 @@ entries:
     version: 0.1.0
   rclone:
   - apiVersion: v2
+    created: "2022-12-12T07:08:29.967061488Z"
+    digest: 80b5f2ef9981b8c258b19a7756ebdc5b19b7a30e6bdf9519f966c7fe651608fc
+    name: rclone
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.46/rclone-0.1.46.tgz
+    version: 0.1.46
+  - apiVersion: v2
     created: "2022-12-08T10:03:58.853181233Z"
     digest: 26713c97ce417aa2db688ca5786df427b45aca9aa51d065e966ee16f142be7f3
     name: rclone
@@ -1772,4 +1779,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-08T20:45:03.534274226Z"
+generated: "2022-12-12T07:08:29.968744816Z"
