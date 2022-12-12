@@ -4,6 +4,8 @@ paths:
   data: /mnt/gdrive_writer
   cache: /mnt/storagebox_cache
   # storagebox: /mnt/newstoragebox
+configmap:
+  name: rclone-config
 
 image:
   repository: rclone/rclone

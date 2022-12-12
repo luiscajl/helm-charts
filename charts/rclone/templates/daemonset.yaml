@@ -79,7 +79,7 @@ spec:
              "--allow-other",
              "--allow-non-empty",
              "--umask","002",
-             "--dir-cache-time 100h", 
+             "--dir-cache-time","100h", 
              "--poll-interval","15s", 
              "--cache-dir=/cache", 
              "--vfs-cache-mode","full", 
