@@ -36,7 +36,7 @@ spec:
             path: {{ .Values.paths.cache }}       
         - name: config-data
           configMap:
-            name: {{ .Values.configmap.name}}
+            name: {{ .Values.config.configmapName}}
             items:
               - key: rclone.conf
                 path: rclone.conf
@@ -71,45 +71,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:  [
-             "mount",
-             "gdrive-lavanda:","/data",
-             "--config=/config/rclone/rclone.conf",
-             "--log-level=INFO",
-             "--allow-other",
-             "--allow-non-empty",
-             "--umask","002",
-             "--dir-cache-time","100h", 
-             "--poll-interval","15s", 
-             "--cache-dir=/cache", 
-             "--vfs-cache-mode","full", 
-             "--vfs-cache-max-size","120G", 
-             "--vfs-cache-max-age","24h", 
-             "--vfs-read-chunk-size","128M", 
-             "--vfs-read-chunk-size-limit","off", 
-             "--vfs-read-ahead","128M" 
-             ]
-            # "--drive-chunk-size","64M",
-            #  "--cache-dir=/tmp/rclone",
-            #  "--cache-dir=/mnt/rclone"
-            #  "--max-transfer","740G",
-            #  "mount",
-            #  "gdrive-lavanda:","/data",
-            #  "--config=/config/rclone/rclone.conf",
-            #  "--log-level=DEBUG",
-            #  "--allow-other",
-            #  "--allow-non-empty",
-            #  "--dir-cache-time", "4h",
-            #  "--drive-chunk-size","64M",
-            #  "--umask","002",
-            #  "--vfs-cache-max-age","24h",
-            #  "--vfs-read-chunk-size","128M",
-            #  "--vfs-read-chunk-size-limit", "off",
-            #  "--vfs-cache-mode","writes",
-            #  "--vfs-cache-max-size","2500G",
-            #  "--cache-dir=/cache/.rclone",
-            #  "--tpslimit=7",
-            #  "--bwlimit","8.5M:off",
+          args: {{ .Values.config.command }}
           lifecycle:
             preStop:
               exec:

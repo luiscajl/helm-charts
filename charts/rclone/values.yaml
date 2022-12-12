@@ -1,12 +1,11 @@
 replicaCount: 1
 
 paths:
-  data: /mnt/gdrive_writer
-  cache: /mnt/storagebox_cache
-  # storagebox: /mnt/newstoragebox
-configmap:
-  name: rclone-config
-
+  data: 
+  cache: 
+config:
+  configmapName: 
+  command: []
 image:
   repository: rclone/rclone
   pullPolicy: Always
