@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "plex.fullname" . }}
   labels:
@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       {{- include "plex.selectorLabels" . | nindent 6 }}
+  serviceName: "plex"  
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -38,12 +39,14 @@ spec:
               containerPort: 32400
               protocol: TCP
           volumeMounts:
+            {{- if .Values.volumes.config.enabled }}
             - mountPath: /config
               name: plex-config-volume
-            # - mountPath: /tmp/transcode
-            #   name: plex-transcode-volume
+            {{- end }}                
+            {{- if .Values.volumes.data.enabled }}
             - mountPath: /media
-              name: plex-media-volume                 
+              name: plex-media-volume       
+            {{- end }}                
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
@@ -69,14 +72,6 @@ spec:
             successThreshold: 1   
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      volumes:
-        - name: plex-config-volume
-          persistentVolumeClaim:
-            claimName: plex-config  
-        - name: plex-media-volume
-          hostPath:
-            path: {{ .Values.paths.media }}
-            type: Directory
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -88,4 +83,22 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{- end }}  
+      {{- if .Values.volumes.data.enabled }}
+      volumes: 
+      - name: plex-media-volume
+        hostPath:
+          path: {{ .Values.volumes.data.hostPath }}
+          type: Directory
+      {{- end }}                
+  {{- if .Values.volumes.config.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: plex-config-volume
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: {{ .Values.volumes.config.storageClass }}
+        resources:
+          requests:
+            storage: {{ .Values.volumes.config.size }}    
+  {{- end }}                

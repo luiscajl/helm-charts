@@ -13,9 +13,17 @@ environmentVariables:
     value: "1000"
   - name: VERSION
     value: "docker"
-paths:
-  media: /mnt/gdrive
+volumes:
+  config: 
+    enabled: true 
+    storageClass: hcloud-volumes-retain
+    size: 50Gi
+  data:   
+    enabled: true 
+    hostPath: /mnt/gdrive
 
+nodeSelector: 
+  node.kubernetes.io/usage: plex
 
 imagePullSecrets: []
 nameOverride: ""
@@ -76,8 +84,6 @@ autoscaling:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-
-nodeSelector: {}
 
 tolerations: []
 
