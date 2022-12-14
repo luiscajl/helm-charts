@@ -11,7 +11,7 @@ spec:
   selector:
     matchLabels:
       {{- include "plex.selectorLabels" . | nindent 6 }}
-  serviceName: "plex"  
+  serviceName: {{ include "plex.fullname" . }} 
   template:
     metadata:
       {{- with .Values.podAnnotations }}
