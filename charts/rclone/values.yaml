@@ -1,11 +1,38 @@
 replicaCount: 1
 
 paths:
-  data: 
-  cache: 
+  data: /tmp/test
+  cache: /tmp/test2
 config:
-  configmapName: 
-  command: []
+  dataPath: /tmp/test
+  cache:
+    enabled: true
+    size: 150Gi
+    storageClass: hcloud-volumes 
+  remoteConfigmapName: rclone-config-writer
+  command: |-
+      [
+       "mount",
+       "remote:","/data",
+       "--config=/config/rclone/rclone.conf",
+       "--log-level=INFO",
+       "--allow-other",
+       "--allow-non-empty",
+       "--umask","002",
+       "--dir-cache-time","100h", 
+       "--poll-interval","15s", 
+       "--cache-dir=/cache", 
+       "--vfs-cache-mode","full", 
+       "--vfs-cache-max-size","120G", 
+       "--vfs-cache-max-age","24h", 
+       "--vfs-read-chunk-size","128M", 
+       "--vfs-read-chunk-size-limit","off", 
+       "--vfs-read-ahead","128M",
+       "--drive-stop-on-upload-limit"
+       ]
+nodeSelector:
+  node.kubernetes.io/usage: downloads
+
 image:
   repository: rclone/rclone
   pullPolicy: Always
@@ -35,6 +62,5 @@ resources:
     cpu: 400m
     memory: 512Mi
 
-nodeSelector: {}
 tolerations: []
 affinity: {}
