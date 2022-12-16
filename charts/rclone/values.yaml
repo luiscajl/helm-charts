@@ -1,10 +1,7 @@
 replicaCount: 1
 
-paths:
-  data: /tmp/test
-  cache: /tmp/test2
 config:
-  dataPath: /tmp/test
+  dataPath: /tmp/gdrive
   cache:
     enabled: true
     size: 150Gi

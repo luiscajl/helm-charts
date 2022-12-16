@@ -28,7 +28,7 @@ spec:
       volumes:
         - name: rclone-data
           hostPath:
-            path: {{ .Values.paths.data }}       
+            path: {{ .Values.config.dataPath }}       
         - name: config-data
           configMap:
             name: {{.Values.config.remoteConfigmapName}}
