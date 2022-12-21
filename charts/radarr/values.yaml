@@ -14,8 +14,8 @@ environmentVariables:
   - name: TZ
     value: "Europe/Madrid" 
     
-paths:
-  media: /mnt/gdrive
+googleDrive:
+  localPath: /mnt/gdrive-reader   
 
 imagePullSecrets: []
 nameOverride: ""

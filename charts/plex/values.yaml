@@ -20,7 +20,7 @@ volumes:
     size: 50Gi
   data:   
     enabled: true 
-    hostPath: /mnt/gdrive
+    hostPath: /mnt/gdrive-reader  
 
 nodeSelector: 
   node.kubernetes.io/usage: plex

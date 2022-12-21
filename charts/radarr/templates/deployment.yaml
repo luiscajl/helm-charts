@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - mountPath: /config
-              name: {{ include "radarr.fullname" . }}-config-volume  
+              name: {{ include "radarr.fullname" . }}-config  
             - mountPath: /data
               name: radarr-media 
           env:
@@ -47,32 +47,32 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          #   initialDelaySeconds: 30
-          #   periodSeconds: 60
-          #   successThreshold: 1
-          #   failureThreshold: 5  
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          #   initialDelaySeconds: 10
-          #   timeoutSeconds: 5
-          #   periodSeconds: 5
-          #   successThreshold: 1
-          #   failureThreshold: 5  
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 5  
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: {{ include "radarr.fullname" . }}-config-volume
+        - name: {{ include "radarr.fullname" . }}-config
           persistentVolumeClaim:
             claimName: {{ include "radarr.fullname" . }}-config-volume   
         - name: radarr-media
           hostPath:
-            path: {{ .Values.paths.media }}
+            path: {{ .Values.googleDrive.localPath }}
             type: Directory
       {{- with .Values.nodeSelector }}
       nodeSelector:
