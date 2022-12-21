@@ -595,6 +595,13 @@ entries:
     version: 0.0.103
   plex:
   - apiVersion: v2
+    created: "2022-12-21T16:58:17.687310407Z"
+    digest: a4c7a7bde7239753922a94178b67002db1f8fad6526b6fbaa173cdf4ac871486
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.90/plex-0.0.90.tgz
+    version: 0.0.90
+  - apiVersion: v2
     created: "2022-12-16T08:14:57.494427672Z"
     digest: 8b6d09c64baf17e1e2c41ccc7937c44faa3323dd8f142938f5c1471430a22dcb
     name: plex
@@ -841,6 +848,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.0/qbittorrentvpn-0.1.0.tgz
     version: 0.1.0
   radarr:
+  - apiVersion: v2
+    created: "2022-12-21T16:58:17.807204011Z"
+    digest: 1389689958af7d1333c05739d55dcd2c3f3192b8892aafeec8846ce5bf79546e
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.8/radarr-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     created: "2022-07-20T07:25:36.94151964Z"
     digest: d02e0386e7bc4cfffd66d0f9a970d303b0e1731b93bd7bdfa50416f2139ef9ce
@@ -1439,6 +1453,13 @@ entries:
     version: 0.1.0
   sonarr:
   - apiVersion: v2
+    created: "2022-12-21T16:58:17.927419042Z"
+    digest: dd4753e85f6c9eb198035811bbe76c325b8a2be194c4e677808f0c41cba39447
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.12/sonarr-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
     created: "2022-07-20T07:22:38.629793404Z"
     digest: d50f2c376ebc24d883cee46fc09d90c1df8b49e77f05d27deda70076a209c612
     name: sonarr
@@ -1821,4 +1842,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-16T08:14:57.690251671Z"
+generated: "2022-12-21T16:58:17.928356225Z"
