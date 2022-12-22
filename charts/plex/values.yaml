@@ -22,9 +22,7 @@ volumes:
     enabled: true 
     hostPath: /mnt/gdrive-reader  
 
-nodeSelector: 
-  node.kubernetes.io/usage: plex
-
+nodeSelector: {}
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
