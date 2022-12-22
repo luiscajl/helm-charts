@@ -729,6 +729,13 @@ entries:
     version: 0.0.76
   qbittorrentvpn:
   - apiVersion: v2
+    created: "2022-12-22T15:27:35.422226725Z"
+    digest: e10d113adb98fe8d4153737b98180f84241f72de761d4d4bb75846783f08f277
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.21/qbittorrentvpn-0.1.21.tgz
+    version: 0.1.21
+  - apiVersion: v2
     created: "2022-12-22T15:22:32.743133149Z"
     digest: 4204277621be8298446ddd2e7ae96fea44bb1e55336e0d5a00c48df847146550
     name: qbittorrentvpn
@@ -1884,4 +1891,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-22T15:22:32.744072351Z"
+generated: "2022-12-22T15:27:35.423084241Z"
