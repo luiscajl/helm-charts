@@ -69,7 +69,7 @@ spec:
       volumes:
         - name: {{ include "radarr.fullname" . }}-config
           persistentVolumeClaim:
-            claimName: {{ include "radarr.fullname" . }}-config-volume   
+            claimName: {{ include "radarr.fullname" . }}-config   
         - name: radarr-media
           hostPath:
             path: {{ .Values.googleDrive.localPath }}
