@@ -926,6 +926,13 @@ entries:
     version: 0.1.0
   radarr:
   - apiVersion: v2
+    created: "2022-12-22T17:11:05.888527641Z"
+    digest: 3e5c4468be2f95d550d748ba4c9a29f76ea07dedd7b6a7a342198c0004a11d4b
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.10/radarr-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
     created: "2022-12-22T17:06:28.062780995Z"
     digest: f022114360495e5ef57d9c25bb85cf77d4b1a2379fc794a7965a4988b57b39dc
     name: radarr
@@ -1933,4 +1940,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-22T17:08:52.011044921Z"
+generated: "2022-12-22T17:11:05.89014087Z"
