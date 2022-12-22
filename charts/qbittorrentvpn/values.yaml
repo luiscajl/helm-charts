@@ -1,31 +1,3 @@
-environmentVariables:
-  - name: VPN_ENABLED
-    value: "yes" 
-  - name: VPN_PROV
-    value: airvpn
-  - name: VPN_CLIENT
-    value: wireguard
-  - name: ENABLE_PRIVOXY
-    value: "yes"
-  - name: LAN_NETWORK 
-    value: 0.0.0.0/0
-  - name: NAME_SERVERS 
-    value: 84.200.69.80,37.235.1.174,1.1.1.1,37.235.1.177,84.200.70.40,1.0.0.1
-  - name: VPN_INPUT_PORTS  
-    value: 1234 
-  - name: VPN_OUTPUT_PORTS  
-    value: 5678 
-  - name: DEBUG 
-    value: false 
-  - name: WEBUI_PORT 
-    value: 8080
-  - name: UMASK 
-    value: 000
-  - name: PUID 
-    value: 0
-  - name: PGID 
-    value: 0 
-
 paths:
   torrents: /mnt/rclone-writer/Torrenting
 replicaCount: 1
