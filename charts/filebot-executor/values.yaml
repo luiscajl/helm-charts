@@ -8,8 +8,8 @@ image:
   tag: "0.0.1-SNAPSHOT"
 
 paths:
-  media: /mnt/gdrive
-  torrents: /mnt/storagebox   
+  media: /mnt/rclone-writer/Torrenting
+  torrents: /mnt/rclone-writer   
 
 imagePullSecrets: []
 nameOverride: ""
