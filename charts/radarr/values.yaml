@@ -15,7 +15,7 @@ environmentVariables:
     value: "Europe/Madrid" 
     
 googleDrive:
-  localPath: /mnt/gdrive-reader   
+  localPath: /mnt/rclone-reader  
 
 imagePullSecrets: []
 nameOverride: ""
