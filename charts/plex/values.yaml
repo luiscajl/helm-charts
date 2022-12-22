@@ -16,7 +16,7 @@ environmentVariables:
 volumes:
   config: 
     enabled: true 
-    storageClass: hcloud-volumes-retain
+    storageClass: local-path-retain
     size: 50Gi
   data:   
     enabled: true 
