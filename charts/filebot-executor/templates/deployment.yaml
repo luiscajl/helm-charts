@@ -58,16 +58,16 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.spring.profile}}
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                 name: aws-credentials
-                 key: aws-access-key-id 
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                 name: aws-credentials
-                 key: aws-access-secret-key  
+            # - name: AWS_ACCESS_KEY_ID
+            #   valueFrom:
+            #     secretKeyRef:
+            #      name: aws-credentials
+            #      key: aws-access-key-id 
+            # - name: AWS_SECRET_ACCESS_KEY
+            #   valueFrom:
+            #     secretKeyRef:
+            #      name: aws-credentials
+            #      key: aws-access-secret-key  
             - name: SPRING_DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
