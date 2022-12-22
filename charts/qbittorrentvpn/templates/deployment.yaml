@@ -43,10 +43,7 @@ spec:
             name: qbittorrent-scripts   
         - name: config-vpn
           configMap:
-            name: qbittorrent-wireguard             
-        - name: qbittorrent-config
-          configMap:
-            name: qbittorrent-config                 
+            name: qbittorrent-wireguard                        
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -69,9 +66,7 @@ spec:
             - mountPath: /etc/localtime
               name: etc-localtime   
             - mountPath: /config/wireguard
-              name: config-vpn  
-            - mountPath: /config/qBittorrent/config
-              name: qbittorrent-config                 
+              name: config-vpn                 
           ports:
             - name: privoxy
               containerPort: 8181
