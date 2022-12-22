@@ -27,7 +27,7 @@ environmentVariables:
     value: 0 
 
 paths:
-  torrents: /mnt/storagebox
+  torrents: /mnt/rclone-writer/Torrenting
 replicaCount: 1
 
 image:
