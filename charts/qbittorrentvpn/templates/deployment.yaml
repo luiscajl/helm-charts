@@ -44,7 +44,7 @@ spec:
         - name: config-vpn
           configMap:
             name: qbittorrent-wireguard             
-        - name: config-qbittorrent
+        - name: qbittorrent-config
           configMap:
             name: qbittorrent-config                 
       containers:
