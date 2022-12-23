@@ -8,8 +8,8 @@ image:
   tag: "0.0.1-SNAPSHOT"
 
 paths:
-  media: /mnt/rclone-writer/Torrenting
-  torrents: /mnt/rclone-writer   
+  media: /mnt/rclone-writer ## OUTPUT
+  torrents: /mnt/rclone-writer/Torrenting ## INPUT  
 
 imagePullSecrets: []
 nameOverride: ""
