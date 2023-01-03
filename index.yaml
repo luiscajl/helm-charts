@@ -337,6 +337,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2023-01-03T20:29:47.651968382Z"
+    digest: b6bfdecff2f51948e8c26f761b055a6b6e5092da47c5c4cef4a004c87be3626e
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.16/filebot-executor-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v2
     created: "2022-12-22T15:20:50.12635893Z"
     digest: fa08d977d81cbed16f31d32afce642cd15a7a6d9c519680640c9432c6077f96a
     name: filebot-executor
@@ -1094,6 +1101,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/ratedpower-0.1.0/ratedpower-0.1.0.tgz
     version: 0.1.0
   rclone:
+  - apiVersion: v2
+    created: "2023-01-03T20:29:47.85029214Z"
+    digest: 0ff70dbd39985530856280abd9ef7c7a40b7d1942a62327fabfa0daeae497389
+    name: rclone
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-2.0.1/rclone-2.0.1.tgz
+    version: 2.0.1
   - apiVersion: v2
     created: "2022-12-16T08:14:57.68895326Z"
     digest: ea37a649f7c56ed4affabf12773671a79cf6555d3f40be278ebc0318a8eb2049
@@ -1947,4 +1961,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-22T17:26:31.14159991Z"
+generated: "2023-01-03T20:29:47.851774638Z"
