@@ -104,15 +104,4 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
-  # {{- if .Values.config.cache.enabled }}
-  # volumeClaimTemplates:
-  #   - metadata:
-  #       name: rclone-cache
-  #     spec:
-  #       accessModes: [ "ReadWriteOnce" ]
-  #       storageClassName: {{ .Values.config.cache.storageClass }}
-  #       resources:
-  #         requests:
-  #           storage: {{ .Values.config.cache.size }}    
-  # {{- end }}                
+      {{- end }}             
