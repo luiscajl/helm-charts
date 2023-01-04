@@ -1,11 +1,10 @@
 paths:
   torrents: /mnt/rclone-writer/Torrenting
 replicaCount: 1
-
 image:
   repository: binhex/arch-qbittorrentvpn
   pullPolicy: Always
-  tag: ""
+  tag: 4.5.0-1-01       
 
 imagePullSecrets: []
 nameOverride: ""

@@ -12,7 +12,7 @@ spec:
       protocol: TCP
       name: privoxy
     - port: {{ .Values.service.port }}
-      targetPort: 8080
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: bittorrent-ui
     - port: 6881
