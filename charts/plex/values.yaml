@@ -16,8 +16,8 @@ environmentVariables:
 volumes:
   config: 
     enabled: true 
-    storageClass: local-path-retain
-    size: 50Gi
+    storageClass: 
+    size: 70Gi
   data:   
     enabled: true 
     hostPath: /mnt/rclone-reader  
