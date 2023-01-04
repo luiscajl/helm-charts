@@ -64,7 +64,17 @@ spec:
             - mountPath: /etc/localtime
               name: etc-localtime   
             # - mountPath: /config/wireguard
-            #   name: config-vpn                 
+            #   name: config-vpn    
+          livenessProbe:
+            exec:
+              command:
+                - "ls" 
+                - "/data/torrenting"
+          readinessProbe:
+            exec:
+              command:
+                - "ls" 
+                - "/data/torrenting"                         
           ports:
             - name: privoxy
               containerPort: 8181
