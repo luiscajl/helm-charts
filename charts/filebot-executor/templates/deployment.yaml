@@ -94,7 +94,7 @@ spec:
             exec:
               command:
                 - "ls" 
-                - "/media-output"
+                - "/media-input"
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
