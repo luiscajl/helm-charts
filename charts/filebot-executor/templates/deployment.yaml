@@ -91,10 +91,14 @@ spec:
             - name: FILEBOT_TEST_ENABLED
               value: {{ .Values.filebot.testEnabled | quote }}          
           livenessProbe:
-            exec:
-              command:
-                - "ls" 
-                - "/media-input"
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 5
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
