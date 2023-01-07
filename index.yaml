@@ -337,6 +337,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2023-01-07T09:48:55.535139404Z"
+    digest: c7760b6d3f79bcf50d348445856836f8c8ec55ad126252565bf8ee5f1313a53a
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.17/filebot-executor-0.0.17.tgz
+    version: 0.0.17
+  - apiVersion: v2
     created: "2023-01-03T20:29:47.651968382Z"
     digest: b6bfdecff2f51948e8c26f761b055a6b6e5092da47c5c4cef4a004c87be3626e
     name: filebot-executor
@@ -615,6 +622,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/lavanda-0.0.103/lavanda-0.0.103.tgz
     version: 0.0.103
   plex:
+  - apiVersion: v2
+    created: "2023-01-07T09:48:55.669881702Z"
+    digest: b026d678f8541b1cf7d45c648b8a78b06d3c41948ec8f4f8b133ce75354a4872
+    name: plex
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.96/plex-0.0.96.tgz
+    version: 0.0.96
   - apiVersion: v2
     created: "2023-01-05T10:51:59.158662085Z"
     digest: 7606807713c2caa55d84bd80b9bb3f2b6142a96cba66dfa8ac9ca47a9e0ff029
@@ -967,6 +981,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-0.1.0/qbittorrentvpn-0.1.0.tgz
     version: 0.1.0
   radarr:
+  - apiVersion: v2
+    created: "2023-01-07T09:48:55.794841799Z"
+    digest: 4843a1dac3d7a8b1c43822f0f3e57e7af6f28a0714fbba3d75e68b05b12b4f7f
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.11/radarr-0.1.11.tgz
+    version: 0.1.11
   - apiVersion: v2
     created: "2022-12-22T17:11:05.888527641Z"
     digest: 3e5c4468be2f95d550d748ba4c9a29f76ea07dedd7b6a7a342198c0004a11d4b
@@ -1600,6 +1621,13 @@ entries:
     version: 0.1.0
   sonarr:
   - apiVersion: v2
+    created: "2023-01-07T09:48:55.927105871Z"
+    digest: a70cacce464b90df884e0b7b4cea2cca437f24188c7e47856c9a18bf0e458be2
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.14/sonarr-0.1.14.tgz
+    version: 0.1.14
+  - apiVersion: v2
     created: "2022-12-22T17:06:28.201915299Z"
     digest: b479997b88dfe86623b351ce58465f2433e7dbc7e5df8b59050444caa436d57d
     name: sonarr
@@ -1996,4 +2024,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-05T10:51:59.160021171Z"
+generated: "2023-01-07T09:48:55.928584386Z"
