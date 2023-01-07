@@ -1010,6 +1010,13 @@ entries:
     version: 0.1.0
   radarr:
   - apiVersion: v2
+    created: "2023-01-07T13:10:16.454737152Z"
+    digest: 0cc296745980db6829c755ca4f3c4c8388e4bac10ea8d741d4ddc7dbd31bc9d1
+    name: radarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/radarr-0.1.13/radarr-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     created: "2023-01-07T12:53:35.193291905Z"
     digest: 69eba4e58eb4d88228f061792cb0568bb8faf22182604bb09ef962cad6e6dd61
     name: radarr
@@ -1656,6 +1663,13 @@ entries:
     version: 0.1.0
   sonarr:
   - apiVersion: v2
+    created: "2023-01-07T13:10:16.605362599Z"
+    digest: 418dd0115cdc0dae48fc28ead7ebdf56f5bffe6e60d63bc2ce7ba82ab15da11d
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.16/sonarr-0.1.16.tgz
+    version: 0.1.16
+  - apiVersion: v2
     created: "2023-01-07T12:54:49.591977098Z"
     digest: b65ec22a199bb20c09316deff9107d7c69ec53be05bcbaaf39bfa5107cd1b60b
     name: sonarr
@@ -2066,4 +2080,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-07T13:08:23.017466394Z"
+generated: "2023-01-07T13:10:16.606420838Z"
