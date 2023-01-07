@@ -8,9 +8,11 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "radarr.fullname" . }} 
   selector:
     matchLabels:
       {{- include "radarr.selectorLabels" . | nindent 6 }}
+
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -64,9 +66,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: {{ include "radarr.fullname" . }}-config
-          persistentVolumeClaim:
-            claimName: {{ include "radarr.fullname" . }}-config   
         - name: radarr-media
           hostPath:
             path: {{ .Values.googleDrive.localPath }}
@@ -83,3 +82,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "radarr.fullname" . }}-config  
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
