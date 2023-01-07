@@ -48,13 +48,10 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /status
-              port: http
-            initialDelaySeconds: 30
-            periodSeconds: 60
-            successThreshold: 1
-            failureThreshold: 5  
+            exec:
+              command:
+                - "ls" 
+                - "/data"
           readinessProbe:
             httpGet:
               path: /status
