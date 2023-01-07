@@ -44,7 +44,7 @@ spec:
             type: Directory                     
         - name: filebot-config
           persistentVolumeClaim:
-            claimName: filebot-config-rwo              
+            claimName: filebot-config-rwm              
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
