@@ -8,6 +8,7 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "sonarr.fullname" . }} 
   selector:
     matchLabels:
       {{- include "sonarr.selectorLabels" . | nindent 6 }}
@@ -63,10 +64,7 @@ spec:
             failureThreshold: 5  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      volumes:
-        - name: {{ include "sonarr.fullname" . }}-config
-          persistentVolumeClaim:
-            claimName: {{ include "sonarr.fullname" . }}-config   
+      volumes: 
         - name: sonarr-media
           hostPath:
             path: {{ .Values.googleDrive.localPath }}
@@ -83,3 +81,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "sonarr.fullname" . }}-config  
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
