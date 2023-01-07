@@ -1649,6 +1649,13 @@ entries:
     version: 0.1.0
   sonarr:
   - apiVersion: v2
+    created: "2023-01-07T12:54:49.591977098Z"
+    digest: b65ec22a199bb20c09316deff9107d7c69ec53be05bcbaaf39bfa5107cd1b60b
+    name: sonarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/sonarr-0.1.15/sonarr-0.1.15.tgz
+    version: 0.1.15
+  - apiVersion: v2
     created: "2023-01-07T09:48:55.927105871Z"
     digest: a70cacce464b90df884e0b7b4cea2cca437f24188c7e47856c9a18bf0e458be2
     name: sonarr
@@ -2052,4 +2059,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-07T12:53:35.194477429Z"
+generated: "2023-01-07T12:54:49.593089569Z"
