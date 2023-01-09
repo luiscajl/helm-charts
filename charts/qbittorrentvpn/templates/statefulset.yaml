@@ -41,13 +41,36 @@ spec:
             path: /etc/localtime
         - name: scripts
           configMap:
-            name: qbittorrent-scripts    
-        - name: health
+            name: qbittorrent-scripts     
+        - name: config-data
           configMap:
-            name: qbittorrent-health   
+            name: qbittorrent-health  
             items:
               - key: liveness.sh
-                path: liveness.sh                                  
+                path: liveness.sh
+        - name: config
+          emptyDir: {}                       
+      initContainers:           
+        - name: qbittorrent-scripts-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/liveness.sh
+            - /out/liveness.sh
+          volumeMounts:
+          - name: config-data
+            mountPath: /in
+          - name: config
+            mountPath: /out     
+        - name: permission-fix
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 777 /out']
+          volumeMounts:
+          - name: config
+            mountPath: /out                                                  
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -69,8 +92,8 @@ spec:
               name: data
             - mountPath: /etc/localtime
               name: etc-localtime   
-            - mountPath: /etc/health
-              name: health                 
+            - mountPath: /health
+              name: config                 
             # - mountPath: /config/wireguard
             #   name: config-vpn    
           livenessProbe:
@@ -78,12 +101,23 @@ spec:
               command:
                 - bin/bash
                 - -c
-                - ./etc/health/liveness.sh
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 2                 
           readinessProbe:
             exec:
               command:
-                - "ls" 
-                - "/data/torrenting"                         
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 2                        
           ports:
             - name: privoxy
               containerPort: 8181

@@ -4,11 +4,12 @@ metadata:
   name: qbittorrent-health 
 data:
   liveness.sh: |
-    #!/bin/sh
-    if [ $(ls /data/torrenting) -ge 1 ]; then
+    #!/bin/bash
+    if [ "ls /data/torrenting" ]; then
+      curl http://localhost:8080
       echo 0
     else
-      echo "Nothing happens!" 1>&2
-        exit 1
+      echo "Liveness failed!" 1>&2
+      exit 1
     fi
   
