@@ -41,7 +41,13 @@ spec:
             path: /etc/localtime
         - name: scripts
           configMap:
-            name: qbittorrent-scripts                           
+            name: qbittorrent-scripts    
+        - name: health
+          configMap:
+            name: qbittorrent-health   
+            items:
+              - key: liveness.sh
+                path: liveness.sh                                  
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -63,13 +69,16 @@ spec:
               name: data
             - mountPath: /etc/localtime
               name: etc-localtime   
+            - mountPath: /etc/health
+              name: health                 
             # - mountPath: /config/wireguard
             #   name: config-vpn    
           livenessProbe:
             exec:
               command:
-                - "ls" 
-                - "/data/torrenting"
+                - bin/bash
+                - -c
+                - ./etc/health/liveness.sh
           readinessProbe:
             exec:
               command:

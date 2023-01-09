@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qbittorrent-health 
+data:
+  liveness.sh: |
+    #!/bin/sh
+    if [ $(ls /data/torrenting) -ge 1 ]; then
+      echo 0
+    else
+      echo "Nothing happens!" 1>&2
+        exit 1
+    fi
+  
