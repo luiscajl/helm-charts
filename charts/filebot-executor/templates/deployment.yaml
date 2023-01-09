@@ -44,7 +44,36 @@ spec:
             type: Directory                     
         - name: filebot-config
           persistentVolumeClaim:
-            claimName: filebot-config-rwm              
+            claimName: filebot-config-rwm    
+        - name: config-data
+          configMap:
+            name: filebot-executor-health   
+            items:
+              - key: liveness.sh
+                path: liveness.sh
+        - name: config
+          emptyDir: {}               
+      initContainers:           
+        - name: filebot-executor-scripts-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/liveness.sh
+            - /out/liveness.sh
+          volumeMounts:
+          - name: config-data
+            mountPath: /in
+          - name: config
+            mountPath: /out     
+        - name: permission-fix
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 777 /out']
+          volumeMounts:
+          - name: config
+            mountPath: /out                       
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -93,18 +122,25 @@ spec:
           livenessProbe:
             exec:
               command:
-                - "ls" 
-                - "/media-output"
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-              scheme: HTTP
+                - bin/bash
+                - -c
+                - /health/liveness.sh
             initialDelaySeconds: 10
             timeoutSeconds: 5
             periodSeconds: 5
             successThreshold: 1
-            failureThreshold: 5
+            failureThreshold: 2                 
+          readinessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 2  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -115,7 +151,9 @@ spec:
               name: filebot-output  
             - mountPath: /media-input
               mountPropagation: Bidirectional
-              name: filebot-input             
+              name: filebot-input       
+            - mountPath: /health
+              name: config                        
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

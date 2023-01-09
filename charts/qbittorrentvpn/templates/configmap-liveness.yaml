@@ -5,8 +5,9 @@ metadata:
 data:
   liveness.sh: |
     #!/bin/bash
-    if [ "ls /data/torrenting" ]; then
-      curl http://localhost:8080
+    DIR=/data/torrenting
+    if [[ -d "$DIR" ]]  && [[ "$(curl -sL -w '%{http_code}' http://localhost:8080 -o /dev/null)" = "200"  ]];
+    then
       echo 0
     else
       echo "Liveness failed!" 1>&2
