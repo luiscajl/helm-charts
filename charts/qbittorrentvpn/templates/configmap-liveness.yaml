@@ -8,7 +8,8 @@ data:
     DIR=/data/torrenting
     numFiles=`ls $DIR | wc -l`
     echo "Numero de ficheros encontrados en la carpeta" $numFiles
-    if [[ $numFiles -gt 1 ]]  && [[ "$(curl -sL -w '%{http_code}' http://localhost:8080 -o /dev/null)" = "200"  ]];
+    #if [[ $numFiles -gt 1 ]]  && [[ "$(curl -sL -w '%{http_code}' http://localhost:8080 -o /dev/null)" = "200"  ]];
+    if [[ $numFiles -gt 1 ]];
     then
       echo 0
     else
