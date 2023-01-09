@@ -1,6 +1,8 @@
 #!/bin/bash
-DIR=/data/torrenting
-if [[ -d "$DIR" ]]  && [[ "$(curl -sL -w '%{http_code}' http://localhost:8080 -o /dev/null)" = "200"  ]];
+DIR=/Users/luiscarlos/Documents/Github/helm-charts/charts/qbittorrentvpn
+numFiles=`ls $DIR | wc -l`
+# echo $numFiles
+if [[ $numFiles -gt 1 ]]  && [[ "$(curl -sL -w '%{http_code}' https://google.es -o /dev/null)" = "200"  ]];
 then
   echo 0
 else
