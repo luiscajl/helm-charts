@@ -337,6 +337,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2023-01-09T12:12:09.029452568Z"
+    digest: d12726bf1aacfa06082e85cd11f7250ac38bcd0116ca378f43701d37688e8645
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-0.0.22/filebot-executor-0.0.22.tgz
+    version: 0.0.22
+  - apiVersion: v2
     created: "2023-01-07T13:08:23.016243184Z"
     digest: e50c34b48e23fd60a5453e9562daf91585283e7f812a7ae8065d8515346c3f87
     name: filebot-executor
@@ -791,6 +798,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
   qbittorrentvpn:
+  - apiVersion: v2
+    created: "2023-01-09T12:12:09.269481557Z"
+    digest: e902811fd20fe9cd2b66bef35956db773ee0e481df235071a3f443fc369916da
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-1.0.4/qbittorrentvpn-1.0.4.tgz
+    version: 1.0.4
   - apiVersion: v2
     created: "2023-01-09T11:39:16.178565639Z"
     digest: 5726d1efefd8c7cbbeb96cad613ec6517cb1a1ab585d0cf2544211e59a6dac58
@@ -2094,4 +2108,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-09T11:39:16.17963394Z"
+generated: "2023-01-09T12:12:09.272305761Z"
