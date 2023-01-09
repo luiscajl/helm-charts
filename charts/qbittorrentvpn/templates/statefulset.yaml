@@ -102,7 +102,7 @@ spec:
                 - bin/bash
                 - -c
                 - /health/liveness.sh
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             timeoutSeconds: 5
             periodSeconds: 5
             successThreshold: 1
@@ -113,7 +113,7 @@ spec:
                 - bin/bash
                 - -c
                 - /health/liveness.sh
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             timeoutSeconds: 5
             periodSeconds: 5
             successThreshold: 1
