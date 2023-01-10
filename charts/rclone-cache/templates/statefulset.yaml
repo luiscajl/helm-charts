@@ -46,15 +46,15 @@ spec:
           volumeMounts:
             - mountPath: /data
               mountPropagation: Bidirectional
-              name: rclone-cache-data                  
+              name: rclone-data                  
         - name: {{ .Chart.Name }}-config
           image: "busybox"
           command:
             - cp
           args:
             - -v
-            - /in/rclone-cache.conf
-            - /out/rclone-cache.conf
+            - /in/rclone.conf
+            - /out/rclone.conf
           volumeMounts:
           - name: config-data
             mountPath: /in
