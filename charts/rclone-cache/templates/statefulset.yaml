@@ -31,10 +31,10 @@ spec:
             path: {{ .Values.config.dataPath }}       
         - name: config-data
           configMap:
-            name: rclone-cache-config-data
+            name: rclone-config-data
             items:
-              - key: rclone-cache.conf
-                path: rclone-cache.conf
+              - key: rclone.conf
+                path: rclone.conf
         - name: config
           emptyDir: {}                    
       initContainers:
