@@ -76,13 +76,13 @@ spec:
               command:
                 - "rclone" 
                 - "lsd" 
-                - "{{ .Values.config.typeOfrclone-cache}}:"
+                - "{{ .Values.config.typeOfRclone}}:"
           readinessProbe:
             exec:
               command:
                 - "rclone" 
                 - "lsd" 
-                - "{{ .Values.config.typeOfrclone-cache}}:"
+                - "{{ .Values.config.typeOfRclone}}:"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
