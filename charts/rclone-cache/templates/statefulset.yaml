@@ -77,12 +77,22 @@ spec:
                 - "rclone" 
                 - "lsd" 
                 - "{{ .Values.config.typeOfRclone}}:"
+            initialDelaySeconds: 20
+            timeoutSeconds: 15
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3                    
           readinessProbe:
             exec:
               command:
                 - "rclone" 
                 - "lsd" 
                 - "{{ .Values.config.typeOfRclone}}:"
+            initialDelaySeconds: 20
+            timeoutSeconds: 15
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3                    
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
