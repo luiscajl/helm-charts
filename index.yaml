@@ -1731,6 +1731,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/rclone-0.1.0/rclone-0.1.0.tgz
     version: 0.1.0
+  rclone-cache:
+  - apiVersion: v2
+    created: "2023-01-10T07:34:54.727717625Z"
+    digest: 74370b2ea236736d6b161ffee981ad846129de8538851d3012a00a407ad0eb01
+    name: rclone-cache
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/rclone-cache-1.0.0/rclone-cache-1.0.0.tgz
+    version: 1.0.0
   sonarr:
   - apiVersion: v2
     created: "2023-01-07T13:10:16.605362599Z"
@@ -2150,4 +2158,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-09T18:21:29.658238391Z"
+generated: "2023-01-10T07:34:54.728958645Z"
