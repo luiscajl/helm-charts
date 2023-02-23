@@ -14,7 +14,7 @@ environmentVariables:
 volumes:
   config: 
     enabled: true 
-    storageClass: Longhorn
+    storageClass: 
     size: 5Gi
 imagePullSecrets: []
 nameOverride: ""
