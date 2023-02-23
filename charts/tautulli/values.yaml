@@ -11,7 +11,11 @@ environmentVariables:
     value: "1000"
   - name: TZ
     value: "Europe/Madrid"
-
+volumes:
+  config: 
+    enabled: true 
+    storageClass: Longhorn
+    size: 5Gi
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
