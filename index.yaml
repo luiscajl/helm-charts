@@ -1896,6 +1896,13 @@ entries:
     version: 0.1.0
   tautulli:
   - apiVersion: v2
+    created: "2023-02-23T09:19:21.750480756Z"
+    digest: 0da07ef3077c67d59d9d68f25c5f52495efce0829f9815ab0b90e09325641817
+    name: tautulli
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tautulli-0.0.15/tautulli-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
     created: "2023-02-23T09:12:24.195549884Z"
     digest: c8e9d95bb8fb748f40fa51acca8afea4dd55bad846a2090dde26f68b4921b9e7
     name: tautulli
@@ -2207,4 +2214,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T09:12:24.198064217Z"
+generated: "2023-02-23T09:19:21.751818549Z"
