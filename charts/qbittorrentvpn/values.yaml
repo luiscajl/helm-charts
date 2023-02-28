@@ -4,7 +4,7 @@ replicaCount: 1
 image:
   repository: binhex/arch-qbittorrentvpn
   pullPolicy: Always
-  tag: 4.5.0-1-01       
+  tag: 4.5.2-1-01       
 environmentVariables:
   - name: VPN_ENABLED
     value: "no" 
