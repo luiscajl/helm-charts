@@ -2103,6 +2103,13 @@ entries:
     version: 0.0.1
   torznab-atomohd:
   - apiVersion: v2
+    created: "2023-04-27T18:51:11.033638335Z"
+    digest: d3cf2d861e1639ba6e58d078d07396ff45eec9bdb6bfbf0bd7d3b06fd7b3a895
+    name: torznab-atomohd
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/torznab-atomohd-0.0.2/torznab-atomohd-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2023-04-27T18:46:28.671888682Z"
     digest: c494533323f4a33df1605d268f525b3c3cc33f9caff847fe3dc981018736fdf7
     name: torznab-atomohd
@@ -2236,4 +2243,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-27T18:46:28.673195405Z"
+generated: "2023-04-27T18:51:11.043280013Z"
