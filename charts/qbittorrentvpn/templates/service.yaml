@@ -15,13 +15,5 @@ spec:
       targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: bittorrent-ui
-    - port: 6881
-      targetPort: 6881
-      protocol: TCP
-      name: vpn
-    - port: 6881
-      targetPort: 6881
-      protocol: UDP
-      name: vpn-udp  
   selector:
     {{- include "qbittorrentvpn.selectorLabels" . | nindent 4 }}

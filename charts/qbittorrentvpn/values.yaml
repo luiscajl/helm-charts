@@ -1,37 +1,34 @@
-paths:
-  torrents: /mnt/rclone-writer 
+nfs:
+  path: /mnt/rclone-writer 
+  server: nfs.lavandadelpatio.es
 replicaCount: 1
 image:
   repository: binhex/arch-qbittorrentvpn
   pullPolicy: Always
-  tag: 4.5.0-1-01       
+  tag: 4.5.2-1-03    
 environmentVariables:
   - name: VPN_ENABLED
-    value: "no" 
+    value: "yes" 
   - name: VPN_PROV
     value: airvpn
   - name: VPN_CLIENT
-    value: openvpn
+    value: wireguard
   - name: ENABLE_PRIVOXY
-    value: "no"
+    value: "yes"
   - name: LAN_NETWORK 
-    value: 0.0.0.0/0
+    value: 10.42.0.0/16
   - name: NAME_SERVERS 
-    value: 84.200.69.80,37.235.1.174,1.1.1.1,37.235.1.177,84.200.70.40,1.0.0.1
-  - name: VPN_INPUT_PORTS  
-    value: 1234 
-  - name: VPN_OUTPUT_PORTS  
-    value: 5678 
+    value: 1.1.1.1,1.0.0.1
   - name: DEBUG 
     value: true 
   - name: WEBUI_PORT 
-    value: 8080
+    value: 8081
   - name: UMASK 
     value: 000
   - name: PUID 
     value: 0
   - name: PGID 
-    value: 0 
+    value: 0  
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -53,23 +50,17 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 8081
 
 ingress:
   enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations:
+    kubernetes.io/ingress.class: nginx
   hosts:
-    - host: chart-example.local
-      paths:
+    - host: qbittorrent-test.lavandadelpatio.es
+      paths: 
         - path: /
           pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

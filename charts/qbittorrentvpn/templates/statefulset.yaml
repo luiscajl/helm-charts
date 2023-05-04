@@ -33,23 +33,29 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "qbittorrentvpn.fullname" . }}-config-volume   
         - name: data
-          hostPath:
-            path: {{ .Values.paths.torrents }}
-            type: Directory  
+          nfs:
+            server: {{ .Values.nfs.server }}}
+            path: {{ .Values.nfs.path }}
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
         - name: scripts
           configMap:
             name: qbittorrent-scripts     
-        - name: config-data
+        - name: health-data
           configMap:
             name: qbittorrent-health  
             items:
               - key: liveness.sh
                 path: liveness.sh
-        - name: config
-          emptyDir: {}                       
+        - name: wireguard-data
+          configMap:
+            name: wireguard-config  
+            items:
+              - key: wg0.conf
+                path: wg0.conf                
+        - name: health
+          emptyDir: {}                                 
       initContainers:           
         - name: qbittorrent-scripts-config
           image: "busybox"
@@ -60,16 +66,29 @@ spec:
             - /in/liveness.sh
             - /out/liveness.sh
           volumeMounts:
-          - name: config-data
+          - name: health-data
             mountPath: /in
-          - name: config
+          - name: health
             mountPath: /out     
-        - name: permission-fix
+        - name: import-wireguard-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg0.conf
+            - /out/wireguard/wg0.conf
+          volumeMounts:
+          - name: wireguard-data
+            mountPath: /in
+          - name: {{ include "qbittorrentvpn.fullname" . }}-config-volume
+            mountPath: /out                
+        - name: permission-fix-for-health
           image: busybox
           command: ['sh', '-c']
           args: ['chmod -R 777 /out']
           volumeMounts:
-          - name: config
+          - name: health
             mountPath: /out                                                  
       containers:
         - name: {{ .Chart.Name }}
@@ -93,7 +112,7 @@ spec:
             - mountPath: /etc/localtime
               name: etc-localtime   
             - mountPath: /health
-              name: config                 
+              name: health                 
             # - mountPath: /config/wireguard
             #   name: config-vpn    
           livenessProbe:
@@ -102,7 +121,7 @@ spec:
                 - bin/bash
                 - -c
                 - /health/liveness.sh
-            initialDelaySeconds: 60
+            initialDelaySeconds: 10
             timeoutSeconds: 10
             periodSeconds: 10
             successThreshold: 1
@@ -113,7 +132,7 @@ spec:
                 - bin/bash
                 - -c
                 - /health/liveness.sh
-            initialDelaySeconds: 60
+            initialDelaySeconds: 10
             timeoutSeconds: 10
             periodSeconds: 10
             successThreshold: 1
@@ -124,13 +143,7 @@ spec:
               protocol: TCP
             - name: bittorrent-ui
               containerPort: {{ .Values.service.port }}
-              protocol: TCP
-            - name: vpn
-              containerPort: 6881
-              protocol: TCP
-            - name: vpn-udp
-              containerPort: 6881
-              protocol: TCP       
+              protocol: TCP     
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
