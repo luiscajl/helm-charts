@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sonarr-en-{{ include "arr.fullname" . }}
+  labels:
+    app.kubernetes.io/instance: sonarr-en
+    app.kubernetes.io/name: sonarr-en
+spec:
+  replicas: {{ .Values.replicaCount }}
+  serviceName: {{ include "arr.fullname" . }} 
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: sonarr-en
+      app.kubernetes.io/name: sonarr-en
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/instance: sonarr-en
+        app.kubernetes.io/name: sonarr-en
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "arr.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:           
+        - name: liveneness-init
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/liveness.sh
+            - /out/liveness.sh
+          volumeMounts:
+          - name: health-data
+            mountPath: /in
+          - name: health
+            mountPath: /out   
+        - name: permission-fix
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 655 /out']
+          volumeMounts:
+          - name: health
+            mountPath: /out           
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repositorySonarr }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - mountPath: /config
+              name: {{ include "arr.fullname" . }}-sonarr-en-config  
+            - mountPath: /data
+              name: sonarr-media  
+            - mountPath: /health
+              name: health                
+          env:
+            {{- range .Values.environmentVariables }}
+            - name: {{ .name }}
+              value: "{{ .value }}"
+            {{- end }} 
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.sonarr.port }}
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3   
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5  
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes: 
+        - name: sonarr-media
+          nfs:
+            server: {{ .Values.nfs.server}}
+            path: {{ .Values.nfs.path }}
+        - name: health-data
+          configMap:
+            name: arr-health  
+            items:
+              - key: liveness.sh
+                path: liveness.sh
+        - name: health
+          emptyDir: {}          
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "arr.fullname" . }}-sonarr-en-config  
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
