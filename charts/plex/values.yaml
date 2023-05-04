@@ -20,7 +20,8 @@ volumes:
     size: 70Gi
   data:   
     enabled: true 
-    hostPath: /mnt/rclone-reader  
+    path: /mnt/rclone-reader  
+    server: 10.0.0.2
 
 nodeSelector: {}
 imagePullSecrets: []

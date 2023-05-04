@@ -28,6 +28,27 @@ spec:
       serviceAccountName: {{ include "plex.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:           
+        - name: liveneness-init
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/liveness.sh
+            - /out/liveness.sh
+          volumeMounts:
+          - name: health-data
+            mountPath: /in
+          - name: health
+            mountPath: /out   
+        - name: permission-fix
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 655 /out']
+          volumeMounts:
+          - name: health
+            mountPath: /out                      
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -46,7 +67,9 @@ spec:
             {{- if .Values.volumes.data.enabled }}
             - mountPath: /media
               name: plex-media-volume       
-            {{- end }}                
+            {{- end }}          
+            - mountPath: /health
+              name: health                    
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
@@ -55,17 +78,25 @@ spec:
           livenessProbe:
             exec:
               command:
-                - "ls" 
-                - "/media"
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3                 
           readinessProbe:
-            httpGet:
-              path: /identity
-              port: 32400
-            initialDelaySeconds: 15  
-            periodSeconds: 5
-            timeoutSeconds: 5
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
             failureThreshold: 3
-            successThreshold: 1   
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -80,13 +111,21 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}  
-      {{- if .Values.volumes.data.enabled }}
       volumes: 
-      - name: plex-media-volume
-        hostPath:
-          path: {{ .Values.volumes.data.hostPath }}
-          type: Directory
+      {{- if .Values.volumes.data.enabled }}
+        - name: plex-media-volume
+          nfs:
+            server: {{ .Values.volumes.data.server }} 
+            path: {{ .Values.volumes.data.path }}
       {{- end }}                
+        - name: config-data
+          configMap:
+            name: plex-health  
+            items:
+              - key: liveness.sh
+                path: liveness.sh
+        - name: health
+          emptyDir: {} 
   {{- if .Values.volumes.config.enabled }}
   volumeClaimTemplates:
     - metadata:
