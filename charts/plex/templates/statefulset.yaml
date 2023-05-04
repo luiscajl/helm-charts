@@ -118,7 +118,7 @@ spec:
             server: {{ .Values.volumes.data.server }} 
             path: {{ .Values.volumes.data.path }}
       {{- end }}                
-        - name: config-data
+        - name: health-data
           configMap:
             name: plex-health  
             items:
