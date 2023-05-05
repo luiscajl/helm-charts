@@ -29,9 +29,6 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        - name: {{ include "qbittorrentvpn.fullname" . }}-config-volume
-          persistentVolumeClaim:
-            claimName: {{ include "qbittorrentvpn.fullname" . }}-config-volume   
         - name: data
           nfs:
             server: {{ .Values.nfs.server }}}
@@ -158,3 +155,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "qbittorrentvpn.fullname" . }}-config-volume  
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
