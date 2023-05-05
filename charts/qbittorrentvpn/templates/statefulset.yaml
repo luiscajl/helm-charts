@@ -104,7 +104,6 @@ spec:
             - mountPath: /scripts
               name: scripts                 
             - mountPath: /data/torrenting
-              mountPropagation: Bidirectional
               name: data
             - mountPath: /etc/localtime
               name: etc-localtime   
