@@ -66,7 +66,17 @@ spec:
           - name: health-data
             mountPath: /in
           - name: health
-            mountPath: /out     
+            mountPath: /out  
+        - name: create-wireguard-config
+          image: "busybox"
+          command:
+            - mkdir
+          args:
+            - -p
+            - /out/wireguard
+          volumeMounts:
+          - name: {{ include "qbittorrentvpn.fullname" . }}-config-volume
+            mountPath: /out                  
         - name: import-wireguard-config
           image: "busybox"
           command:
