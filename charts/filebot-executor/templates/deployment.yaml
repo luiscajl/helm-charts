@@ -35,13 +35,13 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: filebot-output
-          hostPath:
-            path: {{ .Values.paths.media }}
-            type: Directory   
+          nfs:
+            server: {{ .Values.nfs.server }}
+            path: {{ .Values.nfs.paths.media }}               
         - name: filebot-input
-          hostPath:
-            path: {{ .Values.paths.torrents }}
-            type: Directory                     
+          nfs:
+            server: {{ .Values.nfs.server }}
+            path: {{ .Values.nfs.paths.torrents }}                  
         - name: filebot-config
           persistentVolumeClaim:
             claimName: filebot-config-rwm    
@@ -87,16 +87,6 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.spring.profile}}
-            # - name: AWS_ACCESS_KEY_ID
-            #   valueFrom:
-            #     secretKeyRef:
-            #      name: aws-credentials
-            #      key: aws-access-key-id 
-            # - name: AWS_SECRET_ACCESS_KEY
-            #   valueFrom:
-            #     secretKeyRef:
-            #      name: aws-credentials
-            #      key: aws-access-secret-key  
             - name: SPRING_DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:

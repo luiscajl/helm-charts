@@ -7,10 +7,20 @@ image:
   pullPolicy: Always
   tag: "0.0.1-SNAPSHOT"
 
+
+nfs:
+  server: nfs.lavandadelpatio.es
+  paths:
+   media: /mnt/rclone-writer
+   torrents: /mnt/rclone-writer/Torrenting
 paths:
   media: /mnt/rclone-writer ## OUTPUT
   torrents: /mnt/rclone-writer/Torrenting ## INPUT  
-
+filebot:
+  pathInput: /media-input
+  pathOutput: /media-output
+  pathData: /home/filebot
+  testEnabled: false
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -28,13 +38,13 @@ podSecurityContext: {}
 securityContext: 
   runAsUser: 1000
   runAsGroup: 1000
+  privileged: true
   # capabilities:
   #   drop:
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
 service:
   type: ClusterIP
   port: 8080
