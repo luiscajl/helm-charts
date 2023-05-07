@@ -2309,6 +2309,13 @@ entries:
     version: 0.0.1
   xteve:
   - apiVersion: v2
+    created: "2023-05-07T16:54:44.457083231Z"
+    digest: e89e5f8d2fcf10217b8f8faf7d4e5121062243f0a6188cae179028cdbd9894e3
+    name: xteve
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.2/xteve-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2023-05-07T16:48:40.536559271Z"
     digest: b9e338c5cbb43661b31f79945c70ce9ef27246228c554864e7e43e4d4f7ef83d
     name: xteve
@@ -2322,4 +2329,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-07T16:48:40.537893588Z"
+generated: "2023-05-07T16:54:44.458459241Z"
