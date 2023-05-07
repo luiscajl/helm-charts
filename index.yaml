@@ -2307,4 +2307,12 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/transmission-0.0.1/transmission-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-05T09:09:35.468417198Z"
+  xteve:
+  - apiVersion: v2
+    created: "2023-05-07T16:45:36.025472009Z"
+    digest: 8aed8c42d305a4a943a5f4182be83fd60c593cea35169e728b7b90498a44b78e
+    name: xteve
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-05-07T16:45:36.026646738Z"
