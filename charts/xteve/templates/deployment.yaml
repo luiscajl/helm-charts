@@ -35,25 +35,30 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - mountPath: /home/xteve/conf
-              name: {{ include "xteve.fullname" . }}-config-volume            
+              name: {{ include "xteve.fullname" . }}-config-volume
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /web
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /web
-          #     port: http
+          livenessProbe:
+            httpGet:
+              path: /web
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /web
+              port: http
+          env:
+           {{- range .Values.environmentVariables }}
+            - name: {{ .name }}
+              value: "{{ .value }}"
+            {{- end }}           
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: {{ include "xteve.fullname" . }}-config-volume
           persistentVolumeClaim:
-            claimName: {{ include "xteve.fullname" . }}-config-volume                    
+            claimName: {{ include "xteve.fullname" . }}-config-volume                             
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
