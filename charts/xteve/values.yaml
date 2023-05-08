@@ -13,7 +13,8 @@ image:
 
 
 environmentVariables:
-  XTEVE_PORT: 34400
+  - name: XTEVE_PORT
+    value: 34400
 
 imagePullSecrets: []
 nameOverride: ""
