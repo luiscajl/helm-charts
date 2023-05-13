@@ -345,6 +345,13 @@ entries:
     version: 0.0.1
   filebot-executor:
   - apiVersion: v2
+    created: "2023-05-13T18:56:17.850140092Z"
+    digest: 3e842414c7e59474712c936f9f1f60c626c0d04760fb17b01c25c52cef3433a4
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-1.0.1/filebot-executor-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     created: "2023-05-05T06:34:16.097676381Z"
     digest: d1e07f3abb6aee71d3cf909011a1776cf247158b890e039d149611e12e034f5f
     name: filebot-executor
@@ -840,6 +847,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-0.0.76/plex-0.0.76.tgz
     version: 0.0.76
+  plex-rclone-wireguard:
+  - apiVersion: v2
+    created: "2023-05-13T18:56:17.961024624Z"
+    digest: 3ce3f49fa09723fcc02d8affde003c73ed0c4767292da500485459af4dce6db3
+    name: plex-rclone-wireguard
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-rclone-wireguard-1.0.0/plex-rclone-wireguard-1.0.0.tgz
+    version: 1.0.0
   qbittorrentvpn:
   - apiVersion: v2
     created: "2023-05-05T09:09:35.465564792Z"
@@ -2350,4 +2365,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-08T09:51:35.975721908Z"
+generated: "2023-05-13T18:56:17.962239232Z"
