@@ -11,11 +11,8 @@ image:
 nfs:
   server: nfs.lavandadelpatio.es
   paths:
-   media: /mnt/rclone-writer
-   torrents: /mnt/rclone-writer/Torrenting
-paths:
-  media: /mnt/rclone-writer ## OUTPUT
-  torrents: /mnt/rclone-writer/Torrenting ## INPUT  
+   media: /mnt/rclone-writer ## OUTPUT
+   torrents: /mnt/rclone-writer/Torrenting ## INPUT  
 filebot:
   pathInput: /media-input
   pathOutput: /media-output

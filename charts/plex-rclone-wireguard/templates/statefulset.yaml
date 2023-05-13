@@ -1,0 +1,210 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "plex-rclone-wireguard.fullname" . }}
+  labels:
+    {{- include "plex-rclone-wireguard.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "plex-rclone-wireguard.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "plex-rclone-wireguard.fullname" . }} 
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "plex-rclone-wireguard.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "plex-rclone-wireguard.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:           
+        - name: liveneness-init
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/liveness.sh
+            - /out/liveness.sh
+          volumeMounts:
+          - name: health-data
+            mountPath: /in
+          - name: health
+            mountPath: /out   
+        - name: permission-fix
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 655 /out']
+          volumeMounts:
+          - name: health
+            mountPath: /out  
+        - name: rclone-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/rclone.conf
+            - /out/rclone.conf
+          volumeMounts:
+            - name: rclone-config
+              mountPath: /in
+            - name: rclone-data
+              mountPath: /out
+        - name: import-wireguard-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg1.conf
+            - /out/wg1.conf
+          volumeMounts:
+            - name: wireguard-config
+              mountPath: /in
+            - name: wireguard-data
+              mountPath: /out                                
+      containers:
+        - image: luiscajl/rclone-wireguard
+          name: rclone-wireguard
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            capabilities:
+              add: ["NET_ADMIN", "SYS_TIME", "SYS_ADMIN"]
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+            limits:
+              cpu: "1000m"
+              memory: "1000M"  
+          command:
+            [
+              "sh",
+              "-c",
+              "wg-quick up wg1 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.2  ",
+            ]
+          volumeMounts:
+            - mountPath: /data
+              name: data
+              mountPropagation: Bidirectional
+            - mountPath: /etc/wireguard
+              name: wireguard-data
+            - mountPath: /etc/rclone
+              name: rclone-data      
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port}}
+              protocol: TCP
+          volumeMounts:
+            {{- if .Values.volumes.config.enabled }}
+            - mountPath: /config
+              name: plex-rclone-wireguard-config-volume
+            {{- end }}                
+            {{- if .Values.volumes.data.enabled }}
+            - mountPath: /media
+              name: data     
+              mountPropagation: Bidirectional  
+            {{- end }}          
+            - mountPath: /health
+              name: health                    
+          env:
+            {{- range .Values.environmentVariables }}
+            - name: {{ .name }}
+              value: "{{ .value }}"
+            {{- end }}     
+          livenessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3                 
+          readinessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          securityContext:
+            privileged: true            
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}  
+      volumes: 
+      {{- if .Values.volumes.data.enabled }}
+        - name: data
+          emptyDir: {}
+      {{- end }}                
+        - name: health-data
+          configMap:
+            name: plex-rclone-wireguard-health  
+            items:
+              - key: liveness.sh
+                path: liveness.sh
+        - name: health
+          emptyDir: {} 
+        - name: wireguard-data
+          emptyDir: {}
+        - name: rclone-data
+          emptyDir: {}
+        - name: wireguard-config
+          configMap:
+            name: wireguard-config
+            items:
+              - key: wg1.conf
+                path: wg1.conf
+        - name: rclone-config
+          configMap:
+            name: rclone-config
+            items:
+              - key: rclone.conf
+                path: rclone.conf          
+  {{- if .Values.volumes.config.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: plex-rclone-wireguard-config-volume
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: {{ .Values.volumes.config.storageClass }}
+        resources:
+          requests:
+            storage: {{ .Values.volumes.config.size }}    
+  {{- end }}                
