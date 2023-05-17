@@ -49,8 +49,60 @@ spec:
           args: ['chmod -R 655 /out']
           volumeMounts:
           - name: health
-            mountPath: /out           
+            mountPath: /out     
+        - name: rclone-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/rclone.conf
+            - /out/rclone.conf
+          volumeMounts:
+            - name: rclone-config
+              mountPath: /in
+            - name: rclone-data
+              mountPath: /out
+        - name: import-wireguard-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg6.conf
+            - /out/wg6.conf
+          volumeMounts:
+            - name: wireguard-config
+              mountPath: /in
+            - name: wireguard-data
+              mountPath: /out                     
       containers:
+        - image: luiscajl/rclone-wireguard
+          name: rclone-wireguard
+          imagePullPolicy: Always
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+            limits:
+              cpu: "1000m"
+              memory: "1000M"  
+          command:
+            [
+              "sh",
+              "-c",
+              "wg-quick up wg6 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.6  ",
+            ]
+          volumeMounts:
+            - mountPath: /data
+              name: data
+              mountPropagation: Bidirectional
+            - mountPath: /etc/wireguard
+              name: wireguard-data
+            - mountPath: /etc/rclone
+              name: rclone-data         
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -60,7 +112,8 @@ spec:
             - mountPath: /config
               name: {{ include "arr.fullname" . }}-radarr-config  
             - mountPath: /data
-              name: radarr-media 
+              name: data
+              mountPropagation: Bidirectional  
             - mountPath: /health
               name: health                  
           env:
@@ -95,10 +148,8 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: radarr-media
-          nfs:
-            server: {{ .Values.nfs.server}}
-            path: {{ .Values.nfs.path }}
+        - name: data
+          emptyDir: {}
         - name: health-data
           configMap:
             name: arr-health  
@@ -106,7 +157,23 @@ spec:
               - key: liveness.sh
                 path: liveness.sh
         - name: health
-          emptyDir: {}             
+          emptyDir: {}    
+        - name: wireguard-data
+          emptyDir: {}
+        - name: rclone-data
+          emptyDir: {}
+        - name: wireguard-config
+          configMap:
+            name: wireguard-config
+            items:
+              - key: wg6.conf
+                path: wg6.conf
+        - name: rclone-config
+          configMap:
+            name: rclone-config
+            items:
+              - key: rclone.conf
+                path: rclone.conf                    
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
