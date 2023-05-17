@@ -55,6 +55,8 @@ spec:
           emptyDir: {}
         - name: rclone-data
           emptyDir: {}
+        - name: init-script
+          emptyDir: {}          
         - name: wireguard-config
           configMap:
             name: wireguard-config
@@ -66,7 +68,13 @@ spec:
             name: wireguard-config
             items:
               - key: wg-airvpn.conf
-                path: wg-airvpn.conf                
+                path: wg-airvpn.conf    
+        - name: init-script-data
+          configMap:
+            name: init-script-rclone-wireguard
+            items:
+              - key: init.sh
+                path: init.sh                               
         - name: rclone-config
           configMap:
             name: rclone-config
@@ -158,7 +166,27 @@ spec:
             - name: wireguard-config-2
               mountPath: /in
             - name: wireguard-data
-              mountPath: /out                                                                          
+              mountPath: /out    
+        - name: add-init-script
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/init.sh
+            - /out/init.sh
+          volumeMounts:
+            - name: init-script-data
+              mountPath: /in
+            - name: init-script
+              mountPath: /out  
+        - name: permission-fix-init-script
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 777 /out']
+          volumeMounts:
+          - name: init-script
+            mountPath: /out                                                                                                    
       containers:
         - image: luiscajl/rclone-wireguard
           name: rclone-wireguard
@@ -176,7 +204,7 @@ spec:
             [
               "sh",
               "-c",
-              "wg-quick up wg2 && wg-quick up wg-airvpn && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002 --allow-other --allow-non-empty  --dir-cache-time 100h --cache-dir=/tmp/rclone-cache --vfs-cache-mode full --vfs-cache-max-size 350G --vfs-cache-max-age 24h --drive-stop-on-upload-limit --drive-stop-on-download-limit --tpslimit 8 --drive-upload-cutoff 1000T  --bind=10.10.10.2  ",
+              "/tmp/init/init.sh",
             ]
           volumeMounts:
             - mountPath: /data
@@ -185,7 +213,9 @@ spec:
             - mountPath: /etc/wireguard
               name: wireguard-data
             - mountPath: /etc/rclone
-              name: rclone-data     
+              name: rclone-data   
+            - mountPath: /tmp/init
+              name: init-script    
             - mountPath: /tmp/rclone-cache
               name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache       
         - name: {{ .Chart.Name }}
