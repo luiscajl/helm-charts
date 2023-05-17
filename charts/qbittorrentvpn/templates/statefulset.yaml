@@ -192,28 +192,28 @@ spec:
               name: health                 
             # - mountPath: /config/wireguard
             #   name: config-vpn    
-          # livenessProbe:
-          #   exec:
-          #     command:
-          #       - bin/bash
-          #       - -c
-          #       - /health/liveness.sh
-          #   initialDelaySeconds: 30
-          #   timeoutSeconds: 20
-          #   periodSeconds: 10
-          #   successThreshold: 1
-          #   failureThreshold: 3                 
-          # readinessProbe:
-          #   exec:
-          #     command:
-          #       - bin/bash
-          #       - -c
-          #       - /health/liveness.sh
-          #   initialDelaySeconds: 30
-          #   timeoutSeconds: 20
-          #   periodSeconds: 10
-          #   successThreshold: 1
-          #   failureThreshold: 3                        
+          livenessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 30
+            timeoutSeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3                 
+          readinessProbe:
+            exec:
+              command:
+                - bin/bash
+                - -c
+                - /health/liveness.sh
+            initialDelaySeconds: 30
+            timeoutSeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3                        
           ports:
             - name: privoxy
               containerPort: 8181
