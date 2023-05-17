@@ -184,8 +184,9 @@ spec:
               name: {{ include "qbittorrentvpn.fullname" . }}-config-volume  
             - mountPath: /scripts
               name: scripts                 
-            - mountPath: /data/torrenting
+            - mountPath: /data
               name: data
+              mountPropagation: Bidirectional
             - mountPath: /etc/localtime
               name: etc-localtime   
             - mountPath: /health
