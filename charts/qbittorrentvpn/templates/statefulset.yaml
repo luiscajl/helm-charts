@@ -139,7 +139,20 @@ spec:
             - name: wireguard-config
               mountPath: /in
             - name: wireguard-data
-              mountPath: /out                                                               
+              mountPath: /out   
+        - name: import-wireguard-config-2
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg-airvpn.conf
+            - /out/wg-airvpn.conf
+          volumeMounts:
+            - name: wireguard-config
+              mountPath: /in
+            - name: wireguard-data
+              mountPath: /out                                                                          
       containers:
         - image: luiscajl/rclone-wireguard
           name: rclone-wireguard
@@ -157,7 +170,7 @@ spec:
             [
               "sh",
               "-c",
-              "wg-quick up wg2 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002 --allow-other --allow-non-empty  --dir-cache-time 100h --cache-dir=/tmp/rclone-cache --vfs-cache-mode full --vfs-cache-max-size 350G --vfs-cache-max-age 24h --drive-stop-on-upload-limit --drive-stop-on-download-limit --tpslimit 8 --drive-upload-cutoff 1000T  --bind=10.10.10.2  ",
+              "wg-quick up wg2 && wg-quick up wg-airvpn && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002 --allow-other --allow-non-empty  --dir-cache-time 100h --cache-dir=/tmp/rclone-cache --vfs-cache-mode full --vfs-cache-max-size 350G --vfs-cache-max-age 24h --drive-stop-on-upload-limit --drive-stop-on-download-limit --tpslimit 8 --drive-upload-cutoff 1000T  --bind=10.10.10.2  ",
             ]
           volumeMounts:
             - mountPath: /data
