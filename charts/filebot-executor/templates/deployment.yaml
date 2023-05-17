@@ -33,26 +33,7 @@ spec:
       serviceAccountName: {{ include "filebot-executor.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      volumes:
-        - name: filebot-output
-          nfs:
-            server: {{ .Values.nfs.server }}
-            path: {{ .Values.nfs.paths.media }}               
-        - name: filebot-input
-          nfs:
-            server: {{ .Values.nfs.server }}
-            path: {{ .Values.nfs.paths.torrents }}                  
-        - name: filebot-config
-          persistentVolumeClaim:
-            claimName: filebot-config-rwm    
-        - name: config-data
-          configMap:
-            name: filebot-executor-health   
-            items:
-              - key: liveness.sh
-                path: liveness.sh
-        - name: config
-          emptyDir: {}               
+             
       initContainers:           
         - name: filebot-executor-scripts-config
           image: "busybox"
@@ -73,8 +54,60 @@ spec:
           args: ['chmod -R 777 /out']
           volumeMounts:
           - name: config
-            mountPath: /out                       
+            mountPath: /out   
+        - name: rclone-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/rclone.conf
+            - /out/rclone.conf
+          volumeMounts:
+            - name: rclone-config
+              mountPath: /in
+            - name: rclone-data
+              mountPath: /out
+        - name: import-wireguard-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg3.conf
+            - /out/wg3.conf
+          volumeMounts:
+            - name: wireguard-config
+              mountPath: /in
+            - name: wireguard-data
+              mountPath: /out                                   
       containers:
+        - image: luiscajl/rclone-wireguard
+          name: rclone-wireguard
+          imagePullPolicy: Always
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+            limits:
+              cpu: "1000m"
+              memory: "1000M"  
+          command:
+            [
+              "sh",
+              "-c",
+              "wg-quick up wg3 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.3  ",
+            ]
+          volumeMounts:
+            - mountPath: /data
+              name: data
+              mountPropagation: Bidirectional
+            - mountPath: /etc/wireguard
+              name: wireguard-data
+            - mountPath: /etc/rclone
+              name: rclone-data       
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -136,14 +169,41 @@ spec:
           volumeMounts:
             - mountPath: /home/filebot
               name: filebot-config  
-            - mountPath: /media-output
+            - mountPath: /media
               mountPropagation: Bidirectional
-              name: filebot-output  
-            - mountPath: /media-input
-              mountPropagation: Bidirectional
-              name: filebot-input       
+              name: data  
             - mountPath: /health
-              name: config                        
+              name: config   
+      volumes:
+        - name: data
+          emptyDir: {}              
+        - name: filebot-config
+          persistentVolumeClaim:
+            claimName: filebot-config-rwm    
+        - name: config-data
+          configMap:
+            name: filebot-executor-health   
+            items:
+              - key: liveness.sh
+                path: liveness.sh
+        - name: config
+          emptyDir: {}   
+        - name: wireguard-data
+          emptyDir: {}
+        - name: rclone-data
+          emptyDir: {}
+        - name: wireguard-config
+          configMap:
+            name: wireguard-config
+            items:
+              - key: wg3.conf
+                path: wg3.conf
+        - name: rclone-config
+          configMap:
+            name: rclone-config
+            items:
+              - key: rclone.conf
+                path: rclone.conf                                             
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
