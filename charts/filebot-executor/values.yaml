@@ -33,8 +33,6 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 securityContext: 
-  runAsUser: 1000
-  runAsGroup: 1000
   privileged: true
   # capabilities:
   #   drop:
