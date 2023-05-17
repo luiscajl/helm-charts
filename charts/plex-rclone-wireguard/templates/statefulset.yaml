@@ -185,8 +185,8 @@ spec:
           configMap:
             name: wireguard-config
             items:
-              - key: wg1.conf
-                path: wg1.conf
+              - key: wg7.conf
+                path: wg7.conf
         - name: rclone-config
           configMap:
             name: rclone-config
