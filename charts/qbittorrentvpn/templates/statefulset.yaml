@@ -30,9 +30,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: data
-          nfs:
-            server: {{ .Values.nfs.server }}
-            path: {{ .Values.nfs.path }}
+          emptyDir: {}
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
@@ -45,14 +43,30 @@ spec:
             items:
               - key: liveness.sh
                 path: liveness.sh
-        - name: wireguard-data
+        - name: wireguard-data-airvpn
           configMap:
-            name: wireguard-config  
+            name: wireguard-config-airvpn  
             items:
               - key: wg0.conf
                 path: wg0.conf                
         - name: health
-          emptyDir: {}                                 
+          emptyDir: {}      
+        - name: wireguard-data
+          emptyDir: {}
+        - name: rclone-data
+          emptyDir: {}
+        - name: wireguard-config
+          configMap:
+            name: wireguard-config
+            items:
+              - key: wg2.conf
+                path: wg2.conf
+        - name: rclone-config
+          configMap:
+            name: rclone-config
+            items:
+              - key: rclone.conf
+                path: rclone.conf                                      
       initContainers:           
         - name: qbittorrent-scripts-config
           image: "busybox"
@@ -77,7 +91,7 @@ spec:
           volumeMounts:
           - name: {{ include "qbittorrentvpn.fullname" . }}-config-volume
             mountPath: /out                  
-        - name: import-wireguard-config
+        - name: import-wireguard-config-for-qbittorrent
           image: "busybox"
           command:
             - cp
@@ -86,7 +100,7 @@ spec:
             - /in/wg0.conf
             - /out/wireguard/wg0.conf
           volumeMounts:
-          - name: wireguard-data
+          - name: wireguard-data-airvpn
             mountPath: /in
           - name: {{ include "qbittorrentvpn.fullname" . }}-config-volume
             mountPath: /out                
@@ -96,8 +110,60 @@ spec:
           args: ['chmod -R 777 /out']
           volumeMounts:
           - name: health
-            mountPath: /out                                                  
+            mountPath: /out  
+        - name: rclone-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/rclone.conf
+            - /out/rclone.conf
+          volumeMounts:
+            - name: rclone-config
+              mountPath: /in
+            - name: rclone-data
+              mountPath: /out
+        - name: import-wireguard-config
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/wg2.conf
+            - /out/wg2.conf
+          volumeMounts:
+            - name: wireguard-config
+              mountPath: /in
+            - name: wireguard-data
+              mountPath: /out                                                               
       containers:
+        - image: luiscajl/rclone-wireguard
+          name: rclone-wireguard
+          imagePullPolicy: Always
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+            limits:
+              cpu: "1000m"
+              memory: "1000M"  
+          command:
+            [
+              "sh",
+              "-c",
+              "wg-quick up wg2 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.2  ",
+            ]
+          volumeMounts:
+            - mountPath: /data
+              name: data
+              mountPropagation: Bidirectional
+            - mountPath: /etc/wireguard
+              name: wireguard-data
+            - mountPath: /etc/rclone
+              name: rclone-data          
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
