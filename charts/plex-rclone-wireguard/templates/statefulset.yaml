@@ -68,8 +68,8 @@ spec:
             - cp
           args:
             - -v
-            - /in/wg1.conf
-            - /out/wg1.conf
+            - /in/wg7.conf
+            - /out/wg7.conf
           volumeMounts:
             - name: wireguard-config
               mountPath: /in
