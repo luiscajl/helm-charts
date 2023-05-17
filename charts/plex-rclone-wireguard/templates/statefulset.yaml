@@ -92,7 +92,7 @@ spec:
             [
               "sh",
               "-c",
-              "wg-quick up wg1 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.5  ",
+              "wg-quick up wg1 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.7  ",
             ]
           volumeMounts:
             - mountPath: /data
