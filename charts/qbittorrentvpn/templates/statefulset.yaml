@@ -61,6 +61,12 @@ spec:
             items:
               - key: wg2.conf
                 path: wg2.conf
+        - name: wireguard-config-2
+          configMap:
+            name: wireguard-config
+            items:
+              - key: wg-airvpn.conf
+                path: wg-airvpn.conf                
         - name: rclone-config
           configMap:
             name: rclone-config
@@ -149,7 +155,7 @@ spec:
             - /in/wg-airvpn.conf
             - /out/wg-airvpn.conf
           volumeMounts:
-            - name: wireguard-config
+            - name: wireguard-config-2
               mountPath: /in
             - name: wireguard-data
               mountPath: /out                                                                          
