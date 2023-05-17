@@ -66,7 +66,10 @@ spec:
             name: rclone-config
             items:
               - key: rclone.conf
-                path: rclone.conf                                      
+                path: rclone.conf    
+        - name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache
+          persistentVolumeClaim:
+            claimName: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache                                                           
       initContainers:           
         - name: qbittorrent-scripts-config
           image: "busybox"
@@ -154,7 +157,7 @@ spec:
             [
               "sh",
               "-c",
-              "wg-quick up wg2 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.2  ",
+              "wg-quick up wg2 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002 --allow-other --allow-non-empty  --dir-cache-time 100h --cache-dir=/tmp/rclone-cache --vfs-cache-mode full --vfs-cache-max-size 350G --vfs-cache-max-age 24h --drive-stop-on-upload-limit --drive-stop-on-download-limit --tpslimit 8 --drive-upload-cutoff 1000T  --bind=10.10.10.2  ",
             ]
           volumeMounts:
             - mountPath: /data
@@ -163,7 +166,9 @@ spec:
             - mountPath: /etc/wireguard
               name: wireguard-data
             - mountPath: /etc/rclone
-              name: rclone-data          
+              name: rclone-data     
+            - mountPath: /tmp/rclone-cache
+              name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache       
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
