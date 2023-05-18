@@ -2392,6 +2392,13 @@ entries:
     version: 0.0.1
   torznab-atomohd:
   - apiVersion: v2
+    created: "2023-05-18T15:25:27.024740146Z"
+    digest: 225266598a4cecfb3142f8aa4eeef13a49592a13944caeda82efe73906c03fc7
+    name: torznab-atomohd
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/torznab-atomohd-0.0.3/torznab-atomohd-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2023-04-27T18:51:11.033638335Z"
     digest: d3cf2d861e1639ba6e58d078d07396ff45eec9bdb6bfbf0bd7d3b06fd7b3a895
     name: torznab-atomohd
@@ -2575,4 +2582,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-18T09:51:44.193894002Z"
+generated: "2023-05-18T15:25:27.02828407Z"
