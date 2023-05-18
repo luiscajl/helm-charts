@@ -877,6 +877,13 @@ entries:
     version: 0.0.76
   plex-rclone-wireguard:
   - apiVersion: v2
+    created: "2023-05-18T08:05:44.894866356Z"
+    digest: 0320f36469e1eec0828028c2a385e68d593500e796a6d1b94500d549594d1384
+    name: plex-rclone-wireguard
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/plex-rclone-wireguard-1.0.10/plex-rclone-wireguard-1.0.10.tgz
+    version: 1.0.10
+  - apiVersion: v2
     created: "2023-05-18T07:43:52.520735418Z"
     digest: 5ebd84c7660e3501990d717aa4037141311eee8638f9a19ff06c6bbd598e775b
     name: plex-rclone-wireguard
@@ -2540,4 +2547,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-18T07:43:52.522337938Z"
+generated: "2023-05-18T08:05:44.896221166Z"
