@@ -21,6 +21,7 @@ spec:
       labels:
         {{- include "plex-rclone-wireguard.selectorLabels" . | nindent 8 }}
     spec:
+      terminationGracePeriodSeconds: 10
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
