@@ -112,7 +112,8 @@ spec:
                 - /health/health-script.sh
                 - liveness-rclone        
             initialDelaySeconds: 15
-            periodSeconds: 20                                       
+            periodSeconds: 20
+            timeoutSeconds: 5                                       
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -147,6 +148,7 @@ spec:
                 - readiness
             initialDelaySeconds: 5
             periodSeconds: 10
+            timeoutSeconds: 5
           livenessProbe:
             exec:
               command:
@@ -154,7 +156,8 @@ spec:
                 - /health/health-script.sh
                 - liveness
             initialDelaySeconds: 15
-            periodSeconds: 20   
+            periodSeconds: 20
+            timeoutSeconds: 5   
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
