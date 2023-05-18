@@ -51,6 +51,10 @@ spec:
                 secretKeyRef:
                   name: mongodb-uri
                   key: secret
+            - name: FLARESOLVERR_URL
+              value: http://flaresolverr.media-catalog.svc.cluster.local:8191    
+            - name: ATOMOHD_URL 
+              value: "https://atomohd.care/"               
             - name: SPRING_RABBITMQ_USERNAME
               value: user
             - name: SPRING_RABBITMQ_PASSWORD
