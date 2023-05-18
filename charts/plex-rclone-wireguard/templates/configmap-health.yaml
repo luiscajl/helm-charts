@@ -15,7 +15,7 @@ data:
       if [[ $response == "200" ]]; then
         echo "Plex: OK-IDENTITY"
         # Verificar si el número de archivos en la carpeta es mayor que 1
-        file_count=$(find /media -type d | wc -l)
+        file_count=$(ls /media  | wc -l)
         if [[ $file_count -gt 1 ]]; then
           echo "Plex: OK-RCLONE"
           exit 0  # Éxito
@@ -34,7 +34,7 @@ data:
       if [[ $response == "200" ]]; then
         echo "Plex: OK-IDENTITY"
         # Verificar si el número de archivos en la carpeta es mayor que 1
-        file_count=$(find /media -type d | wc -l)
+        file_count=$(ls /media  | wc -l)
         if [[ $file_count -gt 1 ]]; then
           echo "Plex: OK-RCLONE"
           exit 0  # Éxito
@@ -47,7 +47,7 @@ data:
     # Punto de comprobación de disponibilidad (liveness-rclone)
     liveness_rclone() {
       # Verificar si el número de archivos en la carpeta es mayor que 1
-      file_count=$(find /data -type d | wc -l)
+      file_count=$(ls /data  | wc -l)
       if [[ $file_count -gt 1 ]]; then
         echo "Rclone: OK"
         exit 0  # Éxito
