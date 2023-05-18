@@ -30,14 +30,14 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:           
-        - name: liveneness-init
+        - name: health-script-init
           image: "busybox"
           command:
             - cp
           args:
             - -v
-            - /in/liveness.sh
-            - /out/liveness.sh
+            - /in/health-script.sh
+            - /out/health-script.sh
           volumeMounts:
           - name: health-data
             mountPath: /in
@@ -104,15 +104,13 @@ spec:
             - mountPath: /etc/rclone
               name: rclone-data      
           livenessProbe:
-            httpGet:
-              host: {{ include "plex-rclone-wireguard.fullname" . }}
-              port: 32400
-              path: /identity
-            initialDelaySeconds: 10
-            timeoutSeconds: 10
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3                              
+            exec:
+              command:
+                - /bin/bash
+                - /health/health-script.sh
+                - liveness-rclone        
+            initialDelaySeconds: 15
+            periodSeconds: 20                                       
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -139,28 +137,22 @@ spec:
             - name: {{ .name }}
               value: "{{ .value }}"
             {{- end }}     
-          livenessProbe:
-            exec:
-              command:
-                - bin/bash
-                - -c
-                - /health/liveness.sh
-            initialDelaySeconds: 10
-            timeoutSeconds: 10
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3                 
           readinessProbe:
             exec:
               command:
-                - bin/bash
-                - -c
-                - /health/liveness.sh
-            initialDelaySeconds: 12
-            timeoutSeconds: 10
+                - /bin/bash
+                - /health/health-script.sh
+                - readiness
+            initialDelaySeconds: 5
             periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3     
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - /health/health-script.sh
+                - liveness
+            initialDelaySeconds: 15
+            periodSeconds: 20   
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -184,8 +176,8 @@ spec:
           configMap:
             name: plex-rclone-wireguard-health  
             items:
-              - key: liveness.sh
-                path: liveness.sh
+              - key: health-script.sh
+                path: health-script.sh
         - name: health
           emptyDir: {} 
         - name: wireguard-data
