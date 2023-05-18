@@ -102,6 +102,16 @@ spec:
               name: wireguard-data
             - mountPath: /etc/rclone
               name: rclone-data      
+          livenessProbe:
+            httpGet:
+              host: {{ include "plex-rclone-wireguard.fullname" . }}
+              port: 32400
+              path: /identity
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3                              
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -145,7 +155,7 @@ spec:
                 - bin/bash
                 - -c
                 - /health/liveness.sh
-            initialDelaySeconds: 10
+            initialDelaySeconds: 12
             timeoutSeconds: 10
             periodSeconds: 10
             successThreshold: 1
