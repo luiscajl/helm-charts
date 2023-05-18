@@ -102,7 +102,9 @@ spec:
             - mountPath: /etc/wireguard
               name: wireguard-data
             - mountPath: /etc/rclone
-              name: rclone-data      
+              name: rclone-data    
+            - mountPath: /health
+              name: health                   
           livenessProbe:
             exec:
               command:
