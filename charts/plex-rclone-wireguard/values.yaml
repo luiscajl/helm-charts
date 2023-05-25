@@ -20,8 +20,7 @@ volumes:
     size: 70Gi
   data:   
     enabled: true 
-    path: /mnt/rclone-reader  
-    server: 10.0.0.2
+    path: /mnt/gdrive  
 
 nodeSelector: {}
 imagePullSecrets: []
