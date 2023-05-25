@@ -113,7 +113,7 @@ spec:
       {{- if .Values.volumes.data.enabled }}
         - name: data
           hostPath:
-            path: {{ .Values.data.path }}
+            path: {{ .Values.volumes.data.path }}
             type: Directory
       {{- end }}                
         - name: health-data
