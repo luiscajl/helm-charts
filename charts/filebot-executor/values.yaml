@@ -8,14 +8,11 @@ image:
   tag: "0.0.1-SNAPSHOT"
 
 
-nfs:
-  server: nfs.lavandadelpatio.es
-  paths:
-   media: /mnt/rclone-writer ## OUTPUT
-   torrents: /mnt/rclone-writer/Torrenting ## INPUT  
+data:
+  path: /mnt/gdrive 
 filebot:
-  pathInput: /media-input
-  pathOutput: /media-output
+  pathInput: /media/Torrenting
+  pathOutput: /media
   pathData: /home/filebot
   testEnabled: false
 imagePullSecrets: []
