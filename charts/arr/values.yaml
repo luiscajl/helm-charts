@@ -13,11 +13,9 @@ environmentVariables:
     value: "1000"
   - name: TZ
     value: "Europe/Madrid"
-
-nfs:
-  path: /mnt/rclone-writer
-  server: nfs.lavandadelpatio.es
-
+data: 
+  path: /mnt/gdrive
+  
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
