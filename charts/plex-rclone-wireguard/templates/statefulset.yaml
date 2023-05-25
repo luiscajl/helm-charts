@@ -124,7 +124,9 @@ spec:
             - mountPath: /etc/rclone
               name: rclone-data    
             - mountPath: /health
-              name: health                   
+              name: health        
+            - mountPath: /tmp/init
+              name: init-script                           
           livenessProbe:
             exec:
               command:
