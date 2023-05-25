@@ -126,7 +126,11 @@ spec:
             - mountPath: /health
               name: health        
             - mountPath: /tmp/init
-              name: init-script                           
+              name: init-script     
+          lifecycle:
+            preStop:
+              exec:
+                command: ["bash", "-c", "umount -f /data"]                                      
           livenessProbe:
             exec:
               command:
@@ -134,8 +138,10 @@ spec:
                 - /health/health-script.sh
                 - liveness-rclone        
             initialDelaySeconds: 15
-            periodSeconds: 20
-            timeoutSeconds: 5                                       
+            periodSeconds: 15
+            timeoutSeconds: 5    
+            failureThreshold: 2   
+            successThreshold: 1
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
