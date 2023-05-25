@@ -1,0 +1,18 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: init-script-rclone-wireguard-for-plex
+data:
+  init.sh: |
+    #!/bin/bash
+    wg-quick down wg7 
+    wg-quick up wg7 
+    rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.7
+    sleep 5
+    directory="/data"  # Ruta que deseas comprobar
+    file_count=$(ls -1 "$directory" | wc -l)
+    if [ "$file_count" -le 2 ]; then
+      echo "La cantidad de archivos en $directory es menor o igual a 2. Terminando el contenedor."
+      exit 1
+    fi
+    echo "La cantidad de archivos en $directory es mayor a 2. Iniciado rclone-wireguard."

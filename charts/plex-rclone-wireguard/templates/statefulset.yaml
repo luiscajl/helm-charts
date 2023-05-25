@@ -75,7 +75,27 @@ spec:
             - name: wireguard-config
               mountPath: /in
             - name: wireguard-data
-              mountPath: /out                                
+              mountPath: /out       
+        - name: add-init-script
+          image: "busybox"
+          command:
+            - cp
+          args:
+            - -v
+            - /in/init.sh
+            - /out/init.sh
+          volumeMounts:
+            - name: init-script-data
+              mountPath: /in
+            - name: init-script
+              mountPath: /out  
+        - name: permission-fix-init-script
+          image: busybox
+          command: ['sh', '-c']
+          args: ['chmod -R 777 /out']
+          volumeMounts:
+          - name: init-script
+            mountPath: /out                                          
       containers:
         - image: luiscajl/rclone-wireguard
           name: rclone-wireguard
@@ -93,7 +113,7 @@ spec:
             [
               "sh",
               "-c",
-              "wg-quick up wg7 && rclone mount --config=/etc/rclone/rclone.conf rclone-with-cache: /data --log-level=INFO --umask 002  --vfs-cache-mode off  --tpslimit=7 --vfs-cache-mode off --allow-non-empty --allow-other --bind=10.10.10.7  ",
+              "/tmp/init/init.sh",
             ]
           volumeMounts:
             - mountPath: /data
@@ -189,6 +209,8 @@ spec:
           emptyDir: {}
         - name: rclone-data
           emptyDir: {}
+        - name: init-script
+          emptyDir: {}               
         - name: wireguard-config
           configMap:
             name: wireguard-config
@@ -200,7 +222,13 @@ spec:
             name: rclone-config
             items:
               - key: rclone.conf
-                path: rclone.conf          
+                path: rclone.conf  
+        - name: init-script-data
+          configMap:
+            name: init-script-rclone-wireguard-for-plex
+            items:
+              - key: init.sh
+                path: init.sh                         
   {{- if .Values.volumes.config.enabled }}
   volumeClaimTemplates:
     - metadata:
