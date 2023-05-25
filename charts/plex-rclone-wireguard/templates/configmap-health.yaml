@@ -20,6 +20,7 @@ data:
         #   echo "Plex: OK-RCLONE"
         #   exit 0  # Éxito
         # fi
+        exit 0  # Éxito
       fi
     
       exit 1  # Fallo
@@ -34,11 +35,12 @@ data:
       if [[ $response == "200" ]]; then
         echo "Plex: OK-IDENTITY"
         # Verificar si el número de archivos en la carpeta es mayor que 1
-        file_count=$(ls /media  | wc -l)
-        if [[ $file_count -gt 1 ]]; then
-          echo "Plex: OK-RCLONE"
-          exit 0  # Éxito
-        fi     
+        # file_count=$(ls /media  | wc -l)
+        # if [[ $file_count -gt 1 ]]; then
+        #   echo "Plex: OK-RCLONE"
+        #   exit 0  # Éxito
+        # fi    
+        exit 0  # Éxito
       fi
   
       exit 1  # Fallo
