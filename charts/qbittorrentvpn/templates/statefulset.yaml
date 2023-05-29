@@ -52,10 +52,7 @@ spec:
               - key: wg0.conf
                 path: wg0.conf                
         - name: health
-          emptyDir: {}      
-        - name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache
-          persistentVolumeClaim:
-            claimName: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache                                                           
+          emptyDir: {}                                                         
       initContainers:           
         - name: qbittorrent-scripts-config
           image: "busybox"
