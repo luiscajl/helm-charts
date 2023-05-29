@@ -1,6 +1,5 @@
-nfs:
-  path: /mnt/rclone-writer 
-  server: nfs.lavandadelpatio.es
+data:
+  path: /mnt/gdrive
 replicaCount: 1
 image:
   repository: binhex/arch-qbittorrentvpn

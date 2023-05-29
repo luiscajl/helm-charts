@@ -30,7 +30,9 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: data
-          emptyDir: {}
+          hostPath:
+            path: {{ .Values.data.path }}
+            type: Directory
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
@@ -51,36 +53,6 @@ spec:
                 path: wg0.conf                
         - name: health
           emptyDir: {}      
-        - name: wireguard-data
-          emptyDir: {}
-        - name: rclone-data
-          emptyDir: {}
-        - name: init-script
-          emptyDir: {}          
-        - name: wireguard-config
-          configMap:
-            name: wireguard-config
-            items:
-              - key: wg2.conf
-                path: wg2.conf
-        - name: wireguard-config-2
-          configMap:
-            name: wireguard-config
-            items:
-              - key: wg-airvpn.conf
-                path: wg-airvpn.conf    
-        - name: init-script-data
-          configMap:
-            name: init-script-rclone-wireguard
-            items:
-              - key: init.sh
-                path: init.sh                               
-        - name: rclone-config
-          configMap:
-            name: rclone-config
-            items:
-              - key: rclone.conf
-                path: rclone.conf    
         - name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache
           persistentVolumeClaim:
             claimName: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache                                                           
@@ -127,97 +99,8 @@ spec:
           args: ['chmod -R 777 /out']
           volumeMounts:
           - name: health
-            mountPath: /out  
-        - name: rclone-config
-          image: "busybox"
-          command:
-            - cp
-          args:
-            - -v
-            - /in/rclone.conf
-            - /out/rclone.conf
-          volumeMounts:
-            - name: rclone-config
-              mountPath: /in
-            - name: rclone-data
-              mountPath: /out
-        - name: import-wireguard-config
-          image: "busybox"
-          command:
-            - cp
-          args:
-            - -v
-            - /in/wg2.conf
-            - /out/wg2.conf
-          volumeMounts:
-            - name: wireguard-config
-              mountPath: /in
-            - name: wireguard-data
-              mountPath: /out   
-        - name: import-wireguard-config-2
-          image: "busybox"
-          command:
-            - cp
-          args:
-            - -v
-            - /in/wg-airvpn.conf
-            - /out/wg-airvpn.conf
-          volumeMounts:
-            - name: wireguard-config-2
-              mountPath: /in
-            - name: wireguard-data
-              mountPath: /out    
-        - name: add-init-script
-          image: "busybox"
-          command:
-            - cp
-          args:
-            - -v
-            - /in/init.sh
-            - /out/init.sh
-          volumeMounts:
-            - name: init-script-data
-              mountPath: /in
-            - name: init-script
-              mountPath: /out  
-        - name: permission-fix-init-script
-          image: busybox
-          command: ['sh', '-c']
-          args: ['chmod -R 777 /out']
-          volumeMounts:
-          - name: init-script
             mountPath: /out                                                                                                    
       containers:
-        - image: luiscajl/rclone-wireguard
-          name: rclone-wireguard
-          imagePullPolicy: Always
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          resources:
-            requests:
-              cpu: "20m"
-              memory: "55M"
-            limits:
-              cpu: "1000m"
-              memory: "1000M"  
-          command:
-            [
-              "sh",
-              "-c",
-              "/tmp/init/init.sh",
-            ]
-          volumeMounts:
-            - mountPath: /data
-              name: data
-              mountPropagation: Bidirectional
-            - mountPath: /etc/wireguard
-              name: wireguard-data
-            - mountPath: /etc/rclone
-              name: rclone-data   
-            - mountPath: /tmp/init
-              name: init-script    
-            - mountPath: /tmp/rclone-cache
-              name: {{ include "qbittorrentvpn.fullname" . }}-rclone-cache       
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
