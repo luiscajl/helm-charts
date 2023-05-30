@@ -40,14 +40,24 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /web
-              port: http
           readinessProbe:
             httpGet:
               path: /web
               port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3  
+          livenessProbe:
+            httpGet:
+              path: /web
+              port: http
+            initialDelaySeconds: 25
+            timeoutSeconds: 10
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3  
           env:
            {{- range .Values.environmentVariables }}
             - name: {{ .name }}
