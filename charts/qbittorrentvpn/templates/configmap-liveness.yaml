@@ -11,6 +11,7 @@ data:
     if [[ $numFiles -gt 1 ]]  && [[ "$(curl -sL -w '%{http_code}' http://localhost:8081 -o /dev/null)" = "200"  ]];
     #if [[ $numFiles -gt 1 ]];
     then
+      echo "Liveness OK!"
       echo 0
     else
       echo "Liveness failed!" 1>&2
