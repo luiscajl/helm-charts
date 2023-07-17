@@ -74,11 +74,9 @@ spec:
               containerPort: {{ .Values.service.sonarr.port }}
               protocol: TCP
           livenessProbe:
-            exec:
-              command:
-                - bin/bash
-                - -c
-                - /health/liveness.sh
+            httpGet:
+              path: /status
+              port: http
             initialDelaySeconds: 10
             timeoutSeconds: 10
             periodSeconds: 20
