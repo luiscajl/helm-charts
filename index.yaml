@@ -2,6 +2,13 @@ apiVersion: v1
 entries:
   arr:
   - apiVersion: v2
+    created: "2023-07-17T09:04:00.601248925Z"
+    digest: 5aca8a510c53b6f2cfb23123c69fe0c5c53d62a58c8ec4ad9936648bd6d1aab8
+    name: arr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/arr-1.0.3/arr-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     created: "2023-05-25T21:04:38.512280711Z"
     digest: 0ab56232f3b1f217fc5afc38ff210bff52a21a7c2940d28fc871dac8ba4c1e88
     name: arr
@@ -358,6 +365,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-bot-0.0.1/filebot-bot-0.0.1.tgz
     version: 0.0.1
   filebot-executor:
+  - apiVersion: v2
+    created: "2023-07-17T09:04:00.742133048Z"
+    digest: 2d1e3d3cc0dd19b86c258b63eab8337a62db9ab1a54031e25af6d9ae6368893c
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-1.0.6/filebot-executor-1.0.6.tgz
+    version: 1.0.6
   - apiVersion: v2
     created: "2023-05-25T21:11:18.584437565Z"
     digest: cba869894ecff1c1212f51dafa3f09b80a0e5da6cd1a3e7bddb31b087bff6b65
@@ -1031,6 +1045,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/plex-rclone-wireguard-1.0.0/plex-rclone-wireguard-1.0.0.tgz
     version: 1.0.0
   qbittorrentvpn:
+  - apiVersion: v2
+    created: "2023-07-17T09:04:00.911232477Z"
+    digest: ae1dffed6fd17bf9ee8a1d7972bd8682fce1f726a376f4df17e249ef4c10d55c
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-2.0.22/qbittorrentvpn-2.0.22.tgz
+    version: 2.0.22
   - apiVersion: v2
     created: "2023-07-08T08:27:01.882799617Z"
     digest: d910c080805caeb89b06a4c68e06a86a5d79f0ea76eaba411d8c790c05a33e90
@@ -2673,4 +2694,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-08T08:27:01.885208438Z"
+generated: "2023-07-17T09:04:00.913022728Z"
