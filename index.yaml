@@ -583,6 +583,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-reports-0.2.5/filebot-reports-0.2.5.tgz
     version: 0.2.5
+  filebrowser:
+  - apiVersion: v2
+    created: "2023-08-02T07:08:47.801749482Z"
+    digest: c704b97b10cbf60664a6bb7ec154f27d14ae56904f32f8cc7466dd5e12320c28
+    name: filebrowser
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebrowser-0.0.1/filebrowser-0.0.1.tgz
+    version: 0.0.1
   flaresolverr:
   - apiVersion: v2
     created: "2022-02-25T09:24:47.177640691Z"
@@ -2694,4 +2702,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-17T09:04:00.913022728Z"
+generated: "2023-08-02T07:08:47.803806007Z"
