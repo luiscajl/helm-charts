@@ -89,7 +89,9 @@ spec:
             - name: FILEBOT_PATH_DATA
               value: {{ .Values.filebot.pathData | quote }} 
             - name: FILEBOT_TEST_ENABLED
-              value: {{ .Values.filebot.testEnabled | quote }}          
+              value: {{ .Values.filebot.testEnabled | quote }}     
+            - name: QBITTORRENT_URL
+              value: {{ .Values.qbittorrent.url | quote }}       
           livenessProbe:
             exec:
               command:
