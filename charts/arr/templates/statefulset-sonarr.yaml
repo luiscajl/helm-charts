@@ -28,15 +28,7 @@ spec:
       {{- end }}
       serviceAccountName: {{ include "arr.serviceAccountName" . }}
       securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:           
-        - name: permission-fix
-          image: busybox
-          command: ['sh', '-c']
-          args: ['chmod -R 655 /out']
-          volumeMounts:
-          - name: health
-            mountPath: /out                       
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}                    
       containers:      
         - name: {{ .Chart.Name }}
           securityContext:
