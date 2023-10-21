@@ -30,19 +30,6 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:           
-        - name: liveneness-init
-          image: "busybox"
-          command:
-            - cp
-          args:
-            - -v
-            - /in/liveness.sh
-            - /out/liveness.sh
-          volumeMounts:
-          - name: health-data
-            mountPath: /in
-          - name: health
-            mountPath: /out   
         - name: permission-fix
           image: busybox
           command: ['sh', '-c']
@@ -61,9 +48,6 @@ spec:
               name: {{ include "arr.fullname" . }}-sonarr-config  
             - mountPath: /data
               name: data  
-              mountPropagation: Bidirectional  
-            - mountPath: /health
-              name: health                
           env:
             {{- range .Values.environmentVariables }}
             - name: {{ .name }}
@@ -77,7 +61,7 @@ spec:
             httpGet:
               path: /status
               port: http
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             timeoutSeconds: 10
             periodSeconds: 20
             successThreshold: 1
@@ -86,9 +70,9 @@ spec:
             httpGet:
               path: /status
               port: http
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             timeoutSeconds: 5
-            periodSeconds: 5
+            periodSeconds: 20
             successThreshold: 1
             failureThreshold: 5  
           resources:
@@ -97,15 +81,7 @@ spec:
         - name: data
           hostPath:
             path: {{ .Values.data.path }}
-            type: Directory
-        - name: health-data
-          configMap:
-            name: arr-health  
-            items:
-              - key: liveness.sh
-                path: liveness.sh
-        - name: health
-          emptyDir: {}                    
+            type: Directory                 
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

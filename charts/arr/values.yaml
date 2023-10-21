@@ -14,7 +14,7 @@ environmentVariables:
   - name: TZ
     value: "Europe/Madrid"
 data: 
-  path: /mnt/gdrive
+  path: /mnt/raw-data/plex-data
   
 imagePullSecrets: []
 nameOverride: ""
