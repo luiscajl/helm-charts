@@ -2,6 +2,13 @@ apiVersion: v1
 entries:
   arr:
   - apiVersion: v2
+    created: "2023-10-21T17:47:25.957470357Z"
+    digest: 74155966948c02903782f8e2a0945dfbbcbcd37cd14764c0c036707dffae927f
+    name: arr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/arr-1.0.4/arr-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
     created: "2023-07-17T09:04:00.601248925Z"
     digest: 5aca8a510c53b6f2cfb23123c69fe0c5c53d62a58c8ec4ad9936648bd6d1aab8
     name: arr
@@ -2709,4 +2716,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-06T11:55:24.63747947Z"
+generated: "2023-10-21T17:47:25.959070562Z"
