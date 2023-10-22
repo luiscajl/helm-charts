@@ -1075,6 +1075,13 @@ entries:
     version: 1.0.0
   qbittorrentvpn:
   - apiVersion: v2
+    created: "2023-10-22T07:27:45.078187091Z"
+    digest: 55e3ef26a1760c45468c1a61a377fb74a1811ecf065ec651785bb73d3fc4a734
+    name: qbittorrentvpn
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/qbittorrentvpn-2.0.23/qbittorrentvpn-2.0.23.tgz
+    version: 2.0.23
+  - apiVersion: v2
     created: "2023-07-17T09:04:00.911232477Z"
     digest: ae1dffed6fd17bf9ee8a1d7972bd8682fce1f726a376f4df17e249ef4c10d55c
     name: qbittorrentvpn
@@ -2723,4 +2730,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-21T18:19:56.285136944Z"
+generated: "2023-10-22T07:27:45.08198899Z"
