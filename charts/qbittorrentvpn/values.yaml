@@ -1,5 +1,6 @@
-data:
-  path: /mnt/gdrive
+paths:
+  data: /mnt/raw-data/plex-data/qbittorrentvpn-data-downloaded
+  downloads: /mnt/nvme-data/qbittorrentvpn-downloads
 replicaCount: 1
 image:
   repository: binhex/arch-qbittorrentvpn

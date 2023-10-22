@@ -31,8 +31,12 @@ spec:
       volumes:
         - name: data
           hostPath:
-            path: {{ .Values.data.path }}
+            path: {{ .Values.paths.data }}
             type: Directory
+        - name: downloads
+          hostPath:
+            path: {{ .Values.paths.downloads }}
+            type: Directory            
         - name: etc-localtime
           hostPath:
             path: /etc/localtime
@@ -115,7 +119,8 @@ spec:
               name: scripts                 
             - mountPath: /data
               name: data
-              mountPropagation: Bidirectional
+            - mountPath: /downloads
+              name: downloads              
             - mountPath: /etc/localtime
               name: etc-localtime   
             - mountPath: /health
