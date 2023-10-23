@@ -120,7 +120,6 @@ spec:
             - mountPath: /home/filebot
               name: filebot-config  
             - mountPath: /media
-              mountPropagation: Bidirectional
               name: data  
             - mountPath: /health
               name: config   
