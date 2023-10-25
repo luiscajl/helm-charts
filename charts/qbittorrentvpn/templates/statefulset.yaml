@@ -119,8 +119,10 @@ spec:
               name: scripts                 
             - mountPath: /data
               name: data
+              mountPropagation: Bidirectional
             - mountPath: /downloads
-              name: downloads              
+              name: downloads         
+              mountPropagation: Bidirectional     
             - mountPath: /etc/localtime
               name: etc-localtime   
             - mountPath: /health
