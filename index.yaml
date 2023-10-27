@@ -358,6 +358,13 @@ entries:
     version: 0.0.1
   filebot-bot:
   - apiVersion: v2
+    created: "2023-10-27T18:59:35.189203422Z"
+    digest: 4d3e2f77249d16ac1119127c17da93f4dd359047d78bce75709273f89527791f
+    name: filebot-bot
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-bot-0.0.7/filebot-bot-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
     created: "2023-10-27T18:55:02.882271172Z"
     digest: 02cded7af238778c7a9379fadb0e2c43426884fa9e93e1b07b3b6d5e72a5674d
     name: filebot-bot
@@ -400,6 +407,13 @@ entries:
     - https://github.com/luiscajl/helm-charts/releases/download/filebot-bot-0.0.1/filebot-bot-0.0.1.tgz
     version: 0.0.1
   filebot-executor:
+  - apiVersion: v2
+    created: "2023-10-27T18:59:35.340562536Z"
+    digest: 638b0453e8c49598c99c20c4d64d5790ad46413887ce9e249166127b9f6ad3a0
+    name: filebot-executor
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/filebot-executor-1.0.11/filebot-executor-1.0.11.tgz
+    version: 1.0.11
   - apiVersion: v2
     created: "2023-10-27T18:55:03.06054087Z"
     digest: 62b7b17b5076de1154e2b7ed4b35f3b77fbc5dd92b343e28dbb4e943006b4f38
@@ -2779,4 +2793,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-27T18:55:03.062418906Z"
+generated: "2023-10-27T18:59:35.343580528Z"
