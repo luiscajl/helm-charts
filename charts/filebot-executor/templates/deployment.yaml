@@ -93,7 +93,7 @@ spec:
             - name: QBITTORRENT_URL
               value: {{ .Values.qbittorrent.url | quote }}       
             - name: SPRING_AMQP_DESERIALIZATION_TRUST_ALL
-              value: true  
+              value: "true"  
           livenessProbe:
             exec:
               command:
