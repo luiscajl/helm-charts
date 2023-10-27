@@ -81,7 +81,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: username-classify                   
+                  key: username-classify      
+            - name: TELEGRAM_FILEBOT_AUTHORIZED_USERNAMES
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-credentials
+                  key: username-classify   
+            - name: TELEGRAM_CLASSIFY_AUTHORIZED_USERNAMES
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-credentials
+                  key: authorized-usernames                    
             - name: SPRING_AMQP_DESERIALIZATION_TRUST_ALL
               value: "true"        
           envFrom: 
