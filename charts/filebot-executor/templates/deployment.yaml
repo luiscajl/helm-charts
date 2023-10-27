@@ -92,6 +92,8 @@ spec:
               value: {{ .Values.filebot.testEnabled | quote }}     
             - name: QBITTORRENT_URL
               value: {{ .Values.qbittorrent.url | quote }}       
+            - name: SPRING_AMQP_DESERIALIZATION_TRUST_ALL
+              value: true  
           livenessProbe:
             exec:
               command:

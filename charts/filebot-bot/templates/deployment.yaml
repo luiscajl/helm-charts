@@ -62,16 +62,28 @@ spec:
               value: rabbitmq    
             - name: SERVER_MAX_HTTP_HEADER_SIZE
               value: "16KB"
-            - name: TELEGRAM_FILEBOTBOT_TOKEN
+            - name: TELEGRAM_FILEBOT_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: token
-            - name: TELEGRAM_FILEBOTBOT_USERNAME
+                  key: token-filebot
+            - name: TELEGRAM_FILEBOT_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: username 
+                  key: username-filebot 
+            - name: TELEGRAM_CLASSIFY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-credentials
+                  key: token-classify
+            - name: TELEGRAM_CLASSIFY_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-credentials
+                  key: username-classify                   
+            - name: SPRING_AMQP_DESERIALIZATION_TRUST_ALL
+              value: true        
           envFrom: 
            - configMapRef: 
               name: configmap-filebotbot                            
