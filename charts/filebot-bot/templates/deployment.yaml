@@ -86,7 +86,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: telegram-credentials
-                  key: username-classify   
+                  key: authorized-usernames   
             - name: TELEGRAM_CLASSIFY_AUTHORIZED_USERNAMES
               valueFrom:
                 secretKeyRef:
