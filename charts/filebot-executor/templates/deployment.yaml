@@ -119,7 +119,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: /home/filebot
+            - mountPath: /home/apps
               name: filebot-config  
             - mountPath: /media
               mountPropagation: Bidirectional
