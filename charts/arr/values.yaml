@@ -13,9 +13,9 @@ environmentVariables:
     value: "568"
   - name: TZ
     value: "Europe/Madrid"
-data: 
+data:
   path: /mnt/raw-data/plex-data
-  
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -57,20 +57,20 @@ ingress:
   className: ""
   annotations: {}
   sonarr:
-      host: chart-example.local
-      path: /
-      pathType: ImplementationSpecific
-      tls: []
+    host: chart-example.local
+    path: /
+    pathType: ImplementationSpecific
+    tls: []
   sonarrEn:
-      host: chart-example.local
-      path: /
-      pathType: ImplementationSpecific
-      tls: []
+    host: chart-example.local
+    path: /
+    pathType: ImplementationSpecific
+    tls: []
   radarr:
-      host: chart-example.local
-      path: /
-      pathType: ImplementationSpecific
-      tls: []
+    host: chart-example.local
+    path: /
+    pathType: ImplementationSpecific
+    tls: []
 resources:
   {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -83,8 +83,6 @@ resources:
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
-
 
 nodeSelector: {}
 
