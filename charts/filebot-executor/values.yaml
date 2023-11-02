@@ -13,7 +13,7 @@ data:
 filebot:
   pathInput: /media/Torrenting
   pathOutput: /media
-  pathData: /home/filebot
+  pathData: /home/apps
   testEnabled: false
 imagePullSecrets: []
 nameOverride: ""
