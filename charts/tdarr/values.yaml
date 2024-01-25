@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: linuxserver/tdarr
+  repository: haveagitgat/tdarr
   pullPolicy: Always
   tag: "latest"
 
