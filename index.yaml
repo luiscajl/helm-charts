@@ -2523,6 +2523,13 @@ entries:
     version: 0.0.2
   tdarr:
   - apiVersion: v2
+    created: "2024-01-25T21:45:06.394440528Z"
+    digest: f3873313cb85096a19c26e17089eb4be80982eb53aca5774ec85cd1af033117e
+    name: tdarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tdarr-0.0.2/tdarr-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2024-01-25T21:37:32.241819502Z"
     digest: 626c7c4941457ed53ec5bac1b7cb5c1a656a0ce124b00123d6223347ced697f1
     name: tdarr
@@ -2836,4 +2843,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-25T21:37:32.242934622Z"
+generated: "2024-01-25T21:45:06.395119385Z"
