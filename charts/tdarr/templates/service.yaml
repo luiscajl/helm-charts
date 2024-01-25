@@ -11,5 +11,9 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: {{ .Values.service.serverPort }}
+      targetPort: http
+      protocol: TCP
+      name: httpServer      
   selector:
     {{- include "tdarr.selectorLabels" . | nindent 4 }}

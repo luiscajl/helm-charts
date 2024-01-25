@@ -47,7 +47,8 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 9117
+  port: 8265
+  serverPort: 8266
 
 ingress:
   enabled: false
