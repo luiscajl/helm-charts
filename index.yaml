@@ -2521,6 +2521,14 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/tautulli-0.0.2/tautulli-0.0.2.tgz
     version: 0.0.2
+  tdarr:
+  - apiVersion: v2
+    created: "2024-01-25T21:37:32.241819502Z"
+    digest: 626c7c4941457ed53ec5bac1b7cb5c1a656a0ce124b00123d6223347ced697f1
+    name: tdarr
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tdarr-0.0.1/tdarr-0.0.1.tgz
+    version: 0.0.1
   test:
   - apiVersion: v2
     appVersion: 0.0.11
@@ -2828,4 +2836,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-02T15:46:27.18554051Z"
+generated: "2024-01-25T21:37:32.242934622Z"
