@@ -17,7 +17,7 @@ environmentVariables:
 paths:
   # server: 
   # logs: 
-  media: /mnt/raw-data
+  media: /mnt/raw-data/plex-data
   transcode: /mnt/nvme-data/transcoding
 imagePullSecrets: []
 nameOverride: ""
