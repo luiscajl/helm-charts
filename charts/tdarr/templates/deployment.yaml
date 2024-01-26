@@ -36,8 +36,8 @@ spec:
           volumeMounts:
             - mountPath: /app/configs
               name: {{ include "tdarr.fullname" . }}-config-volume  
-            # - mountPath: /app/server
-            #   name: {{ include "tdarr.fullname" . }}-server-volume  
+            - mountPath: /app/server
+              name: {{ include "tdarr.fullname" . }}-server-volume  
             # - mountPath: /app/logs
             #   name: {{ include "tdarr.fullname" . }}-logs-volume  
             - mountPath: /media
@@ -79,10 +79,9 @@ spec:
         - name: {{ include "tdarr.fullname" . }}-config-volume
           persistentVolumeClaim:
             claimName: {{ include "tdarr.fullname" . }}-config-volume        
-        # - name: {{ include "tdarr.fullname" . }}-server-volume  
-        #   hostPath:
-        #     path: {{ .Values.paths.server }}
-        #     type: Directory
+        - name: {{ include "tdarr.fullname" . }}-server-volume  
+          persistentVolumeClaim:
+            claimName: {{ include "tdarr.fullname" . }}-server-volume   
         # - name: {{ include "tdarr.fullname" . }}-logs-volume 
         #   hostPath:
         #     path: {{ .Values.paths.logs }}
