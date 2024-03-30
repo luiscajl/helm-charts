@@ -95,27 +95,46 @@ spec:
             - name: SPRING_AMQP_DESERIALIZATION_TRUST_ALL
               value: "true"  
           livenessProbe:
-            exec:
-              command:
-                - bin/bash
-                - -c
-                - /health/liveness.sh
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            periodSeconds: 5
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
             successThreshold: 1
-            failureThreshold: 2                 
+            failureThreshold: 5
           readinessProbe:
-            exec:
-              command:
-                - bin/bash
-                - -c
-                - /health/liveness.sh
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+              scheme: HTTP
             initialDelaySeconds: 10
             timeoutSeconds: 5
             periodSeconds: 5
             successThreshold: 1
-            failureThreshold: 2  
+            failureThreshold: 5              
+          # livenessProbe:
+          #   exec:
+          #     command:
+          #       - bin/bash
+          #       - -c
+          #       - /health/liveness.sh
+          #   initialDelaySeconds: 10
+          #   timeoutSeconds: 5
+          #   periodSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 2                 
+          # readinessProbe:
+          #   exec:
+          #     command:
+          #       - bin/bash
+          #       - -c
+          #       - /health/liveness.sh
+          #   initialDelaySeconds: 10
+          #   timeoutSeconds: 5
+          #   periodSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 2  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
