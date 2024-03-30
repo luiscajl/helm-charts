@@ -2635,6 +2635,13 @@ entries:
     version: 0.1.0
   tmdb:
   - apiVersion: v2
+    created: "2024-03-30T12:59:22.000796211Z"
+    digest: 4a55149b74c35a0508c4255c75423422d08e4b613780c1f4427b0ada04f5e944
+    name: tmdb
+    urls:
+    - https://github.com/luiscajl/helm-charts/releases/download/tmdb-0.2.4/tmdb-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
     created: "2022-02-25T09:24:48.175411573Z"
     digest: 21b5c915b603122c75a9261764eac6e7a6f180bd54f825778d40e396eb7f9aad
     name: tmdb
@@ -2899,4 +2906,4 @@ entries:
     urls:
     - https://github.com/luiscajl/helm-charts/releases/download/xteve-0.1.0/xteve-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-30T12:50:22.58839961Z"
+generated: "2024-03-30T12:59:22.001344125Z"
